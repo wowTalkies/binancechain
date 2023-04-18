@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "326376573",
+    "project_id": "bnbhackathon",
+    "storage_bucket": "bnbhackathon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326376573:android:a067cd8100ad438863e514",
+        "android_client_info": {
+          "package_name": "com.example.dnbapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326376573-09p2gut74f4ljvhegvn7uvief45lkmls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8-oh5p6DK0HTBWoFFRFYNPhbN6q3z-sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326376573-09p2gut74f4ljvhegvn7uvief45lkmls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326376573:android:c7c9415ae2a4cb5963e514",
+        "android_client_info": {
+          "package_name": "com.wowtbnb.web3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326376573-09p2gut74f4ljvhegvn7uvief45lkmls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8-oh5p6DK0HTBWoFFRFYNPhbN6q3z-sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326376573-09p2gut74f4ljvhegvn7uvief45lkmls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
