@@ -1,0 +1,21 @@
+Socialfi track mobile app scope
+
+Multi level referrals
+
+1.	After a user registers, the user is told the benefits of referrals
+2.	The user has the right to opt for referrals. The user gets a referral code/referral email/referral link that the user can use to refer through communication apps, social media and email
+3.	On each successful referral, the user earns five points
+4.	The user referred by the first user, can also use the referral scheme. For this referred user, points 1,2 and 3 apply. For each user that comes in through this referred user, the original referee earns 2 points.
+5.	This hence becomes like a multi level referral and earning mechanism. The multi level referral and earning mechanism is restricted to 2 levels of referrals
+6.	The user who has bagged the most number of points with this multi-level referral mechanism earns a referral badge. The badge can be sported by the user on his/her profile
+Content creation and content usage in communities:
+
+1.	Once a user registers, the user is given a choice of communities to join
+2.	for the sake of the hackathon, the communities are pre created and have some users who have already joined. The community are on global recognised entertainment properties. These could 1) marvel cinematic universe community 2) mission impossible community 3) Jackie chan community
+3.	For joining the community, the user has to have 10 points. The user can get these points by answering quizzes- the quizzes are multiple choice question format. The quizzes are presented to the user one after the other, there are 4 quizzes available that are presented randomly. So there are a total of 12- for the 3 communities altogether
+4.	answering each quiz gets the user 5 points. 10 points get the user in. The user can also accumulate points with the multi level referral
+5.	The community is populated by pre defined content
+6.	Every day the user logs in, gives the user 2 points
+7.	If the user has 20 points, the user can create a quiz for other users to see and play. The user uses a pre defined format to create a quiz
+8.	every time another user plays the quiz created by this user, this user earns 2 points
+9.	whoever has the most number of points at the time of any user logging in, is displayed on the home page
