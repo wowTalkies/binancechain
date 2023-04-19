@@ -81,11 +81,6 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
     }
 
     function getTopLeaderBoards() public view returns (address[10] memory) {
-        // address[] memory topLeaderBoards;
-        // uint i = 0;
-        // for (i; i < topLeaderBoardAddress.length; i++) {
-        //     topLeaderBoards[i] = topLeaderBoardAddress[i];
-        // }
         return topLeaderBoardAddress;
     }
 
