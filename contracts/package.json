@@ -4,7 +4,7 @@
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",
     "@openzeppelin/contracts-upgradeable": "^4.8.2",
     "@openzeppelin/hardhat-upgrades": "^1.22.1",
-    "hardhat": "^2.13.1"
+    "hardhat": "^2.14.0"
   },
   "devDependencies": {
     "prettier": "^2.8.7",
