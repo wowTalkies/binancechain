@@ -9,12 +9,13 @@ import 'package:magic_sdk/magic_sdk.dart';
 import 'login_state.dart';
 
 class LoginCubit extends BaseCubit<LoginState> {
-  LoginCubit(AuthCubit authCubit) : super(LoginState());
+  AuthCubit authCubit;
+  LoginCubit(this.authCubit) : super(LoginState());
   TextEditingController controller = TextEditingController();
   Magic magic = Magic.instance;
   Paths path = Paths();
   Future<void> init() async {
-    debugPrint('hi wellCome');
+    debugPrint('hi wellCome go');
   }
 
   login() async {
@@ -26,6 +27,13 @@ class LoginCubit extends BaseCubit<LoginState> {
     var email = controller.value.text;
    await  FirebaseAuth.instance.signInAnonymously();
    var user =  FirebaseAuth.instance.currentUser?.uid;
-    await path.master.child(user!).set({"email": email, "address": address});
+    await path.master.child(user!).update({"email": email, "address": address});
+   if(address.isNotEmpty) {
+    await authCubit.login();
+   }else{
+     LoginErrorState("Invalid");
+   }
   }
+
+
 }
