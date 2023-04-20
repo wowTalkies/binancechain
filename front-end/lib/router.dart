@@ -33,7 +33,7 @@ MaterialPageRoute _buildLoginScreen() {
   return MaterialPageRoute(
     settings: const RouteSettings(name: AppRoutes.login),
     builder: (context) =>
-        addAuth(context, PageBuilder.buildLoginScreen(), "Login"),
+        addAuth(context, PageBuilder.buildLoginScreen(), ),
   );
 }
 
@@ -41,12 +41,12 @@ MaterialPageRoute _buildHomeScreen(RouteSettings settings) {
   return MaterialPageRoute(
     settings: const RouteSettings(name: AppRoutes.login),
     builder: (context) =>
-        addAuth(context, PageBuilder.buildHomeScreen(settings), "Login"),
+        addAuth(context, PageBuilder.buildHomeScreen(settings), ),
   );
 }
 
-Widget addAuth(BuildContext context, Widget widget, String callfrom) {
-  debugPrint("memcheck : in addAuth $callfrom");
+Widget addAuth(BuildContext context, Widget widget) {
+ // debugPrint("memcheck : in addAuth $callfrom");
   final AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
   debugPrint(' inside Before BlocListener ');
   bool listenerrunflag = false;

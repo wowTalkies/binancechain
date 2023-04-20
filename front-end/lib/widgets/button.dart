@@ -7,9 +7,11 @@ class Button extends StatelessWidget {
   final double? width;
   final double? textSize;
   final String? text;
+  final double? height;
+
   final String? image;
 final Function()? onPressed;
-  const Button({Key? key,this.width,this.text,this.onPressed,this.textSize,this.image}) : super(key: key);
+  const Button({Key? key,this.width,this.text,this.onPressed,this.textSize,this.image,this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ final Function()? onPressed;
             end: Alignment.bottomCenter,
             colors: [Color(0xffFFFFFF),Color(0xffFFFFFF), ],
           )),
-      child: SizedBox(width: width,
+      child: SizedBox(width: width,height: height,
         child: ElevatedButton(
             style: const ButtonStyle(shadowColor:MaterialStatePropertyAll(
               Colors.transparent,
@@ -36,7 +38,7 @@ final Function()? onPressed;
             onPressed:onPressed,
             child:   Row(
               children: [
-                image != null ?Image.asset(image??'',width: 30,height: 30,):Container(),const SizedBox(width:5),
+                image != null ?Image.asset(image??'',width: 30,height: 30,):Container(),const SizedBox(width:3),
                 CustomText(text: text,fontColor: AllColor.black,fontSize:textSize ,),
               ],
             )),

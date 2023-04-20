@@ -4,10 +4,13 @@ import 'package:bnbapp/utils/base_cubit.dart';
 import 'package:flutter/material.dart';
 
 class ProfileCubit extends BaseCubit<ProfileState>{
-  ProfileCubit(AuthCubit authCubit) : super(ProfileState());
+  final AuthCubit authCubit;
+  ProfileCubit(this.authCubit) : super(ProfileInitialState());
 
   Future<void> init() async {
     emit(ProfileLoadingState());
     debugPrint('hi wellCome come');
+
+    emit(ProfileLoadedState());
   }
 }

@@ -4,7 +4,7 @@ const hre = require('hardhat');
 const { SignerWithAddress } = require('@nomiclabs/hardhat-ethers/signers.js');
 const { Contract } = require('ethers');
 
-describe('WowTReferrals', function () {
+describe('WowTBadge', function () {
   const levelOnePoints = 5;
   const levelTwoPoints = 2;
   const activeUserPoints = 2;

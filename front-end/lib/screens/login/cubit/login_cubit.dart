@@ -10,7 +10,7 @@ import 'login_state.dart';
 
 class LoginCubit extends BaseCubit<LoginState> {
   AuthCubit authCubit;
-  LoginCubit(this.authCubit) : super(LoginState());
+  LoginCubit(this.authCubit) : super(LoginInitialState());
   TextEditingController controller = TextEditingController();
   Magic magic = Magic.instance;
   Paths path = Paths();

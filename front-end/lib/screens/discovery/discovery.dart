@@ -1,4 +1,6 @@
 import 'package:bnbapp/screens/discovery/cubit/cubit.dart';
+import 'package:bnbapp/widgets/appbar.dart';
+import 'package:bnbapp/widgets/gridcard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,11 +29,29 @@ class Discover extends StatelessWidget {
     );
   }
 }
+
 class _LayOut extends StatelessWidget {
   const _LayOut({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Container(color: Colors.orange,);
+    final cubit = context.read<DiscoverCubit>();
+    return BlocBuilder(
+      bloc: cubit,
+      builder: (context, state) => Column(
+        children: [
+          Expanded(
+              child: ListView(
+            children: [
+              const CustomAppBar(title: "Discover Quizzes"),
+              GridCard(
+                imageUrl: cubit.list,
+                itemCount: cubit.list.length,
+              )
+            ],
+          ))
+        ],
+      ),
+    );
   }
 }
