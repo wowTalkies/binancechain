@@ -1,5 +1,3 @@
-import 'package:bnbapp/router.dart';
-import 'package:bnbapp/screens/tab/cubit/tab_cubit.dart';
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/button.dart';
 import 'package:bnbapp/widgets/textfield.dart';
@@ -7,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'cubit/login_cubit.dart';
 import 'cubit/login_state.dart';
 
@@ -50,8 +49,7 @@ class _LoginsState extends State<Logins> {
 
   @override
   initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive,
-        overlays: []);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: []);
     super.initState();
   }
 
@@ -104,7 +102,7 @@ class _LoginsState extends State<Logins> {
                       width: MediaQuery.of(context).size.width / 1.6,
                       text: "Sign in with Google",
                       textSize: 20,
-                      image: "images/google.png",
+                      image: "images/person.png",
                       onPressed: () async {
                         debugPrint('hello ${cubit.controller.value.text}');
                         await cubit.login();
