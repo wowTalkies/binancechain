@@ -9,6 +9,11 @@
       "address": "0x7faf3239A9bE79072a1FaA43A3acb664F2af78f9",
       "txHash": "0xcc67baefec40340d11057f9b118c70d3ee8cfeb76aa87d15dd7cdf3fb51412db",
       "kind": "transparent"
+    },
+    {
+      "address": "0x8267D49a6E55A459428F820e4FecDF50BD89a139",
+      "txHash": "0xd796ea68cd90334ce6718f3e9c61024690f7662b88a3a989ce63bf58c03632dd",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -190,6 +195,242 @@
           "t_uint16": {
             "label": "uint16",
             "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "7175c2c0228944e7b9ca112232f054701534a1a055dfa9bb495514a62b4e7630": {
+      "address": "0xaaed0d8B6dd17aF74a6dE1040f81Cb64057C3199",
+      "txHash": "0xe7b7fb7da1c05f78e0283d87225b142afe4789d59a32a57f32e65d3029e8e012",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "points",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_contract(WowTPoints)2543",
+            "contract": "WowTReferral",
+            "src": "contracts\\wowTReferral.sol:13"
+          },
+          {
+            "label": "referral",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_mapping(t_address,t_struct(ReferralUser)2814_storage)",
+            "contract": "WowTReferral",
+            "src": "contracts\\wowTReferral.sol:15"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(WowTPoints)2543": {
+            "label": "contract WowTPoints",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_struct(ReferralUser)2814_storage)": {
+            "label": "mapping(address => struct WowTReferral.ReferralUser)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(ReferralUser)2814_storage": {
+            "label": "struct WowTReferral.ReferralUser",
+            "members": [
+              {
+                "label": "referralAddress",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "referralExists",
+                "type": "t_bool",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "7617b5e94e97512d6bf22040036c3eb8206ebe153526e1bfa5400f7376bcf97c": {
+      "address": "0x7d6F142bFb5fD5C150880e3C50Fed3a168ccFc32",
+      "txHash": "0x5c1aff09cc36574c87193c2db2fb54760f72c04ad22486e34820be91d5639e80",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "points",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_contract(WowTPoints)2543",
+            "contract": "WowTReferral",
+            "src": "contracts\\wowTReferral.sol:13"
+          },
+          {
+            "label": "referral",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_mapping(t_address,t_struct(ReferralUser)2814_storage)",
+            "contract": "WowTReferral",
+            "src": "contracts\\wowTReferral.sol:15"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(WowTPoints)2543": {
+            "label": "contract WowTPoints",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_struct(ReferralUser)2814_storage)": {
+            "label": "mapping(address => struct WowTReferral.ReferralUser)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(ReferralUser)2814_storage": {
+            "label": "struct WowTReferral.ReferralUser",
+            "members": [
+              {
+                "label": "referralAddress",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "referralExists",
+                "type": "t_bool",
+                "offset": 20,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
           },
           "t_uint256": {
             "label": "uint256",

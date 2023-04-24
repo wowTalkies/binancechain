@@ -10,23 +10,27 @@ contract WowTReferral is OwnableUpgradeable {
         bool referralExists;
     }
 
+    WowTPoints private points;
+
     mapping(address => ReferralUser) private referral;
 
-    function initialize() external initializer {
+    function initialize(address _pointsContract) external initializer {
         __Ownable_init();
+        points = WowTPoints(_pointsContract);
     }
 
     function addReferralPoints(
-        address _pointsContractAddress,
         address _installAddress,
         address _referralAddress
     ) public onlyOwner {
-        WowTPoints points = WowTPoints(_pointsContractAddress);
         points.addPoints(_referralAddress, points.levelOnePoints());
         referral[_installAddress].referralAddress = _referralAddress;
         referral[_installAddress].referralExists = true;
         if (referral[_referralAddress].referralExists) {
-            points.addPoints(referral[_referralAddress].referralAddress, points.levelTwoPoints());
+            points.addPoints(
+                referral[_referralAddress].referralAddress,
+                points.levelTwoPoints()
+            );
         }
     }
 
