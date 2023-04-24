@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class GridCard extends StatelessWidget {
   final int? itemCount;
   final List<String?>? imageUrl;
+
   const GridCard({Key? key, this.itemCount, this.imageUrl}) : super(key: key);
 
   @override
@@ -61,7 +62,7 @@ class GridCard extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                     child: Padding(
+                    child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -129,8 +130,9 @@ class GridCard extends StatelessWidget {
                             ),
                             Button(
                               text: "Take Quiz",
+                              textSize: 14,
                               height: MediaQuery.of(context).size.height / 19,
-                              width: MediaQuery.of(context).size.width / 4,
+                              width: MediaQuery.of(context).size.width / 3.8,
                             ),
                           ],
                         )),

@@ -1,5 +1,4 @@
 import 'package:bnbapp/router.dart';
-import 'package:bnbapp/screens/profile/profile.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -46,11 +45,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        const MaterialApp(
+        MaterialApp(
           onGenerateRoute: getRoutes,
           debugShowCheckedModeBanner: false,
-          // home: addAuth(context, Container()),
-          home: Profile(),
+          home: addAuth(context, Container()),
+          // home: Profile(),
         ),
         Magic.instance.relayer,
       ],

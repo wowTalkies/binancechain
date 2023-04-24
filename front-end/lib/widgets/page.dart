@@ -8,6 +8,11 @@ class CustomPage extends StatelessWidget {
   final Color? color;
   final Color? color4;
   final FontWeight? fontWeight;
+  final Function()? onPressed;
+  final Function()? whatsAppOnPressed;
+  final Function()? instagramOnPressed;
+  final Function()? telegramOnPressed;
+  final Function()? linkOnPressed;
   final double? fontSize;
   final double? fontSize3;
   final String? referral1;
@@ -43,7 +48,12 @@ class CustomPage extends StatelessWidget {
       this.referral2,
       this.referral3,
       this.referral4,
-      this.fontSize3})
+      this.fontSize3,
+      this.onPressed,
+      this.whatsAppOnPressed,
+      this.telegramOnPressed,
+      this.instagramOnPressed,
+      this.linkOnPressed})
       : super(key: key);
 
   @override
@@ -130,16 +140,19 @@ class CustomPage extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width / 15,
+                      width: MediaQuery.of(context).size.width / 100,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Image.asset(
-                          fit: BoxFit.fill,
-                          "images/mobile.png",
-                          width: 100,
-                          height: 120,
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                          child: Image.asset(
+                            fit: BoxFit.fill,
+                            "images/mobile.png",
+                            width: 100,
+                            height: 120,
+                          ),
                         ),
                       ],
                     )
@@ -321,7 +334,7 @@ class CustomPage extends StatelessWidget {
                       textSize: 17,
                       color1: AllColor.buttonColor,
                       color2: AllColor.buttonColor,
-                      onPressed: () {},
+                      onPressed: onPressed!,
                       height: MediaQuery.of(context).size.height / 20,
                       width: MediaQuery.of(context).size.width / 4,
                       text: "Invite",
@@ -333,11 +346,14 @@ class CustomPage extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Image.asset(
-                      alignment: Alignment.topLeft,
-                      "images/link.png",
-                      width: 30,
-                      height: 30,
+                    InkWell(
+                      onTap: linkOnPressed,
+                      child: Image.asset(
+                        alignment: Alignment.topLeft,
+                        "images/link.png",
+                        width: 40,
+                        height: 40,
+                      ),
                     ),
                     CustomText(
                         fontWeight: fontWeight2 ?? FontWeight.w400,
@@ -351,11 +367,35 @@ class CustomPage extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Image.asset(
-                      alignment: Alignment.topLeft,
-                      "images/telegram.png",
-                      width: 30,
-                      height: 30,
+                    InkWell(
+                      onTap: instagramOnPressed,
+                      child: Image.asset(
+                        alignment: Alignment.topLeft,
+                        "images/Instagram.png",
+                        width: 40,
+                        height: 40,
+                      ),
+                    ),
+                    CustomText(
+                        fontWeight: fontWeight2 ?? FontWeight.w400,
+                        fontColor: color4,
+                        fontSize: fontSize3,
+                        text: "Instagram")
+                  ],
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  children: [
+                    InkWell(
+                      onTap: telegramOnPressed,
+                      child: Image.asset(
+                        alignment: Alignment.topLeft,
+                        "images/telegram.png",
+                        width: 40,
+                        height: 40,
+                      ),
                     ),
                     CustomText(
                         fontWeight: fontWeight2 ?? FontWeight.w400,
@@ -369,11 +409,14 @@ class CustomPage extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Image.asset(
-                      alignment: Alignment.topLeft,
-                      "images/whatsApp.png",
-                      width: 30,
-                      height: 30,
+                    InkWell(
+                      onTap: whatsAppOnPressed,
+                      child: Image.asset(
+                        alignment: Alignment.topLeft,
+                        "images/whatsApp.png",
+                        width: 40,
+                        height: 40,
+                      ),
                     ),
                     CustomText(
                         fontWeight: fontWeight2 ?? FontWeight.w400,

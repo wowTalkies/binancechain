@@ -1,17 +1,15 @@
-import 'package:bnbapp/utils/colors.dart';
-import 'package:bnbapp/widgets/page.dart';
+import 'package:bnbapp/screens/profile/cubit/profile_cubit.dart';
+import 'package:bnbapp/screens/profile/cubit/profile_state.dart';
+import 'package:bnbapp/widgets/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: _LayOut(),
-    );
-    // final cubit = context.read<ProfileCubit>();
-    /*
+    final cubit = context.read<ProfileCubit>();
     return Scaffold(
       body: BlocListener(
         bloc: cubit,
@@ -27,8 +25,7 @@ class Profile extends StatelessWidget {
         child: const _LayOut(),
       ),
     );
-
-     */
+    ;
   }
 }
 
@@ -37,35 +34,16 @@ class _LayOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: ListView(
-            children: const [
-              CustomPage(
-                text: "it's no Fun without\nFriends",
-                fontSize: 25,
-                fontWeight: FontWeight.w700,
-                color: AllColor.white,
-                color2: AllColor.white,
-                fontSize2: 16,
-                fontWeight2: FontWeight.w400,
-                text2: "Bring your friend and earn points",
-                text3: "Unlock exciting\nfeatures & top\nthe Leaderboard!",
-                points1: "0",
-                points2: "points",
-                points3: "Collected",
-                color4: AllColor.black,
-                referral1: "Invite your friends",
-                referral2: "Get points on successful Signup",
-                referral3: "Multilevel referral",
-                referral4: "Unlock experiences with points",
-                fontSize3: 14,
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
+    final cubit = context.read<ProfileCubit>();
+    return BlocBuilder<ProfileCubit, ProfileState>(
+        bloc: cubit,
+        builder: (context, state) => Column(
+              children: [
+                Expanded(
+                    child: ListView(
+                  children: [ProfileWidget()],
+                ))
+              ],
+            ));
   }
 }

@@ -10,9 +10,14 @@ class AuthCubit extends BaseCubit<AuthState> {
   static const Color white = Color(0xffffffff);
 
   String? address = "";
+
   Paths? paths = Paths();
+
   Future<void> init() async {
     emit(AuthInitialState());
+    await Future.delayed(const Duration(seconds: 3));
+    emit(AuthenticatedState());
+    /*
     if (paths?.currrentUser != null) {
       final snapshot =
           await paths?.master.child("${paths?.uId}").child("address").get();
@@ -24,6 +29,7 @@ class AuthCubit extends BaseCubit<AuthState> {
     }else{
       emit(UnAuthenticatedState());
     }
+     */
   }
 
   login() async {

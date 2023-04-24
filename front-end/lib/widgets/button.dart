@@ -15,19 +15,18 @@ class Button extends StatelessWidget {
   final FontWeight? fontWeight;
   final Function()? onPressed;
 
-  const Button(
-      {Key? key,
-      this.width,
-      this.text,
-      this.onPressed,
-      this.textSize,
-      this.image,
-      this.height,
-      this.color1,
-      this.color2,
-      this.textColor,
-      this.fontWeight,
-      this.forTextAlign})
+  const Button({Key? key,
+    this.width,
+    this.text,
+    this.onPressed,
+    this.textSize,
+    this.image,
+    this.height,
+    this.color1,
+    this.color2,
+    this.textColor,
+    this.fontWeight,
+    this.forTextAlign})
       : super(key: key);
 
   @override
@@ -48,19 +47,27 @@ class Button extends StatelessWidget {
         width: width,
         height: height,
         child: ElevatedButton(
-            style: const ButtonStyle(
-                shadowColor: MaterialStatePropertyAll(
-                  Colors.transparent,
-                ),
-                backgroundColor: MaterialStatePropertyAll(
-                  Colors.transparent,
-                ),
-                foregroundColor: MaterialStatePropertyAll(
-                  Colors.transparent,
-                )),
-            onPressed: onPressed,
-            child: Row(
+          style: const ButtonStyle(
+              shadowColor: MaterialStatePropertyAll(
+                Colors.transparent,
+              ),
+              backgroundColor: MaterialStatePropertyAll(
+                Colors.transparent,
+              ),
+              foregroundColor: MaterialStatePropertyAll(
+                Colors.transparent,
+              )),
+          onPressed: onPressed,
+          child: CustomText(
+            fontWeight: fontWeight,
+            text: text,
+            fontColor: textColor ?? AllColor.black,
+            fontSize: textSize,
+          ),
+          /*
+            Row(
               children: [
+                /*
                 image != null
                     ? Image.asset(
                         image ?? '',
@@ -71,6 +78,8 @@ class Button extends StatelessWidget {
                         width: forTextAlign,
                       ),
                 const SizedBox(width: 3),
+
+                 */
                 CustomText(
                   fontWeight: fontWeight,
                   text: text,
@@ -78,7 +87,10 @@ class Button extends StatelessWidget {
                   fontSize: textSize,
                 ),
               ],
-            )),
+            )
+
+             */
+        ),
       ),
     );
   }

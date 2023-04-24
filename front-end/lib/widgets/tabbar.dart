@@ -1,4 +1,4 @@
- import 'package:bnbapp/screens/discovery/discovery.dart';
+import 'package:bnbapp/screens/discovery/discovery.dart';
 import 'package:bnbapp/screens/profile/profile.dart';
 import 'package:bnbapp/screens/tab/cubit/tab_cubit.dart';
 import 'package:bnbapp/utils/colors.dart';
@@ -8,7 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CustomTabBar extends StatefulWidget {
   final Color? activeColor;
   final Color? inActiveColor;
-  const CustomTabBar({super.key, this.activeColor,this.inActiveColor, this.cubit});
+
+  const CustomTabBar(
+      {super.key, this.activeColor, this.inActiveColor, this.cubit});
+
   final TabScreenCubit? cubit;
 
   @override
@@ -19,11 +22,13 @@ class _CustomTabBarState extends State<CustomTabBar> {
   @override
   Widget build(BuildContext context) {
     context.select((TabScreenCubit cubit) => widget.cubit?.tabIndex);
-    return Scaffold(body:   TabBarContainer(cubit: widget.cubit),
-      bottomNavigationBar: Container(height: MediaQuery.of(context).size.height/11,
+    return Scaffold(
+      body: TabBarContainer(cubit: widget.cubit),
+      bottomNavigationBar: Container(
+        height: MediaQuery.of(context).size.height / 11,
         decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [AllColor.linear1,AllColor.linear2],
+              colors: [AllColor.linear1, AllColor.linear2],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -34,7 +39,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
           selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w900),
           unselectedItemColor: widget.inActiveColor,
           backgroundColor: Colors.transparent,
-          items:   <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             /*
             BottomNavigationBarItem(
               icon: Padding(
@@ -58,22 +63,30 @@ class _CustomTabBarState extends State<CustomTabBar> {
             BottomNavigationBarItem(
               icon: Padding(
                   padding: const EdgeInsets.all(3.0),
-                  child: Image.asset( fit:BoxFit.fill,height:  MediaQuery.of(context).size.height/29,
+                  child: Image.asset(
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height / 29,
                       "images/discover.png")),
-              activeIcon:   Padding(
+              activeIcon: Padding(
                   padding: const EdgeInsets.all(3.0),
-                  child: Image.asset( fit:BoxFit.fill,height:  MediaQuery.of(context).size.height/25,
+                  child: Image.asset(
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height / 25,
                       "images/discover_filled.png")),
               label: 'Discover',
             ),
             BottomNavigationBarItem(
-              icon:   Padding(
+              icon: Padding(
                   padding: const EdgeInsets.all(3.0),
-                  child: Image.asset( fit:BoxFit.fill,height:  MediaQuery.of(context).size.height/29,
+                  child: Image.asset(
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height / 29,
                       "images/person.png")),
-              activeIcon:  Padding(
+              activeIcon: Padding(
                   padding: const EdgeInsets.all(3.0),
-                  child: Image.asset( fit:BoxFit.fill,height:  MediaQuery.of(context).size.height/25,
+                  child: Image.asset(
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height / 25,
                       "images/person_filled.png")),
               label: 'Profile',
             ),
@@ -91,8 +104,10 @@ class _CustomTabBarState extends State<CustomTabBar> {
 }
 
 class TabBarContainer extends StatelessWidget {
- final TabScreenCubit? cubit;
-  const TabBarContainer({Key? key,this.cubit}) : super(key: key);
+  final TabScreenCubit? cubit;
+
+  const TabBarContainer({Key? key, this.cubit}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     context.select((TabScreenCubit cubits) => cubit?.tabIndex);
