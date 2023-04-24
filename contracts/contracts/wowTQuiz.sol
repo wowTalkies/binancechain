@@ -15,8 +15,6 @@ contract WowTQuiz is OwnableUpgradeable {
     uint16 public pointsToAnswer;
     //Secret key to encript Answer set
     string private secret;
-    //bool isReveal;
-    address private pointsContract;
     //Points conracts
     WowTPoints private points;
     //Structure to hold Questions and answers. correct index needs to be encripted
@@ -50,8 +48,7 @@ contract WowTQuiz is OwnableUpgradeable {
         createEligibility = _createEligibility;
         pointsToAnswer = _pointsToAnswer;
         secret = _secret;
-        pointsContract = _pointsContract;
-        points = WowTPoints(pointsContract);
+        points = WowTPoints(_pointsContract);
     }
 
     //Create Quiz

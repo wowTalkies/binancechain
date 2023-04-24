@@ -5,12 +5,12 @@ async function main() {
   const factory = await hre.ethers.getContractFactory('WowTCommunity');
 
   // const contract = await upgrades.deployProxy(factory, [
-  //   '0x809d550fca64d94Bd9F66E60752A544199cfAC3D',
-  //   20,
+  //   '0x7faf3239A9bE79072a1FaA43A3acb664F2af78f9',
+  //   10,
   // ]);
 
   const contract = await upgrades.upgradeProxy(
-    '0x367761085BF3C12e5DA2Df99AC6E1a824612b8fb',
+    '0x75849A2035267a8c72410bc4ed8d458177CF1FAc',
     factory
   );
 
@@ -31,8 +31,8 @@ async function main() {
 
   // console.log(`Initialized transaction hash is ${tx.hash}`);
 
-  const getCommunities = await contract.getCommunities();
-  console.log('getCommunities ', getCommunities);
+  // const getCommunities = await contract.getCommunities();
+  // console.log('getCommunities ', getCommunities);
 
   // const addMember = await contract.addMembers(
   //   'Jackie chan community',
@@ -41,11 +41,11 @@ async function main() {
   // await addMember.wait();
   // console.log(`Initialized transaction hash is ${addMember.hash}`);
 
-  const checkMembership = await contract.checkMembership(
-    'Jackie chan community',
-    '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
-  );
-  console.log('checkMembership ', checkMembership);
+  // const checkMembership = await contract.checkMembership(
+  //   'Jackie chan community',
+  //   '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
+  // );
+  // console.log('checkMembership ', checkMembership);
 }
 
 main()

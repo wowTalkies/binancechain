@@ -14,6 +14,21 @@
       "address": "0x8267D49a6E55A459428F820e4FecDF50BD89a139",
       "txHash": "0xd796ea68cd90334ce6718f3e9c61024690f7662b88a3a989ce63bf58c03632dd",
       "kind": "transparent"
+    },
+    {
+      "address": "0xa2Aac22Fd0A0146a8d70eD86674D56872c733Da9",
+      "txHash": "0x99dd90536be32e19b00430992994f591cd29a719d262a9e89f0a1451a17906ff",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x75849A2035267a8c72410bc4ed8d458177CF1FAc",
+      "txHash": "0xfa695af248df2c6ead0033c5401e027bebe71ea7b3f5a2ea5542f51546848bd3",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x8D311f53c9970941B9507f31A20A4C9C122334db",
+      "txHash": "0xafecb45289d5b913fa9f9fe95cde957a871f2b5ca7dcbd90dfd4ddb3ec178f9c",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -430,6 +445,532 @@
                 "slot": "0"
               }
             ],
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "96d992f984c89c22f94dcdd5ed2cded6fc8b2af627fc82fdbee3d5db53116afa": {
+      "address": "0x8D1AA6AAe1ce6183d937008C5d9C824d2F640B8c",
+      "txHash": "0x172bba1cb43f31e946ce03896ce30e66fe5f3ddab3facd37e5c4396931d1c977",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "quizePoints",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_uint16",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:9"
+          },
+          {
+            "label": "createEligibility",
+            "offset": 2,
+            "slot": "101",
+            "type": "t_uint16",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:13"
+          },
+          {
+            "label": "pointsToAnswer",
+            "offset": 4,
+            "slot": "101",
+            "type": "t_uint16",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:15"
+          },
+          {
+            "label": "secret",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_string_storage",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:17"
+          },
+          {
+            "label": "points",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_contract(WowTPoints)2694",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:19"
+          },
+          {
+            "label": "quizmap",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_mapping(t_string_memory_ptr,t_struct(Quiz)2735_storage)",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:37"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_string_storage)4_storage": {
+            "label": "string[4]",
+            "numberOfBytes": "128"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_contract(WowTPoints)2694": {
+            "label": "contract WowTPoints",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_string_memory_ptr,t_struct(Quiz)2735_storage)": {
+            "label": "mapping(string => struct WowTQuiz.Quiz)",
+            "numberOfBytes": "32"
+          },
+          "t_string_memory_ptr": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Question)2722_storage": {
+            "label": "struct WowTQuiz.Question",
+            "members": [
+              {
+                "label": "question",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "options",
+                "type": "t_array(t_string_storage)4_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "answer",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "5"
+              }
+            ],
+            "numberOfBytes": "192"
+          },
+          "t_struct(Quiz)2735_storage": {
+            "label": "struct WowTQuiz.Quiz",
+            "members": [
+              {
+                "label": "description",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "imageUrl",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "quizattenders",
+                "type": "t_array(t_address)dyn_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "question",
+                "type": "t_struct(Question)2722_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "creatorAddress",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "9"
+              }
+            ],
+            "numberOfBytes": "320"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "1829284f368d50c790cda5704bb64044067823d38e2ca3024b060e70062f4b0f": {
+      "address": "0x8b1A7781CD51E3AAD50fA5AB49C83cB86b21C18c",
+      "txHash": "0x75e8d7997d68d64ad8801ee35861d1eee5c40aef73f1b375437955c4b75f5c0d",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "communityEntryPoints",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_uint16",
+            "contract": "WowTCommunity",
+            "src": "contracts\\wowTCommunity.sol:8"
+          },
+          {
+            "label": "pointsContract",
+            "offset": 2,
+            "slot": "101",
+            "type": "t_address",
+            "contract": "WowTCommunity",
+            "src": "contracts\\wowTCommunity.sol:9"
+          },
+          {
+            "label": "communities",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_array(t_string_storage)dyn_storage",
+            "contract": "WowTCommunity",
+            "src": "contracts\\wowTCommunity.sol:10"
+          },
+          {
+            "label": "points",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_contract(WowTPoints)2692",
+            "contract": "WowTCommunity",
+            "src": "contracts\\wowTCommunity.sol:11"
+          },
+          {
+            "label": "communityMap",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2165_storage)",
+            "contract": "WowTCommunity",
+            "src": "contracts\\wowTCommunity.sol:22"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_string_storage)dyn_storage": {
+            "label": "string[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(WowTPoints)2692": {
+            "label": "contract WowTPoints",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2165_storage)": {
+            "label": "mapping(string => struct WowTCommunity.CommunityDetails)",
+            "numberOfBytes": "32"
+          },
+          "t_string_memory_ptr": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(CommunityDetails)2165_storage": {
+            "label": "struct WowTCommunity.CommunityDetails",
+            "members": [
+              {
+                "label": "description",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "imageUrl",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "members",
+                "type": "t_mapping(t_address,t_bool)",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "quizesforEntry",
+                "type": "t_array(t_string_storage)dyn_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "totalMembers",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "exists",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "5"
+              }
+            ],
+            "numberOfBytes": "192"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "5de697ea5a11389a1583f39cc1aa8e9fab98f239217c868a149efc7917823b22": {
+      "address": "0x5eB29F15093256346d74d3786Cca39EE08F759e4",
+      "txHash": "0x1b42a78034f5918d24e9e071f735cc5a8b1f5a16dc2184522cc0fce96f89c372",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "imageUri",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_string_storage",
+            "contract": "WowTBadge",
+            "src": "contracts\\wowTBadge.sol:8"
+          },
+          {
+            "label": "pointsContract",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_address",
+            "contract": "WowTBadge",
+            "src": "contracts\\wowTBadge.sol:9"
+          },
+          {
+            "label": "points",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_contract(WowTPoints)2543",
+            "contract": "WowTBadge",
+            "src": "contracts\\wowTBadge.sol:10"
+          },
+          {
+            "label": "badge",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_mapping(t_string_memory_ptr,t_address)",
+            "contract": "WowTBadge",
+            "src": "contracts\\wowTBadge.sol:12"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(WowTPoints)2543": {
+            "label": "contract WowTPoints",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_string_memory_ptr,t_address)": {
+            "label": "mapping(string => address)",
+            "numberOfBytes": "32"
+          },
+          "t_string_memory_ptr": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
             "numberOfBytes": "32"
           },
           "t_uint256": {

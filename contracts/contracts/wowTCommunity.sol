@@ -8,12 +8,14 @@ contract WowTCommunity is OwnableUpgradeable {
     uint16 public communityEntryPoints;
     address public pointsContract;
     string[] private communities;
+    WowTPoints private points;
 
     struct CommunityDetails {
         string description;
         string imageUrl;
         mapping(address => bool) members;
         string[] quizesforEntry;
+        uint256 totalMembers;
         bool exists;
     }
 
@@ -24,8 +26,8 @@ contract WowTCommunity is OwnableUpgradeable {
         uint16 _communityEntryPoints
     ) external initializer {
         __Ownable_init();
-        pointsContract = _pointsContract;
         communityEntryPoints = _communityEntryPoints;
+        points = WowTPoints(_pointsContract);
     }
 
     // function updatePointsContract(address _pointsContract) external onlyOwner {
@@ -54,14 +56,14 @@ contract WowTCommunity is OwnableUpgradeable {
         );
 
         // Check if user has sufficient points to join groups
-        WowTPoints points = WowTPoints(pointsContract);
+        // WowTPoints points = WowTPoints(pointsContract);
 
         require(
             points.getPoints(_communityParticipant) > communityEntryPoints,
             "Insufficient points"
         );
-
         communityMap[_communityName].members[_communityParticipant] = true;
+        communityMap[_communityName].totalMembers += 1;
     }
 
     function createCommunity(
