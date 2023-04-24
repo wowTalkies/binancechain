@@ -61,10 +61,6 @@ describe('WowTBadge', function () {
         await badge.setImageUri(newImageUri);
         await expect(await badge.imageUri()).to.equal(newImageUri);
       });
-    });
-  });
-  describe('Add referral points', function () {
-    describe('owner', function () {
       it('should successfully update badge if the caller is owner', async () => {
         await badge.updateBadgeForWeek(points.address, '2023-10');
         const getBadge = await badge.badge('2023-10');
