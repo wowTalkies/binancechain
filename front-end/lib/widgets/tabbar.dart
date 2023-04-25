@@ -1,5 +1,5 @@
 import 'package:bnbapp/screens/discovery/discovery.dart';
-import 'package:bnbapp/screens/profile/profile.dart';
+import 'package:bnbapp/screens/referral/referral.dart';
 import 'package:bnbapp/screens/tab/cubit/tab_cubit.dart';
 import 'package:bnbapp/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -120,7 +120,7 @@ class TabBarContainer extends StatelessWidget {
       case 0:
         return const Discover();
       case 1:
-        return const Profile();
+        return const Referral();
       default:
         return Container();
     }

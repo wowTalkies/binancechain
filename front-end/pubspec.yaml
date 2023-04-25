@@ -50,6 +50,7 @@ dependencies:
   flutter_share_me: ^1.4.0
   flutter_email_sender: ^5.2.0
   flutter_sms: ^2.3.3
+  firebase_dynamic_links: ^5.1.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

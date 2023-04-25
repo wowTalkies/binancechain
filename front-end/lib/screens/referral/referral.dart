@@ -66,10 +66,12 @@ class _LayOut extends StatelessWidget {
                 referral3: "Multilevel referral",
                 referral4: "Unlock experiences with points",
                 whatsAppOnPressed: () async {
-                  await cubit.flutterShareMe.shareToWhatsApp();
+                  await cubit.createLinkandShare("WhatsApp");
+                  //  await cubit.flutterShareMe.shareToWhatsApp();
                 },
                 instagramOnPressed: () async {
-                  await cubit.flutterShareMe.shareToInstagram(filePath: "");
+                  await cubit.createLinkandShare("Instagram");
+                  //   await cubit.flutterShareMe.shareToInstagram(filePath: "");
                 },
                 telegramOnPressed: () async {
                   await cubit.flutterShareMe.shareToTelegram(msg: "msg");

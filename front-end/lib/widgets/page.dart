@@ -351,8 +351,8 @@ class CustomPage extends StatelessWidget {
                       child: Image.asset(
                         alignment: Alignment.topLeft,
                         "images/link.png",
-                        width: 40,
-                        height: 40,
+                        width: 30,
+                        height: 30,
                       ),
                     ),
                     CustomText(
@@ -372,8 +372,8 @@ class CustomPage extends StatelessWidget {
                       child: Image.asset(
                         alignment: Alignment.topLeft,
                         "images/Instagram.png",
-                        width: 40,
-                        height: 40,
+                        width: 30,
+                        height: 30,
                       ),
                     ),
                     CustomText(
@@ -393,8 +393,8 @@ class CustomPage extends StatelessWidget {
                       child: Image.asset(
                         alignment: Alignment.topLeft,
                         "images/telegram.png",
-                        width: 40,
-                        height: 40,
+                        width: 30,
+                        height: 30,
                       ),
                     ),
                     CustomText(
@@ -414,8 +414,8 @@ class CustomPage extends StatelessWidget {
                       child: Image.asset(
                         alignment: Alignment.topLeft,
                         "images/whatsApp.png",
-                        width: 40,
-                        height: 40,
+                        width: 30,
+                        height: 30,
                       ),
                     ),
                     CustomText(

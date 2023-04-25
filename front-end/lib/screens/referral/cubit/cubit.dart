@@ -1,6 +1,7 @@
 import 'package:bnbapp/auth_cubit/auth_cubit.dart';
 import 'package:bnbapp/screens/referral/cubit/state.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart' as cont;
 import 'package:flutter_email_sender/flutter_email_sender.dart';
@@ -33,6 +34,36 @@ class ReferralCubit extends BaseCubit<ReferralState> {
     List<String> rece = [];
     rece.add(recipients);
     await sendSMS(message: message, recipients: rece);
+  }
+
+  createLinkandShare(String channel) async {
+    final dynamicLinkParams = DynamicLinkParameters(
+      link: Uri.parse(
+          "https://www.wowtalkies.com/referral?invitedby=1234567654321"),
+      uriPrefix: "https://wowtbnb.page.link",
+      androidParameters:
+          const AndroidParameters(packageName: "com.wowtbnb.web3"),
+      //  iosParameters: const IOSParameters(bundleId: "com.example.app.ios"),
+    );
+    final dynamicLink =
+        await FirebaseDynamicLinks.instance.buildLink(dynamicLinkParams);
+
+    switch (channel) {
+      case "WhatsApp":
+        {
+          flutterShareMe.shareToWhatsApp(
+              msg:
+                  'Use my referral link to download the wowTalkies app - ${dynamicLink.toString()}');
+          // statements;
+        }
+        break;
+
+      default:
+        {
+          //statements;
+        }
+        break;
+    }
   }
 
   send() async {
