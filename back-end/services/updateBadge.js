@@ -2,7 +2,6 @@ const Web3 = require('web3');
 const moment = require('moment');
 const jsonInterface = require('../abi/WowTBadge.json');
 
-// exports.handler = async (event, context) => {
 const updateBadge = async () => {
   const privateKey = process.env.privateKey;
   const provider = process.env.provider;
@@ -30,14 +29,14 @@ const updateBadge = async () => {
   console.log('gasPrice ', gasPrice, 'gasEstimate ', gasEstimate);
 
   try {
-    // const updateBadge = await contract.methods
-    //   .updateBadgeForWeek(`${year}-${week}`)
-    //   .send({ from: account, gasPrice: gasPrice, gas: gasEstimate });
-    // console.log('updateBadge txHash ', updateBadge.transactionHash);
-    return 'Badge updated successfully';
+    const updateBadge = await contract.methods
+      .updateBadgeForWeek(`${year}-${week}`)
+      .send({ from: account, gasPrice: gasPrice, gas: gasEstimate });
+    console.log('updateBadge txHash ', updateBadge.transactionHash);
+    return { body: 'Badge updated successfully' };
   } catch (err) {
     console.log(err);
-    return 'Something went wrong';
+    return { error: 'Something went wrong' };
   }
 };
 

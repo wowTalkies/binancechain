@@ -13,7 +13,7 @@ exports.handler = async (event) => {
 
   switch (method) {
     case 'addActiveUserPoints':
-      return await addActiveUserPoints(event.userAddress); // if condition for event.userAddress is empty
+      return await addActiveUserPoints(event.userAddress);
 
     case 'addReferralPoints':
       return await addReferralPoints(event.userAddress, event.referralAddress);
@@ -35,14 +35,15 @@ exports.handler = async (event) => {
       );
       const question = [
         event.questionName,
-        [event.option1, event.option2, event.option3, event.option3],
+        [event.option1, event.option2, event.option3, event.option4],
         correctAnswer,
       ];
       return await createQuiz(
         event.quizName,
         question,
         event.description,
-        event.imageUrl
+        event.imageUrl,
+        event.userAddress
       );
     }
     case 'quizEval': {
