@@ -14,7 +14,7 @@ contract WowTQuiz is OwnableUpgradeable {
     //Correct Answering Quize will get 5 points
     uint16 public pointsToAnswer;
     //Secret key to encript Answer set
-   // string private secret;
+    // string private secret;
     //Points conracts
     WowTPoints private points;
     //Structure to hold Questions and answers. correct index needs to be encripted
@@ -79,7 +79,7 @@ contract WowTQuiz is OwnableUpgradeable {
         return quizmap[_quizName];
     }
 
-     function getstringQuizdetails(
+    function getstringQuizdetails(
         string memory _quizName
     )
         public
@@ -95,7 +95,7 @@ contract WowTQuiz is OwnableUpgradeable {
         string[4] memory options = tempQuestion.options;
 
         return (tempDescription, tempImageUrl, tQuestion, options);
-    } 
+    }
 
     function quizEval(
         address _userAddress,

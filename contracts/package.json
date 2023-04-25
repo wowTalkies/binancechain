@@ -8,7 +8,9 @@
     "hardhat": "^2.14.0"
   },
   "devDependencies": {
-    "prettier": "^2.8.7",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^2.8.8",
     "prettier-plugin-solidity": "^1.1.3"
   },
   "version": "1.0.0",
@@ -17,7 +19,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npx hardhat coverage --testfiles `test/points.test.js`"
+    "test": "npx hardhat coverage --testfiles `test/points.test.js`",
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "keywords": [],
   "author": "",

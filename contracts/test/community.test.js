@@ -71,6 +71,8 @@ describe('WowTCommunity', function () {
           imageUrl,
           quizesforEntry
         );
+        const getCommunities = await community.getCommunities();
+        await expect(getCommunities[0]).to.equal(communityName);
         const communityValues = await community.communityMap(communityName);
         await expect(communityValues.description).to.equal(description);
         await expect(communityValues.imageUrl).to.equal(imageUrl);

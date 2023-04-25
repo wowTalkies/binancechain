@@ -34,7 +34,6 @@ describe('WowTQuiz', function () {
     const quizePoints = 5;
     const createEligibility = 20;
     const pointsToAnswer = 2;
-    const secret = 'hash@123';
     const pointsContract = points.address;
     const Quiz = await hre.ethers.getContractFactory('WowTQuiz');
 
@@ -46,7 +45,6 @@ describe('WowTQuiz', function () {
       quizePoints,
       createEligibility,
       pointsToAnswer,
-      secret,
       pointsContract,
     ]);
     await quiz.deployed();
@@ -75,14 +73,20 @@ describe('WowTQuiz', function () {
         ];
         const description = 'wowt sample description';
         const imageUrl = 'ipfs://test.png';
-        await quiz.createQuiz(quizName, question, description, imageUrl);
+        await quiz.createQuiz(
+          quizName,
+          question,
+          description,
+          imageUrl,
+          owner.address
+        );
         const quizDetails = await quiz.getQuizdetails(quizName);
         await expect(quizDetails.question[0]).to.equal(question[0]);
         await expect(quizDetails.description).to.equal(description);
         await expect(quizDetails.imageUrl).to.equal(imageUrl);
         await expect(quizDetails.creatorAddress).to.equal(owner.address);
       });
-      it('should successfully create and evaluate quiz', async () => {
+      it('should successfully create and evaluate quiz if the answer is correct then send quiz points to user', async () => {
         const quizName = 'wowt sample quiz';
         const question = [
           'what is wowTalkies',
@@ -91,16 +95,52 @@ describe('WowTQuiz', function () {
         ];
         const description = 'wowt sample description';
         const imageUrl = 'ipfs://test.png';
-        await quiz.createQuiz(quizName, question, description, imageUrl);
+        await quiz.createQuiz(
+          quizName,
+          question,
+          description,
+          imageUrl,
+          owner.address
+        );
         await points.grantRole(
           '0xa49807205ce4d355092ef5a8a18f56e8913cf4a201fbe287825b095693c21775',
           '0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d'
         );
-        await quiz.quizEval(
-          owner.address,
+        await expect(
+          await quiz.quizEval(
+            owner.address,
+            quizName,
+            '0x5dfcdcc84ba4d7a5b52dd94b10d0342b003460b20c98febb976358f254401044'
+          )
+        )
+          .to.be.emit(quiz, 'Answer')
+          .withArgs(true);
+      });
+      it(`should successfully create and evaluate quiz if the answer is in-correct then doesn't send quiz points to user`, async () => {
+        const quizName = 'wowt sample quiz';
+        const question = [
+          'what is wowTalkies',
+          ['Fan Engagement', 'Sports Engagement', 'Education', 'Tech'],
+          '0x5dfcdcc84ba4d7a5b52dd94b10d0342b003460b20c98febb976358f254401044',
+        ];
+        const description = 'wowt sample description';
+        const imageUrl = 'ipfs://test.png';
+        await quiz.createQuiz(
           quizName,
-          '0x5dfcdcc84ba4d7a5b52dd94b10d0342b003460b20c98febb976358f254401044'
+          question,
+          description,
+          imageUrl,
+          owner.address
         );
+        await expect(
+          await quiz.quizEval(
+            owner.address,
+            quizName,
+            '0xc84ba4d7a3e4d355092ef5a8a18f56e8913cf4ab20c98287825b095693c21776'
+          )
+        )
+          .to.be.emit(quiz, 'Answer')
+          .withArgs(false);
       });
       it('should successfully set and retrieve quizePoints', async () => {
         const newQuizePoints = 4;
