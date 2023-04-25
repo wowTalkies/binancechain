@@ -14,7 +14,7 @@ contract WowTQuiz is OwnableUpgradeable {
     //Correct Answering Quize will get 5 points
     uint16 public pointsToAnswer;
     //Secret key to encript Answer set
-    string private secret;
+   // string private secret;
     //Points conracts
     WowTPoints private points;
     //Structure to hold Questions and answers. correct index needs to be encripted
@@ -36,18 +36,21 @@ contract WowTQuiz is OwnableUpgradeable {
     // Community --> Quiz
     mapping(string => Quiz) public quizmap;
 
+    // for checking answer
+    event Answer(bool answer);
+
     function initialize(
         uint16 _quizePoints,
         uint16 _createEligibility,
         uint16 _pointsToAnswer,
-        string memory _secret,
+        //string memory _secret,
         address _pointsContract
     ) external initializer {
         __Ownable_init();
         quizePoints = _quizePoints;
         createEligibility = _createEligibility;
         pointsToAnswer = _pointsToAnswer;
-        secret = _secret;
+        //secret = _secret;
         points = WowTPoints(_pointsContract);
     }
 
@@ -56,17 +59,18 @@ contract WowTQuiz is OwnableUpgradeable {
         string memory _quizName,
         Question memory _question,
         string memory _description,
-        string memory _imageUrl
+        string memory _imageUrl,
+        address _creatorAddress
     ) external onlyOwner {
-        uint256 userPoints = points.getPoints(_msgSender());
+        uint256 userPoints = points.getPoints(_creatorAddress);
         require(
-            userPoints > 20 || _msgSender() == owner(),
+            userPoints > 20 || _creatorAddress == owner(),
             "Not enough point to create Quiz"
         );
         quizmap[_quizName].description = _description;
         quizmap[_quizName].question = _question;
         quizmap[_quizName].imageUrl = _imageUrl;
-        quizmap[_quizName].creatorAddress = _msgSender();
+        quizmap[_quizName].creatorAddress = _creatorAddress;
     }
 
     function getQuizdetails(
@@ -75,7 +79,7 @@ contract WowTQuiz is OwnableUpgradeable {
         return quizmap[_quizName];
     }
 
-    /* function getstringQuizdetails(
+     function getstringQuizdetails(
         string memory _quizName
     )
         public
@@ -91,7 +95,7 @@ contract WowTQuiz is OwnableUpgradeable {
         string[4] memory options = tempQuestion.options;
 
         return (tempDescription, tempImageUrl, tQuestion, options);
-    } */
+    } 
 
     function quizEval(
         address _userAddress,
@@ -105,6 +109,9 @@ contract WowTQuiz is OwnableUpgradeable {
         if (answer == choice) {
             points.addPoints(_userAddress, pointsToAnswer);
             points.addPoints(qtemp.creatorAddress, quizePoints);
+            emit Answer(true);
+        } else {
+            emit Answer(false);
         }
         //return _userAddress; //Need implementation
     }
