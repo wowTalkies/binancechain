@@ -11,31 +11,31 @@ const updateBadge = async () => {
   web3.eth.accounts.wallet.add(privateKey);
 
   const account = web3.eth.accounts.wallet[0].address;
-  console.log('account ', account);
-  const contractAddress = '0x8D311f53c9970941B9507f31A20A4C9C122334db';
+  // console.log('account ', account);
+  const contractAddress = '0x8D311f53c9970941B9507f31A20A4C9C122334db'; // WowTBadge contract address
 
   const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
   const year = new Date().getFullYear();
-  console.log('year ', year);
+  // console.log('year ', year);
   const week = moment(moment().toDate(), 'MM-DD-YYYY').week();
-  console.log('week ', week);
-
-  const gasPrice = await web3.eth.getGasPrice();
-  const gasEstimate = await contract.methods
-    .updateBadgeForWeek(`${year}-${week}`)
-    .estimateGas({ from: account });
-
-  console.log('gasPrice ', gasPrice, 'gasEstimate ', gasEstimate);
+  // console.log('week ', week);
 
   try {
+    const gasPrice = await web3.eth.getGasPrice();
+    const gasEstimate = await contract.methods
+      .updateBadgeForWeek(`${year}-${week}`)
+      .estimateGas({ from: account });
+
+    console.log('gasPrice ', gasPrice, 'gasEstimate ', gasEstimate);
+
     const updateBadge = await contract.methods
       .updateBadgeForWeek(`${year}-${week}`)
       .send({ from: account, gasPrice: gasPrice, gas: gasEstimate });
     console.log('updateBadge txHash ', updateBadge.transactionHash);
     return { body: 'Badge updated successfully' };
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return { error: 'Something went wrong' };
   }
 };

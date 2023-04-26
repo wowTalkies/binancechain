@@ -15,7 +15,7 @@ const createCommunity = async (
     communityImage &&
     communityImage.trim() != '' &&
     communityQuizes &&
-    communityQuizes.trim() != ''
+    communityQuizes.length != 0
   ) {
     const privateKey = process.env.privateKey;
     const provider = process.env.provider;
@@ -25,24 +25,24 @@ const createCommunity = async (
     web3.eth.accounts.wallet.add(privateKey);
 
     const account = web3.eth.accounts.wallet[0].address;
-    console.log('account ', account);
-    const contractAddress = '0x75849A2035267a8c72410bc4ed8d458177CF1FAc';
+    // console.log('account ', account);
+    const contractAddress = '0x75849A2035267a8c72410bc4ed8d458177CF1FAc'; // WowTCommunity contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
-    const gasPrice = await web3.eth.getGasPrice();
-    const gasEstimate = await contract.methods
-      .createCommunity(
-        communityName,
-        communityDescription,
-        communityImage,
-        communityQuizes
-      )
-      .estimateGas({ from: account });
-
-    console.log('gasPrice ', gasPrice, 'gasEstimate ', gasEstimate);
-
     try {
+      const gasPrice = await web3.eth.getGasPrice();
+      const gasEstimate = await contract.methods
+        .createCommunity(
+          communityName,
+          communityDescription,
+          communityImage,
+          communityQuizes
+        )
+        .estimateGas({ from: account });
+
+      console.log('gasPrice ', gasPrice, 'gasEstimate ', gasEstimate);
+
       const createCommunity = await contract.methods
         .createCommunity(
           communityName,
@@ -51,10 +51,12 @@ const createCommunity = async (
           communityQuizes
         )
         .send({ from: account, gasPrice: gasPrice, gas: gasEstimate });
+
       console.log('createCommunity txHash ', createCommunity.transactionHash);
+
       return { body: 'Community created successfully' };
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       return { error: 'Something went wrong' };
     }
   } else {
