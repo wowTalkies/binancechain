@@ -19,7 +19,22 @@ contract WowTCommunity is OwnableUpgradeable {
         bool exists;
     }
 
+    struct CommunityPosts {
+        string message;
+        string imageUrl;
+        address createrAddress;
+    }
+
+    // struct UserPosts {
+    //     string communityName;
+    //     string message;
+    //     string imageUrl;
+    // }
+
     mapping(string => CommunityDetails) public communityMap;
+    mapping(string => CommunityPosts[]) private communityPostsMap;
+
+    // mapping(address => UserPosts[]) private userPostMap;
 
     function initialize(
         address _pointsContract,
@@ -36,10 +51,23 @@ contract WowTCommunity is OwnableUpgradeable {
 
     // }
 
-    function setCommunityEntryPoints(
-        uint16 _newCommunityEntryPoints
+    function createCommunity(
+        string memory _communityName,
+        string memory _description,
+        string memory _imageUrl,
+        string[] memory _quizesforEntry
     ) external onlyOwner {
-        communityEntryPoints = _newCommunityEntryPoints;
+        // Check if community exists
+        require(
+            !communityMap[_communityName].exists,
+            "Community is already created"
+        );
+        communities.push(_communityName);
+        //  CommunityDetails storage commStructwithDetails = communityDetails[numCommunity++];
+        communityMap[_communityName].description = _description;
+        communityMap[_communityName].exists = true;
+        communityMap[_communityName].imageUrl = _imageUrl;
+        communityMap[_communityName].quizesforEntry = _quizesforEntry;
     }
 
     function addMembers(
@@ -66,23 +94,39 @@ contract WowTCommunity is OwnableUpgradeable {
         communityMap[_communityName].totalMembers += 1;
     }
 
-    function createCommunity(
+    function createPost(
         string memory _communityName,
-        string memory _description,
+        string memory _message,
         string memory _imageUrl,
-        string[] memory _quizesforEntry
+        address _createrAddress
     ) external onlyOwner {
         // Check if community exists
+        require(communityMap[_communityName].exists, "Community doesn't exist");
+        // check if the _userAddress is available in community
         require(
-            !communityMap[_communityName].exists,
-            "Community is already created"
+            checkMembership(_communityName, _createrAddress),
+            "You are not member in this community"
         );
-        communities.push(_communityName);
-        //  CommunityDetails storage commStructwithDetails = communityDetails[numCommunity++];
-        communityMap[_communityName].description = _description;
-        communityMap[_communityName].exists = true;
-        communityMap[_communityName].imageUrl = _imageUrl;
-        communityMap[_communityName].quizesforEntry = _quizesforEntry;
+
+        CommunityPosts memory newCommunityPosts = CommunityPosts({
+            message: _message,
+            imageUrl: _imageUrl,
+            createrAddress: _createrAddress
+        });
+        communityPostsMap[_communityName].push(newCommunityPosts);
+
+        // UserPosts memory newUserPosts = UserPosts({
+        //      communityName: _communityName,
+        //      message: _message,
+        //      imageUrl: _imageUrl
+        // });
+        // userPostMap[_createrAddress].push(newUserPosts);
+    }
+
+    function setCommunityEntryPoints(
+        uint16 _newCommunityEntryPoints
+    ) external onlyOwner {
+        communityEntryPoints = _newCommunityEntryPoints;
     }
 
     function checkMembership(
@@ -100,5 +144,11 @@ contract WowTCommunity is OwnableUpgradeable {
 
     function getCommunities() public view returns (string[] memory) {
         return communities;
+    }
+
+    function getPosts(
+        string memory _communityName
+    ) public view returns (CommunityPosts[] memory) {
+        return communityPostsMap[_communityName];
     }
 }
