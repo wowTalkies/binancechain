@@ -1,5 +1,5 @@
 import 'package:bnbapp/auth_cubit/auth_cubit.dart';
-import 'package:bnbapp/screens/discovery/cubit/state.dart';
+import 'package:bnbapp/screens/discovery/cubit/discovery_state.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
 import 'package:flutter/material.dart';
 

@@ -1,22 +1,22 @@
-import 'package:bnbapp/screens/discovery/cubit/discovery_cubit.dart';
-import 'package:bnbapp/widgets/appbar.dart';
-import 'package:bnbapp/widgets/gridcard.dart';
+import 'package:bnbapp/utils/colors.dart';
+import 'package:bnbapp/widgets/tab_community_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'cubit/discovery_state.dart';
+import 'cubit/tab_community_cubit.dart';
+import 'cubit/tab_community_state.dart';
 
-class Discover extends StatelessWidget {
-  const Discover({Key? key}) : super(key: key);
+class TabCommunityScreen extends StatelessWidget {
+  const TabCommunityScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<DiscoverCubit>();
+    final cubit = context.read<TabCommunityCubit>();
     return Scaffold(
       body: BlocListener(
         bloc: cubit,
         listener: (context, state) {
-          if (state is DiscoverErrorState) {
+          if (state is TabCommunityErrorState) {
             if (!state.error.contains('404')) {
               const SnackBar(
                 content: Text("error"),
@@ -35,7 +35,7 @@ class _LayOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<DiscoverCubit>();
+    final cubit = context.read<TabCommunityCubit>();
     return BlocBuilder(
       bloc: cubit,
       builder: (context, state) => Column(
@@ -43,10 +43,16 @@ class _LayOut extends StatelessWidget {
           Expanded(
               child: ListView(
             children: [
-              const CustomAppBar(title: "Discover Quizzes"),
-              GridCard(
-                imageUrl: cubit.list,
+              TabCommunityWidget(
                 itemCount: cubit.list.length,
+                text: "Community X",
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                fontColor: AllColor.white,
+                imageUrl: cubit.list,
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 4,
               )
             ],
           ))

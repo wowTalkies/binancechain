@@ -15,23 +15,26 @@ class Button extends StatelessWidget {
   final FontWeight? fontWeight;
   final Function()? onPressed;
 
-  const Button({Key? key,
-    this.width,
-    this.text,
-    this.onPressed,
-    this.textSize,
-    this.image,
-    this.height,
-    this.color1,
-    this.color2,
-    this.textColor,
-    this.fontWeight,
-    this.forTextAlign})
+  const Button(
+      {Key? key,
+      this.width,
+      this.text,
+      this.onPressed,
+      this.textSize,
+      this.image,
+      this.height,
+      this.color1,
+      this.color2,
+      this.textColor,
+      this.fontWeight,
+      this.forTextAlign})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width,
+      height: height,
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(8),

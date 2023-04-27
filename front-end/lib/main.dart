@@ -19,13 +19,14 @@ Future<void> main() async {
   //Bloc.transformer = sequential();
   Magic.instance = Magic.custom("pk_live_39D28DAB364BEA4E",
       rpcUrl:
-          "https://polygon-mumbai.infura.io/v3/2f65062b3f004d508ecf97a377b4e1d0",
+      "https://polygon-mumbai.infura.io/v3/2f65062b3f004d508ecf97a377b4e1d0",
       chainId: 80001);
   BlocOverrides.runZoned(
-    () {
+        () {
       runApp(BlocProvider<AuthCubit>(
         create: (BuildContext context) {
-          return AuthCubit()..init();
+          return AuthCubit()
+            ..init();
         },
         child: const MaterialApp(
           home: MyApp(),
@@ -49,7 +50,17 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: getRoutes,
           debugShowCheckedModeBanner: false,
           home: addAuth(context, Container()),
-          // home: Profile(),
+          /*
+          home: BlocProvider(
+            create: (context) {
+              final AuthCubit authenticationCubit =
+                  BlocProvider.of<AuthCubit>(context);
+              return FAQCubit(authenticationCubit)..init();
+            },
+            child: const FAQ(),
+          ),
+
+           */
         ),
         Magic.instance.relayer,
       ],

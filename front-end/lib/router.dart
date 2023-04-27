@@ -1,9 +1,9 @@
 import 'package:bnbapp/screens/community/cubit/cubit.dart';
-import 'package:bnbapp/screens/discovery/cubit/cubit.dart';
+import 'package:bnbapp/screens/discovery/cubit/discovery_cubit.dart';
 import 'package:bnbapp/screens/login/cubit/login_cubit.dart';
 import 'package:bnbapp/screens/login/login_page.dart';
 import 'package:bnbapp/screens/profile/cubit/profile_cubit.dart';
-import 'package:bnbapp/screens/referral/cubit/cubit.dart';
+import 'package:bnbapp/screens/referral/cubit/referral_cubit.dart';
 import 'package:bnbapp/screens/tab/cubit/tab_cubit.dart';
 import 'package:bnbapp/screens/tab/tab_screen.dart';
 import 'package:flutter/material.dart';

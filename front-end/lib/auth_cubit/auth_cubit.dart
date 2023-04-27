@@ -8,7 +8,7 @@ class AuthCubit extends BaseCubit<AuthState> {
   AuthCubit() : super(AuthState());
   static const Color black = Color(0xff000000);
   static const Color white = Color(0xffffffff);
-
+  String? profileAbout;
   String? address = "";
 
   Paths? paths = Paths();
@@ -17,6 +17,10 @@ class AuthCubit extends BaseCubit<AuthState> {
     emit(AuthInitialState());
     await Future.delayed(const Duration(seconds: 3));
     emit(AuthenticatedState());
+    final dbSnapshot =
+        await paths?.master.child("Profile").child("About").get();
+    profileAbout = dbSnapshot?.value.toString();
+    debugPrint('the about text is ${profileAbout.toString()}');
     /*
     if (paths?.currrentUser != null) {
       final snapshot =

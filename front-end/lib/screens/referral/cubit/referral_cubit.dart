@@ -1,5 +1,5 @@
 import 'package:bnbapp/auth_cubit/auth_cubit.dart';
-import 'package:bnbapp/screens/referral/cubit/state.dart';
+import 'package:bnbapp/screens/referral/cubit/refrral_state.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
@@ -13,11 +13,41 @@ class ReferralCubit extends BaseCubit<ReferralState> {
   List<cont.Contact> contacts = [];
   final FlutterShareMe flutterShareMe = FlutterShareMe();
   final Email? email = Email();
+  PendingDynamicLinkData? initialLink;
+  Uri? deepLink;
+  String? queryAddress;
 
   ReferralCubit(this.authCubit) : super(ReferralInitialState());
 
   Future<void> init() async {
     emit(ReferralLoadingState());
+    debugPrint('referral cubit init');
+    initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
+
+    if (initialLink != null) {
+      Uri deepLink = initialLink!.link;
+      debugPrint('the link is ${deepLink.toString()}');
+      var qAddress = deepLink.query;
+      queryAddress = qAddress.toString().substring(10);
+      debugPrint('the query address is ${queryAddress.toString()}');
+      debugPrint('the link query is ${deepLink.query}');
+      // Example of using the dynamic link to push the user to a different screen
+      FirebaseDynamicLinks.instance.onLink.listen(
+        (pendingDynamicLinkData) {
+          // Set up the `onLink` event listener next as it may be received here
+          if (pendingDynamicLinkData != null) {
+            deepLink = pendingDynamicLinkData.link;
+            debugPrint('pending link dynamic data is ${deepLink.toString()}');
+            // Example of using the dynamic link to push the user to a different screen
+          } else {
+            debugPrint('pending link dynamic data null');
+          }
+        },
+      );
+    } else {
+      debugPrint('referral link null');
+    }
+
     await cont.FlutterContacts.requestPermission();
     debugPrint('hi wellCome come');
     // Get contact with specific ID (fully fetched)
@@ -52,6 +82,30 @@ class ReferralCubit extends BaseCubit<ReferralState> {
       case "WhatsApp":
         {
           flutterShareMe.shareToWhatsApp(
+              msg:
+                  'Use my referral link to download the wowTalkies app - ${initialLink.toString()}');
+          // statements;
+        }
+        break;
+      case "Instagram":
+        {
+          flutterShareMe.shareToInstagram(
+              filePath:
+                  'Use my referral link to download the wowTalkies app - ${dynamicLink.toString()}');
+          // statements;
+        }
+        break;
+      case "Telegram":
+        {
+          flutterShareMe.shareToTelegram(
+              msg:
+                  'Use my referral link to download the wowTalkies app - ${dynamicLink.toString()}');
+          // statements;
+        }
+        break;
+      case "Link":
+        {
+          flutterShareMe.shareToTelegram(
               msg:
                   'Use my referral link to download the wowTalkies app - ${dynamicLink.toString()}');
           // statements;

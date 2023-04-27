@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 
-import 'cubit/cubit.dart';
-import 'cubit/state.dart';
+import 'cubit/referral_cubit.dart';
+import 'cubit/refrral_state.dart';
 
 class Referral extends StatelessWidget {
   const Referral({Key? key}) : super(key: key);
@@ -74,9 +74,11 @@ class _LayOut extends StatelessWidget {
                   //   await cubit.flutterShareMe.shareToInstagram(filePath: "");
                 },
                 telegramOnPressed: () async {
+                  await cubit.createLinkandShare("Telegram");
                   await cubit.flutterShareMe.shareToTelegram(msg: "msg");
                 },
                 linkOnPressed: () async {
+                  await cubit.createLinkandShare("Link");
                   // await cubit.flutterShareMe.shareToWhatsApp();
                 },
                 fontSize3: 14,

@@ -33,11 +33,20 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="wowtbnb.page.link"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="2883005361831937" />
+
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
