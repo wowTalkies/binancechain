@@ -37,17 +37,16 @@ class _LayOut extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<FAQCubit>();
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           gradient:
               LinearGradient(colors: [AllColor.linear1, AllColor.linear2])),
       child: Column(
         children: [
-          CustomAppBar(
-              title: "Frequently Asked Questions",
-              icon: Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: AllColor.black,
-              )),
+          const CustomAppBar(
+            appBarHeight: 70,
+            title: "Frequently Asked Questions",
+            icon: Icon(Icons.arrow_back, color: AllColor.black, size: 30),
+          ),
           Expanded(
             child: ListView(
               children: [
