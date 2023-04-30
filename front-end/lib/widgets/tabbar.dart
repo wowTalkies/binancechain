@@ -1,4 +1,6 @@
+import 'package:bnbapp/auth_cubit/auth_cubit.dart';
 import 'package:bnbapp/screens/discovery/discovery.dart';
+import 'package:bnbapp/screens/profile/cubit/profile_cubit.dart';
 import 'package:bnbapp/screens/tab/cubit/tab_cubit.dart';
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/profile_widget.dart';
@@ -120,7 +122,14 @@ class TabBarContainer extends StatelessWidget {
       case 0:
         return const Discover();
       case 1:
-        return const ProfileWidget();
+        return BlocProvider(
+          create: (context) {
+            final AuthCubit authenticationCubit =
+                BlocProvider.of<AuthCubit>(context);
+            return ProfileCubit(authenticationCubit)..init();
+          },
+          child: const ProfileWidget(),
+        );
       default:
         return Container();
     }

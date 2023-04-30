@@ -1,9 +1,12 @@
 import 'package:bnbapp/auth_cubit/auth_cubit.dart';
+import 'package:bnbapp/screens/leaderboard/cubit/leaderboard_cubit.dart';
+import 'package:bnbapp/screens/leaderboard/leaderboard.dart';
 import 'package:bnbapp/screens/profile/cubit/profile_cubit.dart';
 import 'package:bnbapp/screens/profile/profile.dart';
 import 'package:bnbapp/screens/tab_community/tab_community.dart';
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/tabs.dart';
+import 'package:bnbapp/widgets/text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +18,7 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ProfileCubit>();
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Column(
@@ -123,7 +127,15 @@ class ProfileWidget extends StatelessWidget {
                                   },
                                   child: const TabCommunityScreen(),
                                 ),
-                                const Icon(Icons.directions_bike),
+                                BlocProvider(
+                                  create: (context) {
+                                    final AuthCubit authenticationCubit =
+                                        BlocProvider.of<AuthCubit>(context);
+                                    return LeaderBoardCubit(authenticationCubit)
+                                      ..init();
+                                  },
+                                  child: const LeaderBoard(),
+                                ),
                                 const Icon(Icons.directions_bike),
                               ],
                             ),
@@ -190,6 +202,59 @@ class ProfileWidget extends StatelessWidget {
                           ),
                           // radius: 12,
                         ),
+                      )),
+                  Positioned.fill(
+                      left: width / 5,
+                      //top: height / 2,
+                      bottom: height / 1.6,
+                      child: Center(
+                        child: CircleAvatar(
+                          maxRadius: height / 28,
+                          backgroundColor: AllColor.linear1,
+                          child: Center(
+                            child: Container(
+                              width: width / 4,
+                              //height: height,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    AllColor.linear1,
+                                    AllColor.linear2,
+                                  ],
+                                ),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CustomText(
+                                      text: "${cubit.authCubit.points}",
+                                      fontWeight: FontWeight.w700,
+                                      fontColor: AllColor.white,
+                                      fontSize: 14),
+                                  const CustomText(
+                                      text: "Points",
+                                      fontWeight: FontWeight.w400,
+                                      fontColor: AllColor.white,
+                                      fontSize: 11),
+                                ],
+                              ),
+                            ),
+                          ),
+
+                          // radius: 12,
+                        ),
+                      )),
+                  Positioned.fill(
+                      bottom: height / 1.9,
+                      child: Center(
+                        child: CustomText(
+                            text: "Wallet Address : ${cubit.authCubit.address}",
+                            fontWeight: FontWeight.w400,
+                            fontColor: AllColor.white,
+                            fontSize: 12),
                       )),
                 ],
               ),

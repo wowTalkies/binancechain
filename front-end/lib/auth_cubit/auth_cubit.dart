@@ -9,7 +9,8 @@ class AuthCubit extends BaseCubit<AuthState> {
   static const Color black = Color(0xff000000);
   static const Color white = Color(0xffffffff);
   String? profileAbout;
-  String? address = "";
+  String? address = "cxzfgvcxes54tyhuytdyigbvcutyvh";
+  int? points = 0;
 
   Paths? paths = Paths();
 

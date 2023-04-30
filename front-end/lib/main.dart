@@ -1,6 +1,4 @@
 import 'package:bnbapp/router.dart';
-import 'package:bnbapp/screens/faq/cubit/faq_cubit.dart';
-import 'package:bnbapp/screens/faq/faq_sreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -21,13 +19,14 @@ Future<void> main() async {
   //Bloc.transformer = sequential();
   Magic.instance = Magic.custom("pk_live_39D28DAB364BEA4E",
       rpcUrl:
-          "https://polygon-mumbai.infura.io/v3/2f65062b3f004d508ecf97a377b4e1d0",
+      "https://polygon-mumbai.infura.io/v3/2f65062b3f004d508ecf97a377b4e1d0",
       chainId: 80001);
   BlocOverrides.runZoned(
-    () {
+        () {
       runApp(BlocProvider<AuthCubit>(
         create: (BuildContext context) {
-          return AuthCubit()..init();
+          return AuthCubit()
+            ..init();
         },
         child: const MaterialApp(
           home: MyApp(),
@@ -50,8 +49,8 @@ class MyApp extends StatelessWidget {
         MaterialApp(
           onGenerateRoute: getRoutes,
           debugShowCheckedModeBanner: false,
-          // home: addAuth(context, Container()),
-
+          home: addAuth(context, Container()),
+/*
           home: BlocProvider(
             create: (context) {
               final AuthCubit authenticationCubit =
@@ -60,6 +59,8 @@ class MyApp extends StatelessWidget {
             },
             child: const FAQ(),
           ),
+
+ */
         ),
         Magic.instance.relayer,
       ],
