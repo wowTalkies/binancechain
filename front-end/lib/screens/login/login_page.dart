@@ -1,9 +1,7 @@
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/button.dart';
 import 'package:bnbapp/widgets/textfield.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'cubit/login_cubit.dart';
@@ -42,18 +40,6 @@ class Logins extends StatefulWidget {
 
 class _LoginsState extends State<Logins> {
   @override
-  void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    super.dispose();
-  }
-
-  @override
-  initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: []);
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final cubit = context.read<LoginCubit>();
     return BlocBuilder<LoginCubit, LoginState>(
@@ -61,7 +47,7 @@ class _LoginsState extends State<Logins> {
       builder: (context, state) => Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
-          colors: [Color(0xffFFFFFF), Color(0xff1DFCFF)],
+          colors: [AllColor.white, AllColor.white],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         )),
@@ -92,17 +78,24 @@ class _LoginsState extends State<Logins> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 15,
                   ),
+                  /*
                   ElevatedButton(
                       onPressed: () async {
                         await FirebaseAuth.instance.signOut();
                       },
                       child: const Text('Logout')),
+
+                   */
                   Center(
                     child: Button(
-                      width: MediaQuery.of(context).size.width / 1.6,
-                      text: "Sign in with Google",
-                      textSize: 20,
-                      image: "images/person.png",
+                      color1: AllColor.linear1,
+                      color2: AllColor.linear1,
+                      width: MediaQuery.of(context).size.width / 2,
+                      height: MediaQuery.of(context).size.height / 20,
+                      text: "Login/Sign up",
+                      textSize: 16,
+                      textColor: AllColor.white,
+                      //image: "images/person.png",
                       onPressed: () async {
                         debugPrint('hello ${cubit.controller.value.text}');
                         await cubit.login();

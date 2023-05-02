@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ed242f06-70ad-49e4-8541-8a7ed9be8159" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/front-end/lib/utils/preferencehelper.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/widgets/tab_referral_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/wowtpoints.abi.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/wowtpoints.abi.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/bnb-hackathon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bnb-hackathon.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/analysis_options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/analysis_options.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/auth_cubit/auth_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/auth_cubit/auth_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/auth_cubit/auth_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/auth_cubit/auth_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/paths/path.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/paths/path.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/discovery/cubit/discovery_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/discovery/cubit/discovery_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/discovery/discovery.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/discovery/discovery.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/login/cubit/login_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/login/cubit/login_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/login/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/login/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/profile/cubit/profile_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/profile/cubit/profile_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/profile/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/profile/profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/cubit/discovery_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/cubit/tab_referral_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/cubit/discovery_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/cubit/tab_referral_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/discovery.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/tab_referral.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/lib/widgets/profile_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/widgets/profile_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectId" id="2OfpzStkZ8xoSL6LMtrfjhlAdxG" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "code.cleanup.on.save": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "D:/Development/bnb-hackathon/front-end",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "flutter.settings",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Development\bnb-hackathon\front-end" />
+      <recent name="D:\Development\bnb-hackathon\front-end\lib" />
+      <recent name="D:\Development\bnb-hackathon\front-end\lib\screens\faq" />
+      <recent name="D:\Development\bnb-hackathon\front-end\lib\screens\badge" />
+      <recent name="D:\Development\bnb-hackathon\front-end\lib\screens\tab_referral" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/front-end/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ed242f06-70ad-49e4-8541-8a7ed9be8159" name="Changes" comment="" />
+      <created>1681961756526</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681961756526</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/front-end/lib/screens/referral/referral.dart</url>
+          <line>18</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/front-end/lib/widgets/gridcard.dart</url>
+          <line>48</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/front-end/lib/screens/faq/faq_sreen.dart</url>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/front-end/lib/widgets/tab_leaderboard_widget.dart</url>
+          <line>84</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

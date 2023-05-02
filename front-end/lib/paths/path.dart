@@ -9,4 +9,5 @@ class Paths {
   final currrentUser = user ?? '';
   final uId = userId ?? '';
   final master = app.ref("Master");
+  final address = app.ref("Master").child("Address");
 }

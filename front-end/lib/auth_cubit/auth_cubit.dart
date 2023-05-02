@@ -1,5 +1,6 @@
 import 'package:bnbapp/paths/path.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
+import 'package:bnbapp/utils/preferencehelper.dart';
 import 'package:flutter/material.dart';
 
 import 'auth_state.dart';
@@ -11,17 +12,22 @@ class AuthCubit extends BaseCubit<AuthState> {
   String? profileAbout;
   String? address = "cxzfgvcxes54tyhuytdyigbvcutyvh";
   int? points = 0;
-
   Paths? paths = Paths();
 
   Future<void> init() async {
     emit(AuthInitialState());
+    emit(AuthLoadingState());
     await Future.delayed(const Duration(seconds: 3));
-    emit(AuthenticatedState());
-    final dbSnapshot =
-        await paths?.master.child("Profile").child("About").get();
-    profileAbout = dbSnapshot?.value.toString();
-    debugPrint('the about text is ${profileAbout.toString()}');
+    final userId = await PreferenceHelper.getUserId() ?? '';
+    address = userId.toString();
+    debugPrint('the userId is ${userId.toString()}');
+    if (userId.toString() != null && userId != "") {
+      debugPrint('the about text is ${profileAbout.toString()}');
+      emit(AuthenticatedState());
+    } else {
+      emit(UnAuthenticatedState());
+    }
+
     /*
     if (paths?.currrentUser != null) {
       final snapshot =
@@ -37,7 +43,7 @@ class AuthCubit extends BaseCubit<AuthState> {
      */
   }
 
-  login() async {
+  login() {
     emit(AuthenticatedState());
   }
 }

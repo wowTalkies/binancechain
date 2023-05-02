@@ -1,6 +1,7 @@
 import 'package:bnbapp/auth_cubit/auth_cubit.dart';
 import 'package:bnbapp/paths/path.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
+import 'package:bnbapp/utils/preferencehelper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:magic_sdk/magic_sdk.dart';
@@ -28,11 +29,10 @@ class LoginCubit extends BaseCubit<LoginState> {
     var email = controller.value.text;
     await FirebaseAuth.instance.signInAnonymously();
     var user = FirebaseAuth.instance.currentUser?.uid;
-    await path.master
-        .child(address)
-        .update({"email": email, "address": address});
+    await PreferenceHelper.saveUserId(address.toString());
+    await path.address.child(address).update({"email": email});
     if (address.isNotEmpty) {
-      await authCubit.login();
+      authCubit.login();
     } else {
       LoginErrorState("Invalid");
     }

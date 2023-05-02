@@ -5,6 +5,7 @@ import 'package:bnbapp/widgets/button.dart';
 import 'package:bnbapp/widgets/custom_listview_builder.dart';
 import 'package:bnbapp/widgets/tabs.dart';
 import 'package:bnbapp/widgets/text.dart';
+import 'package:bnbapp/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -73,8 +74,9 @@ class _LayOut extends StatelessWidget {
                     Column(
                       children: [
                         Row(
-                          children: const [
-                            Padding(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Padding(
                               padding: EdgeInsets.fromLTRB(9, 0, 0, 0),
                               child: CustomText(
                                   text: "About",
@@ -82,17 +84,86 @@ class _LayOut extends StatelessWidget {
                                   fontColor: AllColor.black,
                                   fontWeight: FontWeight.w700),
                             ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(right: 10, bottom: 5),
+                              child: InkWell(
+                                onTap: () {
+                                  showBottomSheet(
+                                    context: context,
+                                    builder: (context) => Container(
+                                      height: height / 1.8,
+                                      width: width,
+                                      decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: AllColor.black),
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: AllColor.bottomSheet,
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Center(
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                height: height / 5,
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: AllColor.black),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  color: AllColor.bottomSheet,
+                                                ),
+                                                child: CustomTextField(
+                                                    height: 40,
+                                                    controller: cubit
+                                                        .textEditingController,
+                                                    hintText: "Enter about",
+                                                    textFieldColor:
+                                                        AllColor.bottomSheet,
+                                                    width: width / 1.2),
+                                              ),
+                                            ),
+                                          ),
+                                          Button(
+                                            textColor: AllColor.white,
+                                            color1: AllColor.linear2,
+                                            color2: AllColor.linear2,
+                                            text: "Enter",
+                                            width: width / 2,
+                                            height: height / 17,
+                                            onPressed: () async {
+                                              await cubit.uploadAbout();
+                                              Navigator.pop(context);
+                                            },
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: const Icon(
+                                  Icons.edit,
+                                  color: AllColor.black,
+                                  size: 30,
+                                ),
+                              ),
+                            )
                           ],
                         ),
                         Column(
                           children: [
                             Padding(
                               padding: const EdgeInsets.fromLTRB(9, 0, 0, 0),
-                              child: CustomText(
-                                  text: cubit.authCubit.profileAbout.toString(),
-                                  fontSize: 14,
-                                  fontColor: AllColor.black,
-                                  fontWeight: FontWeight.w400),
+                              child: ValueListenableBuilder(
+                                valueListenable: cubit.about,
+                                builder: (context, value, child) => CustomText(
+                                    text: value.toString(),
+                                    fontSize: 14,
+                                    fontColor: AllColor.black,
+                                    fontWeight: FontWeight.w400),
+                              ),
                             ),
                           ],
                         )

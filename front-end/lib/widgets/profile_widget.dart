@@ -4,6 +4,8 @@ import 'package:bnbapp/screens/leaderboard/leaderboard.dart';
 import 'package:bnbapp/screens/profile/cubit/profile_cubit.dart';
 import 'package:bnbapp/screens/profile/profile.dart';
 import 'package:bnbapp/screens/tab_community/tab_community.dart';
+import 'package:bnbapp/screens/tab_referral/cubit/tab_referral_cubit.dart';
+import 'package:bnbapp/screens/tab_referral/tab_referral.dart';
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/tabs.dart';
 import 'package:bnbapp/widgets/text.dart';
@@ -136,7 +138,15 @@ class ProfileWidget extends StatelessWidget {
                                   },
                                   child: const LeaderBoard(),
                                 ),
-                                const Icon(Icons.directions_bike),
+                                BlocProvider(
+                                  create: (context) {
+                                    final AuthCubit authenticationCubit =
+                                        BlocProvider.of<AuthCubit>(context);
+                                    return TabReferralCubit(authenticationCubit)
+                                      ..init();
+                                  },
+                                  child: const TabReferral(),
+                                ),
                               ],
                             ),
                             appBar: TabBar(
@@ -251,7 +261,9 @@ class ProfileWidget extends StatelessWidget {
                       bottom: height / 1.9,
                       child: Center(
                         child: CustomText(
-                            text: "Wallet Address : ${cubit.authCubit.address}",
+                            text: cubit.authCubit.address != null
+                                ? "Wallet Address : ${cubit.authCubit.address}"
+                                : "Wallet Address : Loading...",
                             fontWeight: FontWeight.w400,
                             fontColor: AllColor.white,
                             fontSize: 12),

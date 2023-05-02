@@ -1,4 +1,4 @@
-import 'package:bnbapp/screens/discovery/cubit/discovery_cubit.dart';
+import 'package:bnbapp/screens/badge/cubit/discovery_cubit.dart';
 import 'package:bnbapp/widgets/appbar.dart';
 import 'package:bnbapp/widgets/gridcard.dart';
 import 'package:flutter/material.dart';
