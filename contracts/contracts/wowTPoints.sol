@@ -4,31 +4,35 @@ pragma solidity ^0.8.9;
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {AccessControlUpgradeable} from "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 
-/// @title The points contract for managing points
+/**
+ * @title WowTPoints
+ * @dev A smart contract that implements a points system for users. Users can earn points, which can be used to determine their ranking on a leaderboard.
+ */
 contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
-    /// @notice The points for first level
-    uint16 public levelOnePoints;
-    /// @notice The points for second level
-    uint16 public levelTwoPoints;
-    /// @notice The points for daily active user
-    uint16 public activeUserPoints;
-    /// @notice The minimum required points for token conversion
-    uint256 public minimumPointsForConvertion;
-    /// @notice The array for top 10 address who having highest points
-    address[10] private topLeaderBoardAddress;
+    uint16 public levelOnePoints; // Point threshold for Level 1
+    uint16 public levelTwoPoints; // Point threshold for Level 2
+    uint16 public activeUserPoints; // Points earned by active users
+    uint256 public minimumPointsForConvertion; // Minimum points required to convert to erc20 token
+    address[10] private topLeaderBoardAddress; // Array to store top 10 leaderboard positions
 
-    /// @notice The points of each account
-    mapping(address => uint256) private points;
+    mapping(address => uint256) private points; // Mapping to store points earned by each user
+    mapping(address => uint256) private referralPoints; // Mapping to store referral points earned by each user
 
-    /// @notice Hashing value for admin role
-    bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
+    bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE"); // Admin role for authorization
 
-    /// @dev Throws if called by any account other than admins.
+    /// @dev Modifier to restrict function access to only those with the admin role.
     modifier adminOnly() {
         require(hasRole(ADMIN_ROLE, _msgSender()), "Must have admin role");
         _;
     }
 
+    /**
+     * @dev Initializes the contract by setting the initial points values and granting the admin role to the sender.
+     * @param _levelOnePoints The number of points awarded for level one users.
+     * @param _levelTwoPoints The number of points awarded for level two users.
+     * @param _activeUserPoints The number of points awarded for active users.
+     * @param _minimumPointsForConvertion The minimum number of points required for a user to convert points to another token.
+     */
     function initialize(
         uint16 _levelOnePoints,
         uint16 _levelTwoPoints,
@@ -44,23 +48,37 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
         minimumPointsForConvertion = _minimumPointsForConvertion;
     }
 
-    /// @notice Add points by contract owner which address want to add points
-    /// @param account Which address want to add points
-    /// @param _points The number of points
+    /**
+     * @dev Adds points to a user's account.
+     * @param account The address of the user's account to add points to.
+     * @param _points The number of points to add.
+     */
     function addPoints(address account, uint256 _points) public adminOnly {
-        uint totalPoints = points[account] + _points;
-        points[account] = totalPoints;
+        // uint totalPoints = points[account] + _points;
+        points[account] += _points;
         updateLeaderBoard(account, _points);
     }
 
+    /**
+     * @dev Adds active user points to a user's account.
+     * @param account The address of the user's account to add points to.
+     */
     function addActiveUserPoints(address account) external onlyOwner {
         addPoints(account, activeUserPoints);
     }
 
-    /// @notice Reduce points by contract owner which address want to reduce points
-    /// @param account Which address want to reduce points
-    /// @param _points The number of points
-    /// @dev Requires that the _points are greater than zero and _points must be less than available points
+    function updateReferralPoints(
+        address _account,
+        uint256 _points
+    ) public adminOnly {
+        referralPoints[_account] += _points;
+    }
+
+    /**
+     * @dev Reduces points from a user's account.
+     * @param account The address of the user's account to reduce points from.
+     * @param _points The number of points to reduce.
+     */
     function reducePoints(address account, uint256 _points) public adminOnly {
         require(_points > 0, "points must be greater than zero");
         uint totalPoints = points[account] - _points;
@@ -68,9 +86,11 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
         points[account] = totalPoints;
     }
 
-    /// @notice Update points by contract owner which address want to update points
-    /// @param account Which address need to reduce points
-    /// @param _points The number of points need to update
+    /**
+     * @dev Internal function to update the leaderboard based on a user's points.
+     * @param account Address of the user to update leaderboard for
+     * @param _points Amount of points earned by the user
+     */
     function updateLeaderBoard(address account, uint256 _points) private {
         uint i = 0;
         for (i; i < topLeaderBoardAddress.length; i++) {
@@ -84,47 +104,65 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
         topLeaderBoardAddress[i] = account;
     }
 
-    /// @dev Get how many points having for address
-    /// @param account which account want to check points
-    /// @return points for address
+    /**
+     * @dev Returns the number of points earned by the specified account.
+     * @param account The address of the account to check the number of points for.
+     * @return The number of points earned by the specified account.
+     */
     function getPoints(address account) public view returns (uint256) {
         return points[account];
     }
 
-    /// @dev Get the address who having highest points
-    /// @return address the highest points
+    function getReferralPoints(address account) public view returns (uint256) {
+        return referralPoints[account];
+    }
+
+    /**
+     * @dev Returns the address of the top user on the leaderboard.
+     * @return The address of the top user.
+     */
     function getLeaderBoard() public view returns (address) {
         return topLeaderBoardAddress[0];
     }
 
-    /// @dev Get the top 10 addresses who having highest points
-    /// @return addresses the top 10 highest points
+    /**
+     * @dev Returns an array of the top 10 addresses on the leaderboard.
+     * @return An array of the top 10 addresses on the leaderboard.
+     */
     function getTopLeaderBoards() public view returns (address[10] memory) {
         return topLeaderBoardAddress;
     }
 
-    /// @param newLevelOnePoints the new value for level one points
-    /// @dev stores the points in the state variable `levelOnePoints`
+    /**
+     * @dev Sets the point threshold for Level 1.
+     * @param newLevelOnePoints The new point threshold for Level 1.
+     */
     function setLevelOnePoints(uint16 newLevelOnePoints) external onlyOwner {
         levelOnePoints = newLevelOnePoints;
     }
 
-    /// @param newLevelTwoPoints the new value for level two points
-    /// @dev stores the points in the state variable `levelTwoPoints`
+    /**
+     * @dev Sets the point threshold for Level 2.
+     * @param newLevelTwoPoints The new point threshold for Level 2.
+     */
     function setLevelTwoPoints(uint16 newLevelTwoPoints) external onlyOwner {
         levelTwoPoints = newLevelTwoPoints;
     }
 
-    /// @param newActiveUserPoints the new value for active user points
-    /// @dev stores the points in the state variable `activeUserPoints`
+    /**
+     * @dev Sets the number of points earned by active users.
+     * @param newActiveUserPoints The new number of points earned by active users.
+     */
     function setActiveUserPoints(
         uint16 newActiveUserPoints
     ) external onlyOwner {
         activeUserPoints = newActiveUserPoints;
     }
 
-    /// @param newMinimumPointsForConvertion the new value for minimum points for token Convertion
-    /// @dev stores the points in the state variable `minimumPointsForConvertion`
+    /**
+     * @dev Sets the minimum number of points required to convert to the ERC20 token.
+     * @param newMinimumPointsForConvertion The new minimum number of points required to convert to the ERC20 token.
+     */
     function setMinimumPointsForConvertion(
         uint16 newMinimumPointsForConvertion
     ) external onlyOwner {

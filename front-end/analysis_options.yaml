@@ -22,8 +22,18 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
+    constant_identifier_names: false
+    hash_and_equals: false
+    avoid_positional_boolean_parameters: false
+    unsafe_html: false
+    require_trailing_commas: false
+    depend_on_referenced_packages: false
+    prefer_null_aware_method_calls: false
+    implementation_imports: false
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
-
+analyzer:
+  exclude:
+    - '**/*.g.dart'
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

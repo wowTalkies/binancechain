@@ -38,7 +38,7 @@ describe('WowTReferrals', function () {
     owner = _owner;
     otherUser = _otherUser;
 
-    referral = await upgrades.deployProxy(Referral);
+    referral = await upgrades.deployProxy(Referral, [points.address]);
     await referral.deployed();
   });
 
@@ -61,19 +61,11 @@ describe('WowTReferrals', function () {
           '0xa49807205ce4d355092ef5a8a18f56e8913cf4a201fbe287825b095693c21775',
           referral.address
         );
-        await referral.addReferralPoints(
-          '0xC9a43158891282A2B1475592D5719c001986Aaec',
-          owner.address,
-          otherUser.address
-        );
+        await referral.addReferralPoints(owner.address, otherUser.address);
         const getReferral = await referral.getReferrals(owner.address);
         await expect(getReferral[0]).to.equal(otherUser.address);
         await expect(getReferral[1]).to.equal(true);
-        await referral.addReferralPoints(
-          '0xC9a43158891282A2B1475592D5719c001986Aaec',
-          otherUser.address,
-          owner.address
-        );
+        await referral.addReferralPoints(otherUser.address, owner.address);
         const getReferrals = await referral.getReferrals(otherUser.address);
         await expect(getReferrals[0]).to.equal(owner.address);
         await expect(getReferrals[1]).to.equal(true);
@@ -84,11 +76,7 @@ describe('WowTReferrals', function () {
         await expect(
           referral
             .connect(otherUser)
-            .addReferralPoints(
-              '0xC9a43158891282A2B1475592D5719c001986Aaec',
-              owner.address,
-              otherUser.address
-            )
+            .addReferralPoints(owner.address, otherUser.address)
         ).to.revertedWith('Ownable: caller is not the owner');
       });
     });

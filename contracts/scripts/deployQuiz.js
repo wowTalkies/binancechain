@@ -1,19 +1,19 @@
-const { ethers, upgrades } = require('hardhat');
+const { upgrades } = require('hardhat');
 const hre = require('hardhat');
 
 async function main() {
   const factory = await hre.ethers.getContractFactory('WowTQuiz');
 
   // const contract = await upgrades.deployProxy(factory, [
-  //   5,
+  //   2,
   //   20,
   //   2,
   //   'hash@123',
-  //   '0x809d550fca64d94Bd9F66E60752A544199cfAC3D',
+  //   '0x7faf3239A9bE79072a1FaA43A3acb664F2af78f9',
   // ]);
 
   const contract = await upgrades.upgradeProxy(
-    '0x86A2EE8FAf9A840F7a2c64CA3d51209F9A02081D',
+    '0xa2Aac22Fd0A0146a8d70eD86674D56872c733Da9',
     factory
   );
 
@@ -38,15 +38,15 @@ async function main() {
 
   // console.log(`Initialized transaction hash is ${tx.hash}`);
 
-  const evelQuiz = await contract.quizEval(
-    '0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199',
-    'test1',
-    '0x5dfcdcc84ba4d7a5b52dd94b10d0342b003460b20c98febb976358f254401044'
-  );
+  // const evelQuiz = await contract.quizEval(
+  //   '0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199',
+  //   'test1',
+  //   '0x5dfcdcc84ba4d7a5b52dd94b10d0342b003460b20c98febb976358f254401044'
+  // );
 
-  await evelQuiz.wait();
+  // await evelQuiz.wait();
 
-  console.log(`Initialized transaction hash is ${evelQuiz.hash}`);
+  // console.log(`Initialized transaction hash is ${evelQuiz.hash}`);
 }
 
 main()

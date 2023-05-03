@@ -1,15 +1,19 @@
-import 'package:bnbapp/screens/community/community_screen.dart';
+import 'package:bnbapp/auth_cubit/auth_cubit.dart';
 import 'package:bnbapp/screens/discovery/discovery.dart';
-import 'package:bnbapp/screens/profile/profile.dart';
+import 'package:bnbapp/screens/profile/cubit/profile_cubit.dart';
 import 'package:bnbapp/screens/tab/cubit/tab_cubit.dart';
 import 'package:bnbapp/utils/colors.dart';
+import 'package:bnbapp/widgets/profile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomTabBar extends StatefulWidget {
   final Color? activeColor;
   final Color? inActiveColor;
-  const CustomTabBar({super.key, this.activeColor,this.inActiveColor, this.cubit});
+
+  const CustomTabBar(
+      {super.key, this.activeColor, this.inActiveColor, this.cubit});
+
   final TabScreenCubit? cubit;
 
   @override
@@ -19,11 +23,14 @@ class CustomTabBar extends StatefulWidget {
 class _CustomTabBarState extends State<CustomTabBar> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body:   TabBarContainer(cubit: widget.cubit),
+    context.select((TabScreenCubit cubit) => widget.cubit?.tabIndex);
+    return Scaffold(
+      body: TabBarContainer(cubit: widget.cubit),
       bottomNavigationBar: Container(
-        decoration:   const BoxDecoration(
+        height: MediaQuery.of(context).size.height / 11,
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [AllColor.white,AllColor.white],
+              colors: [AllColor.linear1, AllColor.linear2],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -32,18 +39,19 @@ class _CustomTabBarState extends State<CustomTabBar> {
           elevation: 0,
           type: BottomNavigationBarType.fixed,
           selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w900),
-          unselectedItemColor: widget.activeColor,
+          unselectedItemColor: widget.inActiveColor,
           backgroundColor: Colors.transparent,
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
+            /*
             BottomNavigationBarItem(
               icon: Padding(
-                  padding: EdgeInsets.all(3.0),
+                  padding: const EdgeInsets.all(3.0),
                   child: Icon(
                     Icons.group,
                     size: 25,
-                    color: AllColor.white,
+                    color: widget.activeColor,
                   )),
-              activeIcon: Padding(
+              activeIcon: const Padding(
                   padding: EdgeInsets.all(3.0),
                   child: Icon(
                     Icons.group,
@@ -52,43 +60,41 @@ class _CustomTabBarState extends State<CustomTabBar> {
                   )),
               label: 'Community',
             ),
+
+             */
             BottomNavigationBarItem(
               icon: Padding(
-                  padding: EdgeInsets.all(3.0),
-                  child: Icon(
-                    Icons.maps_ugc_outlined,
-                    size: 25,
-                    color: AllColor.white,
-                  )),
+                  padding: const EdgeInsets.all(3.0),
+                  child: Image.asset(
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height / 29,
+                      "images/discover.png")),
               activeIcon: Padding(
-                  padding: EdgeInsets.all(3.0),
-                  child: Icon(
-                    Icons.maps_ugc_outlined,
-                    size: 35,
-                    color: AllColor.black,
-                  )),
+                  padding: const EdgeInsets.all(3.0),
+                  child: Image.asset(
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height / 25,
+                      "images/discover_filled.png")),
               label: 'Discover',
             ),
             BottomNavigationBarItem(
               icon: Padding(
-                  padding: EdgeInsets.all(3.0),
-                  child: Icon(
-                    Icons.person,
-                    size: 25,
-                    color: AllColor.white,
-                  )),
+                  padding: const EdgeInsets.all(3.0),
+                  child: Image.asset(
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height / 29,
+                      "images/person.png")),
               activeIcon: Padding(
-                  padding: EdgeInsets.all(3.0),
-                  child: Icon(
-                    Icons.person,
-                    size: 35,
-                    color: AllColor.black,
-                  )),
+                  padding: const EdgeInsets.all(3.0),
+                  child: Image.asset(
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height / 25,
+                      "images/person_filled.png")),
               label: 'Profile',
             ),
           ],
           currentIndex: widget.cubit!.tabIndex,
-          selectedItemColor: widget.activeColor,
+          selectedItemColor: widget.inActiveColor,
           iconSize: 20,
           onTap: (int i) {
             widget.cubit!.onTabIndexChanged(i);
@@ -100,19 +106,30 @@ class _CustomTabBarState extends State<CustomTabBar> {
 }
 
 class TabBarContainer extends StatelessWidget {
- final TabScreenCubit? cubit;
-  const TabBarContainer({Key? key,this.cubit}) : super(key: key);
+  final TabScreenCubit? cubit;
+
+  const TabBarContainer({Key? key, this.cubit}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    context.select((TabScreenCubit cubit) => cubit.tabIndex);
+    context.select((TabScreenCubit cubits) => cubit?.tabIndex);
     switch (cubit?.tabIndex) {
+      /*
       case 0:
         return const Community();
-      case 1:
+
+       */
+      case 0:
         return const Discover();
-      case 2:
-        return const Profile();
+      case 1:
+        return BlocProvider(
+          create: (context) {
+            final AuthCubit authenticationCubit =
+                BlocProvider.of<AuthCubit>(context);
+            return ProfileCubit(authenticationCubit)..init();
+          },
+          child: const ProfileWidget(),
+        );
       default:
         return Container();
     }

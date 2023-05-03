@@ -1,4 +1,3 @@
-
 import 'package:bnbapp/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +10,7 @@ class CustomTextField extends StatelessWidget {
   final double? width;
   final double? height;
   final Widget? prefixWigdget;
+
   const CustomTextField(
       {Key? key,
       required this.controller,
@@ -18,7 +18,9 @@ class CustomTextField extends StatelessWidget {
       required this.hintText,
       required this.textFieldColor,
       this.prefixWigdget,
-      required this.width,this.height,this.obscure})
+      required this.width,
+      this.height,
+      this.obscure})
       : super(key: key);
 
   @override
@@ -30,26 +32,28 @@ class CustomTextField extends StatelessWidget {
           border: Border.all(color: AllColor.black),
           color: AllColor.white),
       child: SizedBox(
-       // height: height,
+        height: height,
         width: width,
         child: TextField(
           style: const TextStyle(color: AllColor.black),
           controller: controller,
           cursorColor: cursorColor,
-         // keyboardType: TextInputType.visiblePassword,
-          obscureText: obscure?? false,
+          // keyboardType: TextInputType.visiblePassword,
+          obscureText: obscure ?? false,
           autofocus: true,
           decoration: InputDecoration(
-              fillColor: textFieldColor,
-              border: InputBorder.none,
-              focusedBorder: InputBorder.none,
-              enabledBorder: InputBorder.none,
-              errorBorder: InputBorder.none,
-              disabledBorder: InputBorder.none,
-              hintStyle: const TextStyle(color: AllColor.black,),
-             prefixIcon:prefixWigdget ?? const SizedBox(),
-            hintText: hintText ,
-             ),
+            fillColor: textFieldColor,
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+            hintStyle: const TextStyle(
+              color: AllColor.black,
+            ),
+            prefixIcon: prefixWigdget ?? const SizedBox(),
+            hintText: hintText,
+          ),
         ),
       ),
     );

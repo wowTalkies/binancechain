@@ -4,10 +4,12 @@ import 'package:bnbapp/utils/base_cubit.dart';
 import 'package:flutter/material.dart';
 
 class CommunityCubit extends BaseCubit<CommunityState>{
-  CommunityCubit(AuthCubit authCubit) : super(CommunityState());
+  final AuthCubit authCubit;
+  CommunityCubit(this.authCubit) : super(CommunityInitialState());
 
   Future<void> init() async {
     emit(CommunityLoadingState());
     debugPrint('hi wellCome');
+    emit(CommunityLoadedState());
   }
 }

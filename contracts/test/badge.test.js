@@ -4,7 +4,7 @@ const hre = require('hardhat');
 const { SignerWithAddress } = require('@nomiclabs/hardhat-ethers/signers.js');
 const { Contract } = require('ethers');
 
-describe('WowTReferrals', function () {
+describe('WowTBadge', function () {
   const levelOnePoints = 5;
   const levelTwoPoints = 2;
   const activeUserPoints = 2;
@@ -38,7 +38,10 @@ describe('WowTReferrals', function () {
     owner = _owner;
     otherUser = _otherUser;
 
-    badge = await upgrades.deployProxy(Badge, ['ipfs://uri.png']);
+    badge = await upgrades.deployProxy(Badge, [
+      'ipfs://uri.png',
+      points.address,
+    ]);
     await badge.deployed();
   });
 
@@ -62,7 +65,7 @@ describe('WowTReferrals', function () {
         await expect(await badge.imageUri()).to.equal(newImageUri);
       });
       it('should successfully update badge if the caller is owner', async () => {
-        await badge.updateBadgeForWeek(points.address, '2023-10');
+        await badge.updateBadgeForWeek('2023-10');
         const getBadge = await badge.badge('2023-10');
         await expect(getBadge).to.equal(
           '0x0000000000000000000000000000000000000000'
@@ -72,7 +75,7 @@ describe('WowTReferrals', function () {
     describe('non-owner', function () {
       it('should be able to update badge if the caller is non-owner', async () => {
         await expect(
-          badge.connect(otherUser).updateBadgeForWeek(points.address, '2023-11')
+          badge.connect(otherUser).updateBadgeForWeek('2023-11')
         ).to.revertedWith('Ownable: caller is not the owner');
       });
       it('should not be able to set minimumPointsForConvertion', async () => {

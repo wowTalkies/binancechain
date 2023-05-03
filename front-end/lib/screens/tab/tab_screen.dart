@@ -3,7 +3,6 @@ import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'cubit/tab_state.dart';
 
 class TabScreen extends StatelessWidget {
@@ -43,8 +42,12 @@ class _TabState extends State<Tab> {
     final cubit = context.read<TabScreenCubit>();
     return BlocBuilder<TabScreenCubit, TabScreenState>(
         bloc: cubit,
-        builder: (context, state) => Container(color:AllColor.white,
-              child:  CustomTabBar(inActiveColor: AllColor.white,activeColor: AllColor.black,cubit: cubit),
+        builder: (context, state) => Container(
+              color: AllColor.white,
+              child: CustomTabBar(
+                  inActiveColor: AllColor.white,
+                  activeColor: AllColor.black,
+                  cubit: cubit),
             ));
   }
 }

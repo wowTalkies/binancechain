@@ -3,6 +3,9 @@ import 'package:bnbapp/utils/base_equatable.dart';
 
 class TabScreenState extends BaseEquatable {}
 class TabScreenRefreshState extends TabScreenState {}
+class TabScreenInitialState extends TabScreenState {}
+class TabScreenLoadingState extends TabScreenState {}
+
 class TabScreenErrorState extends TabScreenState{
   final String error;
   TabScreenErrorState(this.error);
