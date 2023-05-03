@@ -46,6 +46,7 @@ dependencies:
   pointycastle: ^3.7.3
   convert: ^3.1.1
   cached_network_image: ^3.2.3
+  json_annotation: ^4.6.0
   flutter_contacts: ^1.1.6
   flutter_share_me: ^1.4.0
   flutter_email_sender: ^5.2.0
@@ -53,6 +54,14 @@ dependencies:
   firebase_dynamic_links: ^5.1.1
   shared_preferences: ^2.1.0
   web3dart: ^2.5.1
+  json_serializable: ^6.6.1
+  web3dart_builders: ^0.0.2
+  dio_http_cache:
+    git: https://github.com/danilof/dio-http-cache
+  http: ^0.13.6
+  google_fonts: ^4.0.4
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -64,7 +73,6 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   build_runner: ^2.1.4
-  json_serializable: ^6.3.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

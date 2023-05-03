@@ -58,6 +58,7 @@ class CustomPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         Container(
@@ -93,10 +94,15 @@ class CustomPage extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
-                      child: Icon(
-                        size: MediaQuery.of(context).size.height / 29,
-                        Icons.close,
-                        color: AllColor.white,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          size: MediaQuery.of(context).size.height / 29,
+                          Icons.close,
+                          color: AllColor.white,
+                        ),
                       ),
                     )
                   ],
@@ -207,11 +213,11 @@ class CustomPage extends StatelessWidget {
                               fontColor: color,
                             ),
                             SizedBox(
-                              height: MediaQuery.of(context).size.height / 500,
+                              height: MediaQuery.of(context).size.height / 7000,
                             ),
                             CustomText(
                               text: points3,
-                              fontSize: 20,
+                              fontSize: 18,
                               fontWeight: FontWeight.w700,
                               fontColor: color,
                             )
@@ -253,7 +259,7 @@ class CustomPage extends StatelessWidget {
             color: Colors.white,
             height: 15,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+              padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
               child: Image.asset(
                 alignment: Alignment.topLeft,
                 "images/profile_line.png",
@@ -270,38 +276,59 @@ class CustomPage extends StatelessWidget {
               //mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  alignment: Alignment.center,
-                  child: CustomText(
-                      fontWeight: fontWeight2 ?? FontWeight.w400,
-                      fontColor: color4,
-                      fontSize: fontSize3,
-                      text: referral1),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: width / 4),
+                    child: CustomText(
+                        fontWeight: fontWeight2 ?? FontWeight.w400,
+                        fontColor: color4,
+                        fontSize: fontSize3,
+                        text: referral1),
+                  ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 15,
                 ),
-                CustomText(
-                    fontWeight: fontWeight2 ?? FontWeight.w400,
-                    fontColor: color4,
-                    fontSize: fontSize3,
-                    text: referral2),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: width / 3.7),
+                    child: CustomText(
+                        fontWeight: fontWeight2 ?? FontWeight.w400,
+                        fontColor: color4,
+                        fontSize: fontSize3,
+                        text: referral2),
+                  ),
+                ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 12,
                 ),
-                CustomText(
-                    fontWeight: fontWeight2 ?? FontWeight.w400,
-                    fontColor: color4,
-                    fontSize: fontSize3,
-                    text: referral3),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: width / 4.4),
+                    child: CustomText(
+                        fontWeight: fontWeight2 ?? FontWeight.w400,
+                        fontColor: color4,
+                        fontSize: fontSize3,
+                        text: referral3),
+                  ),
+                ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 12,
                 ),
-                CustomText(
-                    fontWeight: fontWeight2 ?? FontWeight.w400,
-                    fontColor: color4,
-                    fontSize: fontSize3,
-                    text: referral4),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: width / 4),
+                    child: CustomText(
+                        fontWeight: fontWeight2 ?? FontWeight.w400,
+                        fontColor: color4,
+                        fontSize: fontSize3,
+                        text: referral4),
+                  ),
+                ),
               ],
             ),
           ),
@@ -365,6 +392,7 @@ class CustomPage extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
+                /*
                 Column(
                   children: [
                     InkWell(
@@ -386,6 +414,8 @@ class CustomPage extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
+
+                 */
                 Column(
                   children: [
                     InkWell(

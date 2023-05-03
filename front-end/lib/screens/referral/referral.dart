@@ -4,7 +4,6 @@ import 'package:bnbapp/widgets/text.dart';
 import 'package:bnbapp/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
 
 import 'cubit/referral_cubit.dart';
 import 'cubit/refrral_state.dart';
@@ -20,6 +19,10 @@ class Referral extends StatelessWidget {
       body: BlocListener(
         bloc: cubit,
         listener: (context, state) {
+          if (state is ReferralLinkCopiedStateState) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Invite link copied to clipboard")));
+          }
           if (state is ReferralErrorState) {
             if (!state.error.contains('404')) {
               const SnackBar(
@@ -41,7 +44,6 @@ class _LayOut extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<ReferralCubit>();
 
-    TextEditingController textEditingController = TextEditingController();
     return Column(
       children: [
         Expanded(
@@ -57,7 +59,7 @@ class _LayOut extends StatelessWidget {
                 fontWeight2: FontWeight.w400,
                 text2: "Bring your friend and earn points",
                 text3: "Unlock exciting\nfeatures & top\nthe Leaderboard!",
-                points1: "0",
+                points1: cubit.authCubit.points.toString(),
                 points2: "points",
                 points3: "Collected",
                 color4: AllColor.black,
@@ -75,7 +77,7 @@ class _LayOut extends StatelessWidget {
                 },
                 telegramOnPressed: () async {
                   await cubit.createLinkandShare("Telegram");
-                  await cubit.flutterShareMe.shareToTelegram(msg: "msg");
+                  // await cubit.flutterShareMe.shareToTelegram(msg: "Telegram");
                 },
                 linkOnPressed: () async {
                   await cubit.createLinkandShare("Link");
@@ -136,7 +138,7 @@ class _LayOut extends StatelessWidget {
                                       height:
                                           MediaQuery.of(context).size.height /
                                               6,
-                                      controller: textEditingController,
+                                      controller: cubit.textEditingController,
                                       hintText: "Write text here",
                                       textFieldColor: AllColor.bottomSheet,
                                     ),
@@ -174,11 +176,21 @@ class _LayOut extends StatelessWidget {
                                             child: cubit.contacts[index]
                                                         .photo ==
                                                     null
-                                                ? const Icon(Icons.person)
+                                                ? InkWell(
+                                                    onTap: () async {
+                                                      await cubit.sendMessage(
+                                                          '${cubit.textEditingController.value.text}\n${cubit.initialLink}',
+                                                          cubit
+                                                              .contacts[index]
+                                                              .phones[0]
+                                                              .number);
+                                                    },
+                                                    child: const Icon(
+                                                        Icons.person))
                                                 : InkWell(
                                                     onTap: () async {
                                                       await cubit.sendMessage(
-                                                          "hi",
+                                                          '${cubit.textEditingController.value.text}\n${cubit.initialLink}',
                                                           cubit
                                                               .contacts[index]
                                                               .phones[0]
@@ -226,19 +238,8 @@ class _LayOut extends StatelessWidget {
                                         padding: const EdgeInsets.all(0.0),
                                         child: InkWell(
                                           onTap: () async {
-                                            var email = Email(
-                                              body: 'Email body',
-                                              subject: 'Email subject',
-                                              recipients: [
-                                                'sivasethu@wowtalkies.com'
-                                              ],
-                                              // cc: ['cc@example.com'],
-                                              // bcc: ['bcc@example.com'],
-                                              // attachmentPaths: ['/path/to/attachment.zip'],
-                                              isHTML: false,
-                                            );
-                                            await FlutterEmailSender.send(
-                                                email);
+                                            await cubit
+                                                .createLinkandShare("Email");
                                           },
                                           child: Image.asset(
                                             fit: BoxFit.contain,
@@ -255,6 +256,7 @@ class _LayOut extends StatelessWidget {
                                       )
                                     ],
                                   ),
+                                  /*
                                   Column(
                                     children: [
                                       Padding(
@@ -304,6 +306,8 @@ class _LayOut extends StatelessWidget {
                                       )
                                     ],
                                   ),
+
+                                   */
                                   Column(
                                     children: [
                                       Padding(
@@ -311,8 +315,8 @@ class _LayOut extends StatelessWidget {
                                             0, 0, 0, 9),
                                         child: InkWell(
                                           onTap: () async {
-                                            await cubit.flutterShareMe
-                                                .shareToWhatsApp(msg: "msg");
+                                            await cubit
+                                                .createLinkandShare("WhatsApp");
                                           },
                                           child: Image.asset(
                                             fit: BoxFit.fill,

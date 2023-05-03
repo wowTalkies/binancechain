@@ -10,4 +10,5 @@ class Paths {
   final uId = userId ?? '';
   final master = app.ref("Master");
   final address = app.ref("Master").child("Address");
+  final node = app.ref("Master").child("Profile").child("node");
 }

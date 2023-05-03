@@ -8,6 +8,8 @@ class ReferralLoadingState extends ReferralState {}
 
 class ReferralLoadedState extends ReferralState {}
 
+class ReferralLinkCopiedStateState extends ReferralState {}
+
 class ReferralErrorState extends ReferralState {
   final String error;
 
