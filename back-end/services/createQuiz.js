@@ -3,21 +3,20 @@ const jsonInterface = require('../abi/WowTQuiz.json');
 
 const createQuiz = async (
   quizName,
-  question,
   description,
   imageUrl,
+  question,
+  options,
+  correctAnswer,
   userAddress
 ) => {
   if (
-    quizName &&
     quizName.trim() != '' &&
-    question &&
-    question.length != 0 &&
-    description &&
+    options.length != 0 &&
     description.trim() != '' &&
-    imageUrl &&
     imageUrl.trim() != '' &&
-    userAddress &&
+    question.trim() != '' &&
+    correctAnswer.trim() != '' &&
     userAddress.trim() != ''
   ) {
     const privateKey = process.env.privateKey;
@@ -29,14 +28,22 @@ const createQuiz = async (
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0xa2Aac22Fd0A0146a8d70eD86674D56872c733Da9'; // WowTQuiz contract address
+    const contractAddress = '0x04a0b41e500f3068a8C1714bab1948a1309dD906'; // WowTQuiz contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
     try {
       const gasPrice = await web3.eth.getGasPrice();
       const gasEstimate = await contract.methods
-        .createQuiz(quizName, question, description, imageUrl, userAddress)
+        .createQuiz(
+          quizName,
+          description,
+          imageUrl,
+          question,
+          options,
+          correctAnswer,
+          userAddress
+        )
         .estimateGas({ from: account });
 
       console.log('gasPrice ', gasPrice, 'gasEstimate ', gasEstimate);
@@ -49,7 +56,7 @@ const createQuiz = async (
 
       return { body: 'Quiz created successfully' };
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       return { error: 'Something went wrong' };
     }
   } else {

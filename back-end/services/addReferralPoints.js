@@ -2,12 +2,7 @@ const Web3 = require('web3');
 const jsonInterface = require('../abi/WowTReferral.json');
 
 const addReferralPoints = async (userAddress, referralAddress) => {
-  if (
-    userAddress &&
-    userAddress.trim() != '' &&
-    referralAddress &&
-    referralAddress.trim() != ''
-  ) {
+  if (userAddress.trim() != '' && referralAddress.trim() != '') {
     const privateKey = process.env.privateKey;
     const provider = process.env.provider;
 
@@ -17,7 +12,7 @@ const addReferralPoints = async (userAddress, referralAddress) => {
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0x8267D49a6E55A459428F820e4FecDF50BD89a139'; // WowTReferral contract address
+    const contractAddress = '0x1BA50c0Db827d687E3e7687beE9d8EaF11b9798C'; // WowTReferral contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 

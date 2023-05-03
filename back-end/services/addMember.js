@@ -2,12 +2,7 @@ const Web3 = require('web3');
 const jsonInterface = require('../abi/WowTCommunity.json');
 
 const addMember = async (CommunityName, userAddress) => {
-  if (
-    CommunityName &&
-    CommunityName.trim() != '' &&
-    userAddress &&
-    userAddress.trim() != ''
-  ) {
+  if (CommunityName.trim() != '' && userAddress.trim() != '') {
     const privateKey = process.env.privateKey;
     const provider = process.env.provider;
 
@@ -17,7 +12,7 @@ const addMember = async (CommunityName, userAddress) => {
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0x75849A2035267a8c72410bc4ed8d458177CF1FAc'; // WowTCommunity contract address
+    const contractAddress = '0x1A60169D778f060dd8c063ef5CB4839CBf67507a'; // WowTCommunity contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 

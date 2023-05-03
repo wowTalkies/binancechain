@@ -6,6 +6,7 @@ const { createQuiz } = require('./services/createQuiz');
 const { createCommunity } = require('./services/createCommunity');
 const { quizEval } = require('./services/quizEval');
 const { updateBadge } = require('./services/updateBadge');
+const { createPost } = require('./services/createPost');
 require('dotenv').config();
 
 exports.handler = async (event) => {
@@ -33,16 +34,13 @@ exports.handler = async (event) => {
       const correctAnswer = await Web3.utils.keccak256(
         event.answer + process.env.secretKey
       );
-      const question = [
-        event.questionName,
-        [event.option1, event.option2, event.option3, event.option4],
-        correctAnswer,
-      ];
       return await createQuiz(
         event.quizName,
-        question,
         event.description,
         event.imageUrl,
+        event.question,
+        event.options,
+        correctAnswer,
         event.userAddress
       );
     }
@@ -55,6 +53,15 @@ exports.handler = async (event) => {
 
     case 'updateBadge':
       return await updateBadge();
+
+    case 'createPost':
+      return await createPost(
+        event.communityName,
+        event.message,
+        event.imageUrl,
+        event.userAddress
+      );
+
     default:
       console.log(`${method} method doesn't exist`);
       return `${method} method doesn't exist`;

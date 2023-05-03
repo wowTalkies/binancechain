@@ -1,8 +1,13 @@
 const Web3 = require('web3');
-const jsonInterface = require('../abi/WowTPoints.json');
+const jsonInterface = require('../abi/WowTCommunity.json');
 
-const addActiveUserPoints = async (userAddress) => {
-  if (userAddress.trim() != '') {
+const createPost = async (communityName, message, imageUrl, userAddress) => {
+  if (
+    (communityName.trim() != '' &&
+      userAddress.trim() != '' &&
+      message.trim() != '') ||
+    imageUrl.trim() != ''
+  ) {
     const privateKey = process.env.privateKey;
     const provider = process.env.provider;
 
@@ -12,27 +17,25 @@ const addActiveUserPoints = async (userAddress) => {
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-
-    const contractAddress = '0xbAf59D95709F960a047130D3f9721887B9Db3E10'; // WowTPoints contract address
+    const contractAddress = '0x1A60169D778f060dd8c063ef5CB4839CBf67507a'; // WowTCommunity contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
     try {
       const gasPrice = await web3.eth.getGasPrice();
       const gasEstimate = await contract.methods
-        .addActiveUserPoints(userAddress)
+        .createPost(communityName, message, imageUrl, userAddress)
         .estimateGas({ from: account });
 
       console.log('gasPrice ', gasPrice, 'gasEstimate ', gasEstimate);
 
-      const addActiveUserPoints = await contract.methods
-        .addActiveUserPoints(userAddress)
+      const createPost = await contract.methods
+        .createPost(communityName, message, imageUrl, userAddress)
         .send({ from: account, gasPrice: gasPrice, gas: gasEstimate });
-      console.log(
-        'addActiveUserPoints txHash ',
-        addActiveUserPoints.transactionHash
-      );
-      return { body: 'Daily active points added successfully' };
+
+      console.log('createPost txHash ', createPost.transactionHash);
+
+      return { body: 'post created successfully' };
     } catch (err) {
       // console.log(err);
       return { error: 'Something went wrong' };
@@ -42,4 +45,4 @@ const addActiveUserPoints = async (userAddress) => {
   }
 };
 
-module.exports.addActiveUserPoints = addActiveUserPoints;
+module.exports.createPost = createPost;

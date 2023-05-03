@@ -19,7 +19,7 @@ const quizEval = async (userAddress, quizName, choice) => {
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0xa2Aac22Fd0A0146a8d70eD86674D56872c733Da9'; // WowTQuiz contract address
+    const contractAddress = '0x04a0b41e500f3068a8C1714bab1948a1309dD906'; // WowTQuiz contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
@@ -39,7 +39,7 @@ const quizEval = async (userAddress, quizName, choice) => {
 
       return { body: 'Quiz evaluated successfully' }; // Need changes for eval quiz via contract
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       return { error: 'Something went wrong' };
     }
   } else {
