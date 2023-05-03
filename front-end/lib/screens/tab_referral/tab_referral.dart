@@ -1,3 +1,4 @@
+import 'package:bnbapp/router.dart';
 import 'package:bnbapp/widgets/tab_referral_Widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,7 +47,9 @@ class _LayOut extends StatelessWidget {
             children: [
               TabReferralWidget(
                   itemCount: 6,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.referral);
+                  },
                   buttonText: "Explore Referrals",
                   list: const [
                     "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:google_fonts/google_fonts.dart";
 
 class CustomText extends StatelessWidget {
   final FontWeight? fontWeight;
@@ -25,12 +26,12 @@ class CustomText extends StatelessWidget {
     return Text(
       maxLines: 12,
       text ?? '',
-      style: TextStyle(
-          height: height,
-          fontWeight: fontWeight,
-          color: fontColor,
-          fontSize: fontSize,
-          overflow: overflow),
+      style: GoogleFonts.nunito(
+        height: height,
+        fontWeight: fontWeight,
+        color: fontColor,
+        fontSize: fontSize,
+      ),
       textAlign: textAlign,
       overflow: overflow,
     );

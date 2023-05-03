@@ -184,12 +184,28 @@ class _LayOut extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const CustomListViewBuilder(
-                      list: [
-                        "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
-                      ],
-                      itemCount: 1,
-                      scrollDirection: Axis.horizontal,
+                    ValueListenableBuilder(
+                      valueListenable: cubit.referredBy,
+                      builder: (context, value, child) {
+                        return value.isEmpty
+                            ? Container()
+                            : value[1]
+                                ? const CustomListViewBuilder(
+                                    list: [
+                                      "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
+                                    ],
+                                    itemCount: 1,
+                                    scrollDirection: Axis.horizontal,
+                                  )
+                                : const Center(
+                                    child: CustomText(
+                                      text: "No Referrer",
+                                      fontSize: 12,
+                                      fontColor: AllColor.black,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  );
+                      },
                     ),
                     Row(
                       children: const [

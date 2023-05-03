@@ -3,6 +3,7 @@ import 'package:bnbapp/screens/referral/cubit/refrral_state.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_contacts/flutter_contacts.dart' as cont;
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
@@ -13,7 +14,9 @@ class ReferralCubit extends BaseCubit<ReferralState> {
   List<cont.Contact> contacts = [];
   final FlutterShareMe flutterShareMe = FlutterShareMe();
   final Email? email = Email();
-  PendingDynamicLinkData? initialLink;
+  TextEditingController textEditingController = TextEditingController();
+
+  Uri? initialLink;
   Uri? deepLink;
   String? queryAddress;
 
@@ -22,8 +25,26 @@ class ReferralCubit extends BaseCubit<ReferralState> {
   Future<void> init() async {
     emit(ReferralLoadingState());
     debugPrint('referral cubit init');
+    debugPrint('the userId is ${authCubit.address}');
+    /*
+    final dynamicLinkParams = DynamicLinkParameters(
+      link: Uri.parse("https://wowtbnb.page.link/"),
+      uriPrefix:
+          "https://wowtbnb.page.link/referral?invitedby=${authCubit.address}",
+      androidParameters:
+          const AndroidParameters(packageName: "com.wowtbnb.web3"),
+      //  iosParameters: const IOSParameters(bundleId: "com.example.app.ios"),
+    );
+    initialLink =
+        await FirebaseDynamicLinks.instance.buildLink(dynamicLinkParams);
+
+    debugPrint("initial link is ${initialLink.toString()}");
+    */
+
+    /*
     initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
 
+    debugPrint('referral cubit link ${initialLink.toString()}');
     if (initialLink != null) {
       Uri deepLink = initialLink!.link;
       debugPrint('the link is ${deepLink.toString()}');
@@ -32,6 +53,7 @@ class ReferralCubit extends BaseCubit<ReferralState> {
       debugPrint('the query address is ${queryAddress.toString()}');
       debugPrint('the link query is ${deepLink.query}');
       // Example of using the dynamic link to push the user to a different screen
+      /*
       FirebaseDynamicLinks.instance.onLink.listen(
         (pendingDynamicLinkData) {
           // Set up the `onLink` event listener next as it may be received here
@@ -44,9 +66,12 @@ class ReferralCubit extends BaseCubit<ReferralState> {
           }
         },
       );
+      */
     } else {
       debugPrint('referral link null');
     }
+
+     */
 
     await cont.FlutterContacts.requestPermission();
     debugPrint('hi wellCome come');
@@ -67,31 +92,27 @@ class ReferralCubit extends BaseCubit<ReferralState> {
   }
 
   createLinkandShare(String channel) async {
+    debugPrint("address is ${authCubit.address} ");
     final dynamicLinkParams = DynamicLinkParameters(
       link: Uri.parse(
-          "https://www.wowtalkies.com/referral?invitedby=1234567654321"),
+          "https://www.wowtalkies.com/referral?invitedby=${authCubit.address}"),
       uriPrefix: "https://wowtbnb.page.link",
+      //   "https://wowtbnb.page.link/referral?invitedby=987654321",
       androidParameters:
           const AndroidParameters(packageName: "com.wowtbnb.web3"),
       //  iosParameters: const IOSParameters(bundleId: "com.example.app.ios"),
     );
     final dynamicLink =
-        await FirebaseDynamicLinks.instance.buildLink(dynamicLinkParams);
+        //      await FirebaseDynamicLinks.instance.buildLink(dynamicLinkParams);
+        await FirebaseDynamicLinks.instance.buildShortLink(dynamicLinkParams);
+    debugPrint("dynamic link is $dynamicLink");
 
     switch (channel) {
       case "WhatsApp":
         {
           flutterShareMe.shareToWhatsApp(
               msg:
-                  'Use my referral link to download the wowTalkies app - ${initialLink.toString()}');
-          // statements;
-        }
-        break;
-      case "Instagram":
-        {
-          flutterShareMe.shareToInstagram(
-              filePath:
-                  'Use my referral link to download the wowTalkies app - ${dynamicLink.toString()}');
+                  'Use my referral link to download the wowTalkies app - ${dynamicLink.shortUrl}');
           // statements;
         }
         break;
@@ -99,17 +120,27 @@ class ReferralCubit extends BaseCubit<ReferralState> {
         {
           flutterShareMe.shareToTelegram(
               msg:
-                  'Use my referral link to download the wowTalkies app - ${dynamicLink.toString()}');
+                  'Use my referral link to download the wowTalkies app - ${dynamicLink.shortUrl}');
           // statements;
         }
         break;
       case "Link":
         {
-          flutterShareMe.shareToTelegram(
-              msg:
-                  'Use my referral link to download the wowTalkies app - ${dynamicLink.toString()}');
+          Clipboard.setData(
+              ClipboardData(text: dynamicLink.shortUrl.toString()));
+          emit(ReferralLinkCopiedStateState());
           // statements;
         }
+        break;
+      case "Email":
+        var email = Email(
+          body:
+              'Use my referral link to download the wowTalkies app - ${dynamicLink.shortUrl}',
+          subject: 'App invitation',
+          recipients: [],
+          isHTML: false,
+        );
+        await FlutterEmailSender.send(email);
         break;
 
       default:
