@@ -16,6 +16,7 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
     address[10] private topLeaderBoardAddress; // Array to store top 10 leaderboard positions
 
     mapping(address => uint256) private points; // Mapping to store points earned by each user
+    mapping(address => uint256) private referralPoints; // Mapping to store referral points earned by each user
 
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE"); // Admin role for authorization
 
@@ -53,8 +54,8 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
      * @param _points The number of points to add.
      */
     function addPoints(address account, uint256 _points) public adminOnly {
-        uint totalPoints = points[account] + _points;
-        points[account] = totalPoints;
+        // uint totalPoints = points[account] + _points;
+        points[account] += _points;
         updateLeaderBoard(account, _points);
     }
 
@@ -64,6 +65,13 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
      */
     function addActiveUserPoints(address account) external onlyOwner {
         addPoints(account, activeUserPoints);
+    }
+
+    function updateReferralPoints(
+        address _account,
+        uint256 _points
+    ) public adminOnly {
+        referralPoints[_account] += _points;
     }
 
     /**
@@ -103,6 +111,10 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
      */
     function getPoints(address account) public view returns (uint256) {
         return points[account];
+    }
+
+    function getReferralPoints(address account) public view returns (uint256) {
+        return referralPoints[account];
     }
 
     /**

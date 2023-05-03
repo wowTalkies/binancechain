@@ -50,9 +50,13 @@ contract WowTReferral is OwnableUpgradeable {
         points.addPoints(_referralAddress, points.levelOnePoints());
         referral[_installAddress].referralAddress = _referralAddress;
         referral[_installAddress].referralExists = true;
+        points.updateReferralPoints(_referralAddress, points.levelOnePoints());
         if (referral[_referralAddress].referralExists) {
-            points.addPoints(
-                referral[_referralAddress].referralAddress,
+            address secondLevelAddress = referral[_referralAddress]
+                .referralAddress;
+            points.addPoints(secondLevelAddress, points.levelTwoPoints());
+            points.updateReferralPoints(
+                secondLevelAddress,
                 points.levelTwoPoints()
             );
         }
