@@ -2,14 +2,14 @@ const { upgrades } = require('hardhat');
 const hre = require('hardhat');
 
 async function main() {
-  const pointContract = '0x7faf3239A9bE79072a1FaA43A3acb664F2af78f9';
+  const pointContract = '0xbAf59D95709F960a047130D3f9721887B9Db3E10';
 
   const factory = await hre.ethers.getContractFactory('WowTReferral');
 
   // const contract = await upgrades.deployProxy(factory, [pointContract]);
 
   const contract = await upgrades.upgradeProxy(
-    '0x8267D49a6E55A459428F820e4FecDF50BD89a139',
+    '0x8267D49a6E55A459428F820e4FecDF50BD89a139', // 0x1BA50c0Db827d687E3e7687beE9d8EaF11b9798C
     factory
   );
 

@@ -6,11 +6,11 @@ async function main() {
 
   // const contract = await upgrades.deployProxy(factory, [
   //   'https://wowtalkiesdevbucket.s3.ap-south-1.amazonaws.com/logo1.png',
-  //   '0x7faf3239A9bE79072a1FaA43A3acb664F2af78f9',
+  //   '0xbAf59D95709F960a047130D3f9721887B9Db3E10',
   // ]);
 
   const contract = await upgrades.upgradeProxy(
-    '0x8D311f53c9970941B9507f31A20A4C9C122334db',
+    '0x8D311f53c9970941B9507f31A20A4C9C122334db', // 0x36ecE8a451A211670d27f20D700b7C5D547F556b
     factory
   );
 

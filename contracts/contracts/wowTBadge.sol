@@ -12,7 +12,7 @@ contract WowTBadge is OwnableUpgradeable {
     mapping(string => address) public badge;
 
     function initialize(
-        string memory _imageUri,
+        string calldata _imageUri,
         address _pointsContract
     ) external initializer {
         __Ownable_init();
@@ -21,13 +21,13 @@ contract WowTBadge is OwnableUpgradeable {
         points = WowTPoints(pointsContract);
     }
 
-    function updateBadgeForWeek(string memory yearWeek) external onlyOwner {
+    function updateBadgeForWeek(string calldata yearWeek) external onlyOwner {
         // WowTPoints points = WowTPoints(pointsContract);
         address leaderBoardAddress = points.getLeaderBoard();
         badge[yearWeek] = leaderBoardAddress;
     }
 
-    function setImageUri(string memory _imageUrl) external onlyOwner {
+    function setImageUri(string calldata _imageUrl) external onlyOwner {
         imageUri = _imageUrl;
     }
 }
