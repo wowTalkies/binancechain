@@ -35,12 +35,13 @@ class CustomTextField extends StatelessWidget {
         height: height,
         width: width,
         child: TextField(
+          maxLines: 20,
           style: const TextStyle(color: AllColor.black),
           controller: controller,
           cursorColor: cursorColor,
-          // keyboardType: TextInputType.visiblePassword,
+          keyboardType: TextInputType.multiline,
           obscureText: obscure ?? false,
-          autofocus: true,
+          autofocus: false,
           decoration: InputDecoration(
             fillColor: textFieldColor,
             border: InputBorder.none,

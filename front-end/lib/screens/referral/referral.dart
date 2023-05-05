@@ -83,7 +83,7 @@ class _LayOut extends StatelessWidget {
                   await cubit.createLinkandShare("Link");
                   // await cubit.flutterShareMe.shareToWhatsApp();
                 },
-                fontSize3: 14,
+                fontSize3: 11,
                 onPressed: () {
                   showBottomSheet(
                     context: context,

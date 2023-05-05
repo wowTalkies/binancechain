@@ -8,6 +8,8 @@ class ProfileLoadingState extends ProfileState {}
 
 class ProfileLoadedState extends ProfileState {}
 
+class ProfileCopyStateState extends ProfileState {}
+
 class ProfileErrorState extends ProfileState {
   final String error;
 

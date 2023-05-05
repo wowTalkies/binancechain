@@ -4,7 +4,7 @@
 import 'package:web3dart/web3dart.dart' as _i1;
 
 final _contractAbi = _i1.ContractAbi.fromJson(
-  '[{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint8","name":"version","type":"uint8"}],"name":"Initialized","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[{"internalType":"address","name":"_installAddress","type":"address"},{"internalType":"address","name":"_referralAddress","type":"address"}],"name":"addReferralPoints","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"getReferrals","outputs":[{"components":[{"internalType":"address","name":"referralAddress","type":"address"},{"internalType":"bool","name":"referralExists","type":"bool"}],"internalType":"struct WowTReferral.ReferralUser","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_pointsContract","type":"address"}],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}]',
+  '[{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint8","name":"version","type":"uint8"}],"name":"Initialized","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[{"internalType":"address","name":"_installAddress","type":"address"},{"internalType":"address","name":"_referralAddress","type":"address"}],"name":"addReferralPoints","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"getReferrals","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"}],"name":"getReferrer","outputs":[{"components":[{"internalType":"address","name":"referralAddress","type":"address"},{"internalType":"bool","name":"referralExists","type":"bool"}],"internalType":"struct WowTReferral.ReferralUser","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_pointsContract","type":"address"}],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}]',
   'WowTReferral',
 );
 
@@ -48,13 +48,31 @@ class WowTReferral extends _i1.GeneratedContract {
   /// The optional [atBlock] parameter can be used to view historical data. When
   /// set, the function will be evaluated in the specified block. By default, the
   /// latest on-chain block will be used.
-  Future<dynamic> getReferrals(
-    _i1.EthereumAddress _user, {
+  Future<List<_i1.EthereumAddress>> getReferrals(
+    _i1.EthereumAddress _account, {
     _i1.BlockNum? atBlock,
   }) async {
     final function = self.abi.functions[1];
     assert(checkSignature(function, '41a0894d'));
-    final params = [_user];
+    final params = [_account];
+    final response = await read(
+      function,
+      params,
+      atBlock,
+    );
+    return (response[0] as List<dynamic>).cast<_i1.EthereumAddress>();
+  }
+
+  /// The optional [atBlock] parameter can be used to view historical data. When
+  /// set, the function will be evaluated in the specified block. By default, the
+  /// latest on-chain block will be used.
+  Future<dynamic> getReferrer(
+    _i1.EthereumAddress _account, {
+    _i1.BlockNum? atBlock,
+  }) async {
+    final function = self.abi.functions[2];
+    assert(checkSignature(function, '4a9fefc7'));
+    final params = [_account];
     final response = await read(
       function,
       params,
@@ -71,7 +89,7 @@ class WowTReferral extends _i1.GeneratedContract {
     required _i1.Credentials credentials,
     _i1.Transaction? transaction,
   }) async {
-    final function = self.abi.functions[2];
+    final function = self.abi.functions[3];
     assert(checkSignature(function, 'c4d66de8'));
     final params = [_pointsContract];
     return write(
@@ -86,7 +104,7 @@ class WowTReferral extends _i1.GeneratedContract {
   /// set, the function will be evaluated in the specified block. By default, the
   /// latest on-chain block will be used.
   Future<_i1.EthereumAddress> owner({_i1.BlockNum? atBlock}) async {
-    final function = self.abi.functions[3];
+    final function = self.abi.functions[4];
     assert(checkSignature(function, '8da5cb5b'));
     final params = [];
     final response = await read(
@@ -104,7 +122,7 @@ class WowTReferral extends _i1.GeneratedContract {
     required _i1.Credentials credentials,
     _i1.Transaction? transaction,
   }) async {
-    final function = self.abi.functions[4];
+    final function = self.abi.functions[5];
     assert(checkSignature(function, '715018a6'));
     final params = [];
     return write(
@@ -123,7 +141,7 @@ class WowTReferral extends _i1.GeneratedContract {
     required _i1.Credentials credentials,
     _i1.Transaction? transaction,
   }) async {
-    final function = self.abi.functions[5];
+    final function = self.abi.functions[6];
     assert(checkSignature(function, 'f2fde38b'));
     final params = [newOwner];
     return write(

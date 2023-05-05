@@ -1,5 +1,7 @@
 import 'package:bnbapp/screens/community/cubit/cubit.dart';
 import 'package:bnbapp/screens/discovery/cubit/discovery_cubit.dart';
+import 'package:bnbapp/screens/faq/cubit/faq_cubit.dart';
+import 'package:bnbapp/screens/faq/faq_sreen.dart';
 import 'package:bnbapp/screens/login/cubit/login_cubit.dart';
 import 'package:bnbapp/screens/login/login_page.dart';
 import 'package:bnbapp/screens/profile/cubit/profile_cubit.dart';
@@ -17,6 +19,7 @@ class AppRoutes {
   static const String login = "login";
   static const String home = "home";
   static const String referral = "Referral";
+  static const String faq = "FAQ";
 }
 
 Route<dynamic> getRoutes(RouteSettings settings) {
@@ -27,6 +30,8 @@ Route<dynamic> getRoutes(RouteSettings settings) {
       return _buildLoginScreen();
     case AppRoutes.referral:
       return _buildReferralScreen();
+    case AppRoutes.faq:
+      return _buildFaqScreen();
     case AppRoutes.home:
       return _buildHomeScreen(settings);
     default:
@@ -40,6 +45,16 @@ MaterialPageRoute _buildLoginScreen() {
     builder: (context) => addAuth(
       context,
       PageBuilder.buildLoginScreen(),
+    ),
+  );
+}
+
+MaterialPageRoute _buildFaqScreen() {
+  return MaterialPageRoute(
+    settings: const RouteSettings(name: AppRoutes.faq),
+    builder: (context) => addAuth(
+      context,
+      PageBuilder.buildFaqScreen(),
     ),
   );
 }
@@ -114,6 +129,16 @@ class PageBuilder {
         return LoginCubit(authCubit)..init();
       },
       child: const Login(),
+    );
+  }
+
+  static Widget buildFaqScreen() {
+    return BlocProvider(
+      create: (context) {
+        final AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
+        return FAQCubit(authCubit)..init();
+      },
+      child: const FAQ(),
     );
   }
 

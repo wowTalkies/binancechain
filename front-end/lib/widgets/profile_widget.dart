@@ -16,7 +16,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../screens/tab_community/cubit/tab_community_cubit.dart';
 
 class ProfileWidget extends StatelessWidget {
-  const ProfileWidget({Key? key}) : super(key: key);
+  final Function()? copyPressed;
+
+  const ProfileWidget({Key? key, this.copyPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +152,8 @@ class ProfileWidget extends StatelessWidget {
                               ],
                             ),
                             appBar: TabBar(
-                              indicatorColor: Colors.transparent,
+                              labelPadding: const EdgeInsets.all(2),
+                              indicatorColor: AllColor.white,
                               tabs: [
                                 Tabs(
                                   text: "My Profile",
@@ -260,13 +263,37 @@ class ProfileWidget extends StatelessWidget {
                   Positioned.fill(
                       bottom: height / 1.9,
                       child: Center(
-                        child: CustomText(
-                            text: cubit.authCubit.address != null
-                                ? "Wallet Address : ${cubit.authCubit.address}"
-                                : "Wallet Address : Loading...",
-                            fontWeight: FontWeight.w400,
-                            fontColor: AllColor.white,
-                            fontSize: 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CustomText(
+                                text: cubit.authCubit.address != null
+                                    ? "Wallet Address : ${cubit.authCubit.address.toString().replaceRange(6, 36, ".....")}"
+                                    : "Wallet Address : Loading...",
+                                fontWeight: FontWeight.w400,
+                                fontColor: AllColor.white,
+                                fontSize: 12),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text(
+                                            "Wallet Address copied to clipboard")));
+                              },
+                              child: const Padding(
+                                padding: EdgeInsets.only(bottom: 5),
+                                child: Icon(
+                                  Icons.copy_sharp,
+                                  size: 20,
+                                  color: AllColor.white,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       )),
                 ],
               ),

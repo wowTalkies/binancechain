@@ -50,9 +50,14 @@ class _LayOut extends StatelessWidget {
       bloc: cubit,
       builder: (context, state) => Column(
         children: [
-          const CustomAppBar(
-            icon: Icon(Icons.arrow_back, color: AllColor.black, size: 30),
-            appBarHeight: 70,
+          CustomAppBar(
+            icon: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(Icons.arrow_back,
+                    color: AllColor.black, size: 30)),
+            appBarHeight: 90,
             title: "Frequently Asked Questions",
           ),
           Expanded(
@@ -64,6 +69,9 @@ class _LayOut extends StatelessWidget {
                 itemCount: cubit.faqModel?.length,
                 question: cubit.faqModel,
                 // text: cubit.maps.values.toString(),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 4,
               )
             ],
           ))

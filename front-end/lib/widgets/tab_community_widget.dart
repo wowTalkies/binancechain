@@ -1,3 +1,4 @@
+import 'package:bnbapp/screens/tab_community/cubit/tab_community_cubit.dart';
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -5,20 +6,24 @@ import 'package:flutter/material.dart';
 
 class TabCommunityWidget extends StatelessWidget {
   final List<String>? imageUrl;
+  final List<String>? textList;
   final String? text;
   final Color? fontColor;
   final double? fontSize;
   final int? itemCount;
+  final TabCommunityCubit? cubit;
   final FontWeight? fontWeight;
 
   const TabCommunityWidget(
       {Key? key,
       this.imageUrl,
       this.fontColor,
+      this.textList,
       this.text,
       this.fontWeight,
       this.fontSize,
-      this.itemCount})
+      this.itemCount,
+      this.cubit})
       : super(key: key);
 
   @override
@@ -43,7 +48,7 @@ class TabCommunityWidget extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width / 1.15,
                 decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
                   shape: BoxShape.rectangle,
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
@@ -75,11 +80,11 @@ class TabCommunityWidget extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width / 7,
+                      width: MediaQuery.of(context).size.width / 15,
                     ),
                     Center(
                       child: CustomText(
-                        text: text,
+                        text: textList![index] ?? '',
                         fontColor: fontColor,
                         fontSize: fontSize,
                         fontWeight: fontWeight,

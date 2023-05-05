@@ -1,8 +1,8 @@
 import 'package:bnbapp/auth_cubit/auth_cubit.dart';
-import 'package:bnbapp/screens/discovery/discovery.dart';
 import 'package:bnbapp/screens/profile/cubit/profile_cubit.dart';
 import 'package:bnbapp/screens/tab/cubit/tab_cubit.dart';
 import 'package:bnbapp/utils/colors.dart';
+import 'package:bnbapp/widgets/discovery_tab.dart';
 import 'package:bnbapp/widgets/profile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -120,7 +120,7 @@ class TabBarContainer extends StatelessWidget {
 
        */
       case 0:
-        return const Discover();
+        return const DiscoverTab();
       case 1:
         return BlocProvider(
           create: (context) {

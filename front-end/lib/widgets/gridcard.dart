@@ -131,8 +131,8 @@ class GridCard extends StatelessWidget {
                             Button(
                               text: "Take Quiz",
                               textSize: 14,
-                              height: MediaQuery.of(context).size.height / 19,
-                              width: MediaQuery.of(context).size.width / 3.8,
+                              height: MediaQuery.of(context).size.height / 20,
+                              // width: MediaQuery.of(context).size.width / 3.8,
                             ),
                           ],
                         )),

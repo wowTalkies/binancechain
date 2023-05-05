@@ -1,22 +1,22 @@
-import 'package:bnbapp/screens/discovery/cubit/discovery_cubit.dart';
-import 'package:bnbapp/widgets/appbar.dart';
-import 'package:bnbapp/widgets/gridcard.dart';
+import 'package:bnbapp/utils/colors.dart';
+import 'package:bnbapp/widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'cubit/discovery_cubit.dart';
 import 'cubit/discovery_state.dart';
 
-class Discover extends StatelessWidget {
-  const Discover({Key? key}) : super(key: key);
+class Quiz extends StatelessWidget {
+  const Quiz({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<DiscoverCubit>();
+    final cubit = context.read<QuizCubit>();
     return Scaffold(
       body: BlocListener(
         bloc: cubit,
         listener: (context, state) {
-          if (state is DiscoverErrorState) {
+          if (state is QuizErrorState) {
             if (!state.error.contains('404')) {
               const SnackBar(
                 content: Text("error"),
@@ -35,7 +35,9 @@ class _LayOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<DiscoverCubit>();
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    final cubit = context.read<QuizCubit>();
     return BlocBuilder(
       bloc: cubit,
       builder: (context, state) => Column(
@@ -43,10 +45,14 @@ class _LayOut extends StatelessWidget {
           Expanded(
               child: ListView(
             children: [
-              const CustomAppBar(title: "Discover Quizzes"),
-              GridCard(
-                imageUrl: cubit.list,
-                itemCount: cubit.list.length,
+              Container(
+                height: height,
+                color: AllColor.linear2,
+                child: const CustomText(
+                  fontSize: 200,
+                  fontColor: AllColor.white,
+                  text: "hello",
+                ),
               )
             ],
           ))

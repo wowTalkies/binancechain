@@ -1,4 +1,5 @@
 import 'package:bnbapp/utils/colors.dart';
+import 'package:bnbapp/widgets/custom_circular_progress_indicator.dart';
 import 'package:bnbapp/widgets/tab_community_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,21 +36,31 @@ class _LayOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     final cubit = context.read<TabCommunityCubit>();
-    return BlocBuilder(
+    return BlocBuilder<TabCommunityCubit, TabCommunityState>(
       bloc: cubit,
       builder: (context, state) => Column(
         children: [
           Expanded(
               child: ListView(
             children: [
-              TabCommunityWidget(
-                itemCount: cubit.list.length,
-                text: "Community X",
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                fontColor: AllColor.white,
-                imageUrl: cubit.list,
+              Padding(
+                padding: EdgeInsets.only(top: height / 50),
+                child: cubit?.state is! TabCommunityLoadedState
+                    ? Column(
+                        children: const [
+                          CustomCircularProgressIndicator(),
+                        ],
+                      )
+                    : TabCommunityWidget(
+                        textList: cubit.lists,
+                        itemCount: cubit.lists.length,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        fontColor: AllColor.white,
+                        imageUrl: cubit.imageUrlList,
+                        cubit: cubit),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 4,

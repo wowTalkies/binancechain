@@ -1,5 +1,4 @@
-import 'package:bnbapp/screens/badge/cubit/discovery_cubit.dart';
-import 'package:bnbapp/widgets/appbar.dart';
+import 'package:bnbapp/screens/discovery/cubit/discovery_cubit.dart';
 import 'package:bnbapp/widgets/gridcard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +42,6 @@ class _LayOut extends StatelessWidget {
           Expanded(
               child: ListView(
             children: [
-              const CustomAppBar(title: "Discover Quizzes"),
               GridCard(
                 imageUrl: cubit.list,
                 itemCount: cubit.list.length,

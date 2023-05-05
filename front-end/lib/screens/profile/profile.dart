@@ -2,6 +2,7 @@ import 'package:bnbapp/screens/profile/cubit/profile_cubit.dart';
 import 'package:bnbapp/screens/profile/cubit/profile_state.dart';
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/button.dart';
+import 'package:bnbapp/widgets/custom_circular_progress_indicator.dart';
 import 'package:bnbapp/widgets/custom_listview_builder.dart';
 import 'package:bnbapp/widgets/tabs.dart';
 import 'package:bnbapp/widgets/text.dart';
@@ -19,6 +20,10 @@ class Profile extends StatelessWidget {
       body: BlocListener(
         bloc: cubit,
         listener: (context, state) {
+          if (state is ProfileCopyStateState) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Wallet Address copied to clipboard")));
+          }
           if (state is ProfileErrorState) {
             if (!state.error.contains('404')) {
               const SnackBar(
@@ -89,6 +94,7 @@ class _LayOut extends StatelessWidget {
                                   const EdgeInsets.only(right: 10, bottom: 5),
                               child: InkWell(
                                 onTap: () {
+                                  //cubit.textEditingController.value.text = cubit.about.value.toString(),
                                   showBottomSheet(
                                     context: context,
                                     builder: (context) => Container(
@@ -102,6 +108,27 @@ class _LayOut extends StatelessWidget {
                                       ),
                                       child: Column(
                                         children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 5,
+                                                    right: 5,
+                                                    bottom: 3),
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: const Icon(
+                                                    Icons.close_sharp,
+                                                    color: AllColor.linear2,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                           Center(
                                             child: Padding(
                                               padding:
@@ -116,7 +143,7 @@ class _LayOut extends StatelessWidget {
                                                   color: AllColor.bottomSheet,
                                                 ),
                                                 child: CustomTextField(
-                                                    height: 40,
+                                                    height: 4000,
                                                     controller: cubit
                                                         .textEditingController,
                                                     hintText: "Enter about",
@@ -143,10 +170,27 @@ class _LayOut extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                child: const Icon(
-                                  Icons.edit,
-                                  color: AllColor.black,
-                                  size: 30,
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          blurStyle: BlurStyle.outer,
+                                          blurRadius: 3,
+                                          color: Colors.black,
+                                          spreadRadius: 1)
+                                    ],
+                                  ),
+                                  child: const CircleAvatar(
+                                    backgroundColor: AllColor.bottomSheet,
+                                    radius: 13,
+                                    child: Icon(
+                                      size: 20, Icons.edit,
+                                      color: AllColor.black,
+                                      // size: 12,
+                                    ),
+                                  ),
                                 ),
                               ),
                             )
@@ -158,11 +202,18 @@ class _LayOut extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(9, 0, 0, 0),
                               child: ValueListenableBuilder(
                                 valueListenable: cubit.about,
-                                builder: (context, value, child) => CustomText(
-                                    text: value.toString(),
-                                    fontSize: 14,
-                                    fontColor: AllColor.black,
-                                    fontWeight: FontWeight.w400),
+                                builder: (context, value, child) => value
+                                        .isEmpty
+                                    ? const SizedBox(
+                                        height: 10,
+                                        width: 10,
+                                        child:
+                                            CustomCircularProgressIndicator())
+                                    : CustomText(
+                                        text: value.toString(),
+                                        fontSize: 14,
+                                        fontColor: AllColor.black,
+                                        fontWeight: FontWeight.w400),
                               ),
                             ),
                           ],
@@ -188,12 +239,18 @@ class _LayOut extends StatelessWidget {
                       valueListenable: cubit.referredBy,
                       builder: (context, value, child) {
                         return value.isEmpty
-                            ? Container()
-                            : value[1]
-                                ? const CustomListViewBuilder(
-                                    list: [
-                                      "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
-                                    ],
+                            ? Column(
+                                children: const [
+                                  SizedBox(
+                                      height: 10,
+                                      width: 10,
+                                      child: CustomCircularProgressIndicator()),
+                                ],
+                              )
+                            : value[1] && cubit.state is ProfileLoadedState
+                                ? CustomListViewBuilder(
+                                    referrersList: cubit.referrerNameAndAddress,
+                                    textList: cubit.referrerName,
                                     itemCount: 1,
                                     scrollDirection: Axis.horizontal,
                                   )
@@ -219,16 +276,23 @@ class _LayOut extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const CustomListViewBuilder(
-                      list: [
-                        "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
-                        "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/miim.jpg?alt=media&token=0ac0d1a3-a7d2-4c34-84c6-216efd85aee2",
-                        "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/marvel.jpg?alt=media&token=549b7f2f-ac05-4d81-87dd-3345166dd2e0",
-                        "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/miim.jpg?alt=media&token=0ac0d1a3-a7d2-4c34-84c6-216efd85aee2"
-                      ],
-                      itemCount: 4,
-                      scrollDirection: Axis.horizontal,
-                    ),
+                    cubit.state is! ProfileLoadedState
+                        ? Column(
+                            children: const [
+                              SizedBox(
+                                  height: 10,
+                                  width: 10,
+                                  child: CustomCircularProgressIndicator()),
+                            ],
+                          )
+                        : CustomListViewBuilder(
+                            referralsNamesList: cubit.referralFullNameList,
+                            referralsList: cubit.referrals,
+                            textList: cubit.referralNameList,
+                            itemCount: 2,
+                            scrollDirection: Axis.horizontal,
+                          ),
+                    /*
                     Row(
                       children: const [
                         Padding(
@@ -256,6 +320,8 @@ class _LayOut extends StatelessWidget {
                         ),
                       ],
                     ),
+
+                     */
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 4,
                     )

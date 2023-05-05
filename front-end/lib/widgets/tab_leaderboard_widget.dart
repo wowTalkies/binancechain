@@ -121,7 +121,7 @@ class TabLeaderBoardWidget extends StatelessWidget {
                           shape: BoxShape.rectangle, color: Colors.transparent),
                     ),
                     Positioned.fill(
-                      top: height / 6,
+                      top: height / 6.5,
                       child: Container(
                         width: width / 3.3,
                         height: height / 4,
@@ -253,7 +253,7 @@ class TabLeaderBoardWidget extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                        left: width / 100,
+                        // left: width / 100,
                         bottom: height / 8.3,
                         child: Center(
                           child: CircleAvatar(

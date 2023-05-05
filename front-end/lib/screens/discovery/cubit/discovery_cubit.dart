@@ -16,7 +16,7 @@ class DiscoverCubit extends BaseCubit<DiscoverState> {
   Future<void> init() async {
     emit(DiscoverLoadingState());
     debugPrint('hi wellCome');
-
+////
     emit(DiscoverLoadedState());
   }
 }

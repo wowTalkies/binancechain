@@ -26,7 +26,7 @@ class CustomText extends StatelessWidget {
     return Text(
       maxLines: 12,
       text ?? '',
-      style: GoogleFonts.nunito(
+      style: GoogleFonts.nunitoSans(
         height: height,
         fontWeight: fontWeight,
         color: fontColor,

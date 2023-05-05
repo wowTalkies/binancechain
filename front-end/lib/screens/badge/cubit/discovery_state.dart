@@ -1,15 +1,18 @@
-
 import 'package:bnbapp/utils/base_equatable.dart';
 
-class DiscoverState extends BaseEquatable {}
-class DiscoveryInitialState extends DiscoverState {}
-class DiscoverLoadingState extends DiscoverState {}
-class DiscoverLoadedState extends DiscoverState {}
-class DiscoverErrorState extends DiscoverState{
+class QuizState extends BaseEquatable {}
+
+class QuizInitialState extends QuizState {}
+
+class QuizLoadingState extends QuizState {}
+
+class QuizLoadedState extends QuizState {}
+
+class QuizErrorState extends QuizState {
   final String error;
-  DiscoverErrorState(this.error);
+
+  QuizErrorState(this.error);
+
   @override
-  bool operator == (Object other) => false;
-
-
+  bool operator ==(Object other) => false;
 }

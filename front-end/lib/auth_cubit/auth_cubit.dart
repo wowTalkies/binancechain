@@ -1,5 +1,8 @@
+import 'dart:convert';
+
+import 'package:bnbapp/contract/WowTPoints.g.dart';
+import 'package:bnbapp/model/profile_model.dart';
 import 'package:bnbapp/paths/path.dart';
-import 'package:bnbapp/screens/profile/contracts/WowTPoints.g.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
 import 'package:bnbapp/utils/preferencehelper.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +17,14 @@ class AuthCubit extends BaseCubit<AuthState> {
   static const Color white = Color(0xffffffff);
   String? profileAbout;
   String? address = "";
+  ProfileModel? profileModel;
 
   // int? points = 0;
   Paths? paths = Paths();
   String? node = '';
   BigInt? points;
   final httpClient = Client();
+  List<EthereumAddress> leaderBoard = [];
 
   Future<void> init() async {
     emit(AuthInitialState());
@@ -31,15 +36,22 @@ class AuthCubit extends BaseCubit<AuthState> {
     node = snapshot?.value.toString();
 
     debugPrint('the node url is ${node.toString()} ${userId.toString()}');
+    await paths?.profile.get().then((value) => profileModel =
+        ProfileModel.fromJson(
+            jsonDecode(jsonEncode(value.value)) as Map<String, dynamic>));
+    debugPrint('all datas are ${profileModel?.badge}');
+    //debugPrint("all profile elements are ${profileSnapShot?.value.toString()}");
     if (userId.toString() != null && userId != "") {
       Web3Client client = Web3Client(node.toString(), httpClient);
       EthereumAddress addresss = EthereumAddress.fromHex(userId.toString());
       EthereumAddress cdAddress =
-          EthereumAddress.fromHex("0x7faf3239A9bE79072a1FaA43A3acb664F2af78f9");
+          EthereumAddress.fromHex(profileModel!.points!);
       WowTPoints wowTPoints = WowTPoints(address: cdAddress, client: client);
       var owner = await wowTPoints.owner();
       debugPrint('owner address  coming ${owner.toString()}');
       points = await wowTPoints.getPoints(addresss);
+      leaderBoard = await wowTPoints.getTopLeaderBoards();
+      debugPrint('the leader board list was ${leaderBoard.toString()}');
       debugPrint('the about text is ${points.toString()}');
       emit(AuthenticatedState());
     } else {

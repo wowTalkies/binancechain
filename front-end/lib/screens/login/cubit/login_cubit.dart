@@ -16,6 +16,7 @@ class LoginCubit extends BaseCubit<LoginState> {
   TextEditingController controller = TextEditingController();
   Magic magic = Magic.instance;
   Paths path = Paths();
+  String userName = '';
 
   Future<void> init() async {
     debugPrint('hi wellCome go');
@@ -24,6 +25,14 @@ class LoginCubit extends BaseCubit<LoginState> {
   login() async {
     await magic.auth
         .loginWithMagicLink(email: controller.value.text.toString());
+    for (var i = 0; i < controller.value.text.length; i++) {
+      if (controller.value.text[i] != "@") {
+        userName += controller.value.text[i];
+      } else {
+        break;
+      }
+    }
+    debugPrint("the user name is ${userName.toString()}");
     var account = await MagicCredential(magic.provider).getAccount();
     var address = account.toString();
     debugPrint("the address is ${address.toString()}");
@@ -31,7 +40,9 @@ class LoginCubit extends BaseCubit<LoginState> {
     await FirebaseAuth.instance.signInAnonymously();
     var user = FirebaseAuth.instance.currentUser?.uid;
     await PreferenceHelper.saveUserId(address.toString());
-    await path.address.child(address).update({"email": email});
+    await path.address
+        .child(address)
+        .update({"email": email, "userName": userName.toString()});
     if (address.isNotEmpty) {
       PendingDynamicLinkData? initialLink =
           await FirebaseDynamicLinks.instance.getInitialLink();

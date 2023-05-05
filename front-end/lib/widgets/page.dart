@@ -1,3 +1,4 @@
+import 'package:bnbapp/router.dart';
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/text.dart';
 import 'package:flutter/material.dart';
@@ -338,11 +339,16 @@ class CustomPage extends StatelessWidget {
             top: MediaQuery.of(context).size.height / 1.45,
             child: Row(
               children: [
-                CustomText(
-                    fontWeight: fontWeight2 ?? FontWeight.w400,
-                    fontColor: color4,
-                    fontSize: fontSize3,
-                    text: "See All FAQs"),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.faq);
+                  },
+                  child: CustomText(
+                      fontWeight: fontWeight2 ?? FontWeight.w400,
+                      fontColor: color4,
+                      fontSize: fontSize3,
+                      text: "See All FAQs"),
+                ),
                 const Icon(Icons.question_mark_rounded),
               ],
             )),
@@ -369,28 +375,35 @@ class CustomPage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  width: 20,
+                  width: 10,
                 ),
                 Column(
                   children: [
                     InkWell(
-                      onTap: linkOnPressed,
-                      child: Image.asset(
-                        alignment: Alignment.topLeft,
-                        "images/link.png",
-                        width: 30,
-                        height: 30,
+                      onTap: whatsAppOnPressed,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child: Image.asset(
+                          fit: BoxFit.contain,
+                          alignment: Alignment.topLeft,
+                          "images/whatsApp.png",
+                          width: 40,
+                          height: 40,
+                        ),
                       ),
                     ),
-                    CustomText(
-                        fontWeight: fontWeight2 ?? FontWeight.w400,
-                        fontColor: color4,
-                        fontSize: fontSize3,
-                        text: "Link")
+                    Padding(
+                      padding: const EdgeInsets.only(top: 3),
+                      child: CustomText(
+                          fontWeight: fontWeight2 ?? FontWeight.w400,
+                          fontColor: color4,
+                          fontSize: fontSize3,
+                          text: "WhatsApp"),
+                    )
                   ],
                 ),
                 const SizedBox(
-                  width: 10,
+                  width: 15,
                 ),
                 /*
                 Column(
@@ -421,40 +434,48 @@ class CustomPage extends StatelessWidget {
                     InkWell(
                       onTap: telegramOnPressed,
                       child: Image.asset(
+                        fit: BoxFit.contain,
                         alignment: Alignment.topLeft,
                         "images/telegram.png",
-                        width: 30,
-                        height: 30,
+                        width: 40,
+                        height: 40,
                       ),
                     ),
-                    CustomText(
-                        fontWeight: fontWeight2 ?? FontWeight.w400,
-                        fontColor: color4,
-                        fontSize: fontSize3,
-                        text: "Telegram")
+                    Padding(
+                      padding: const EdgeInsets.only(top: 3),
+                      child: CustomText(
+                          fontWeight: fontWeight2 ?? FontWeight.w400,
+                          fontColor: color4,
+                          fontSize: fontSize3,
+                          text: "Telegram"),
+                    )
                   ],
                 ),
                 const SizedBox(
-                  width: 10,
+                  width: 15,
                 ),
                 Column(
                   children: [
                     InkWell(
-                      onTap: whatsAppOnPressed,
+                      onTap: linkOnPressed,
                       child: Image.asset(
+                        fit: BoxFit.contain,
                         alignment: Alignment.topLeft,
-                        "images/whatsApp.png",
-                        width: 30,
-                        height: 30,
+                        "images/link.png",
+                        width: 40,
+                        height: 40,
                       ),
                     ),
-                    CustomText(
-                        fontWeight: fontWeight2 ?? FontWeight.w400,
-                        fontColor: color4,
-                        fontSize: fontSize3,
-                        text: "WhatsApp")
+                    Padding(
+                      padding: const EdgeInsets.only(top: 3),
+                      child: CustomText(
+                          fontWeight: fontWeight2 ?? FontWeight.w400,
+                          fontColor: color4,
+                          fontSize: fontSize3,
+                          text: "Link"),
+                    )
                   ],
-                )
+                ),
               ],
             ),
           ),
