@@ -41,7 +41,13 @@ class _LayOut extends StatelessWidget {
         children: [
           Expanded(
               child: ListView(
-            children: const [TabLeaderBoardWidget()],
+            children: [
+              TabLeaderBoardWidget(
+                leaderBoard: cubit.leaderBoard,
+                pointsList: cubit.pointsList,
+                userNameList: cubit.userNameList,
+              )
+            ],
           ))
         ],
       ),

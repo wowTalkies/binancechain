@@ -10,9 +10,15 @@ class TabReferralWidget extends StatelessWidget {
   final Function()? onPressed;
   final List<String>? list;
   final int? itemCount;
+  final BigInt? referralPoint;
 
   const TabReferralWidget(
-      {Key? key, this.onPressed, this.buttonText, this.list, this.itemCount})
+      {Key? key,
+      this.onPressed,
+      this.buttonText,
+      this.list,
+      this.itemCount,
+      this.referralPoint})
       : super(key: key);
 
   @override
@@ -38,8 +44,8 @@ class TabReferralWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
-                    children: const [
-                      Padding(
+                    children: [
+                      const Padding(
                         padding: EdgeInsets.only(left: 10, top: 5),
                         child: CustomText(
                             text: "Referral \nPoints",
@@ -48,7 +54,7 @@ class TabReferralWidget extends StatelessWidget {
                             fontWeight: FontWeight.w700),
                       ),
                       CustomText(
-                          text: "0",
+                          text: referralPoint.toString() ?? '0',
                           fontSize: 20,
                           fontColor: AllColor.white,
                           fontWeight: FontWeight.w700),

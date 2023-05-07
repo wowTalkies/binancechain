@@ -10,30 +10,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed242f06-70ad-49e4-8541-8a7ed9be8159" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/front-end/lib/utils/preferencehelper.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/lib/widgets/tab_referral_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/lib/wowtpoints.abi.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/lib/wowtpoints.abi.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bnb-hackathon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bnb-hackathon.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/auth_cubit/auth_cubit.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/auth_cubit/auth_state.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/model/profile_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/badge/cubit/discovery_cubit.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/badge/cubit/discovery_state.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/badge/quiz.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/discovery/cubit/discovery_cubit.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/discovery/cubit/discovery_state.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/discovery/discovery.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/dummy.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/profile/cubit/profile_cubit.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/profile/cubit/profile_state.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/profile/profile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/tab_community/cubit/tab_community_cubit.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/tab_community/cubit/tab_community_state.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/screens/tab_community/tab_community.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/widgets/appbar.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/widgets/bottom_model_sheet.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/widgets/button.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/widgets/custom_circular_progress_indicator.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/widgets/custom_listview_builder.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/widgets/discovery_tab.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/widgets/faq_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front-end/lib/widgets/gridcard.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/analysis_options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/analysis_options.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/auth_cubit/auth_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/auth_cubit/auth_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/auth_cubit/auth_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/auth_cubit/auth_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/paths/path.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/paths/path.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/discovery/cubit/discovery_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/discovery/cubit/discovery_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/discovery/discovery.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/discovery/discovery.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/login/cubit/login_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/login/cubit/login_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/login/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/login/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/profile/cubit/profile_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/profile/cubit/profile_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/profile/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/profile/profile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/cubit/discovery_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/cubit/tab_referral_cubit.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/cubit/discovery_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/cubit/tab_referral_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/discovery.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/screens/tab_referral/tab_referral.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/lib/widgets/profile_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/lib/widgets/profile_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +54,7 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/front-end" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -60,36 +63,42 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProjectId" id="2OfpzStkZ8xoSL6LMtrfjhlAdxG" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "code.cleanup.on.save": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "D:/Development/bnb-hackathon/front-end",
-    "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "flutter.settings",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Development/bnb-hackathon&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;memory.settings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Development\bnb-hackathon\front-end\lib\auth_cubit" />
+      <recent name="D:\Development\bnb-hackathon\front-end\lib\widgets" />
+      <recent name="D:\Development\bnb-hackathon\front-end\lib\screens\contracts" />
       <recent name="D:\Development\bnb-hackathon\front-end" />
       <recent name="D:\Development\bnb-hackathon\front-end\lib" />
-      <recent name="D:\Development\bnb-hackathon\front-end\lib\screens\faq" />
-      <recent name="D:\Development\bnb-hackathon\front-end\lib\screens\badge" />
-      <recent name="D:\Development\bnb-hackathon\front-end\lib\screens\tab_referral" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Development\bnb-hackathon\front-end\lib\contract" />
+      <recent name="D:\Development\bnb-hackathon\front-end\lib\auth_cubit" />
+      <recent name="D:\Development\bnb-hackathon\front-end\lib\screens\profile\contracts" />
     </key>
   </component>
   <component name="RunManager">
@@ -128,12 +137,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/front-end/lib/screens/referral/referral.dart</url>
-          <line>18</line>
+          <line>17</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/front-end/lib/widgets/gridcard.dart</url>
-          <line>48</line>
+          <line>53</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
@@ -142,8 +151,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/front-end/lib/widgets/tab_leaderboard_widget.dart</url>
-          <line>84</line>
+          <line>93</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/front-end/lib/screens/login/cubit/login_cubit.dart</url>
+          <line>54</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/front-end/lib/screens/profile/profile.dart</url>
+          <line>93</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/front-end/lib/widgets/tab_leaderboard_widget.dart</url>
+          <line>23</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/front-end/lib/widgets/tab_leaderboard_widget.dart</url>
+          <line>318</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

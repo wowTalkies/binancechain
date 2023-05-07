@@ -1,10 +1,17 @@
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:web3dart/credentials.dart';
 
 class TabLeaderBoardWidget extends StatelessWidget {
-  const TabLeaderBoardWidget({Key? key}) : super(key: key);
+  final List<String>? userNameList;
+  final List<EthereumAddress>? leaderBoard;
+
+  final List<BigInt>? pointsList;
+
+  const TabLeaderBoardWidget(
+      {Key? key, this.pointsList, this.userNameList, this.leaderBoard})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,21 +66,23 @@ class TabLeaderBoardWidget extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const CustomText(
-                                  text: "Jackie chan",
+                              CustomText(
+                                  text: userNameList![0].toString(),
                                   fontWeight: FontWeight.w700,
                                   fontColor: AllColor.white,
                                   fontSize: 14),
-                              const CustomText(
-                                  text: "@Jackie",
+                              CustomText(
+                                  text: leaderBoard![0]
+                                      .toString()
+                                      .replaceRange(6, 40, "....."),
                                   fontWeight: FontWeight.w400,
                                   fontColor: AllColor.white,
                                   fontSize: 11),
                               SizedBox(
                                 height: height / 50,
                               ),
-                              const CustomText(
-                                  text: "1024",
+                              CustomText(
+                                  text: pointsList![0].toString(),
                                   fontWeight: FontWeight.w700,
                                   fontColor: AllColor.white,
                                   fontSize: 15),
@@ -88,22 +97,12 @@ class TabLeaderBoardWidget extends StatelessWidget {
                         child: Center(
                           child: CircleAvatar(
                             maxRadius: height / 14,
-                            backgroundColor: AllColor.linear1,
-                            child: ClipOval(
-                              child: CachedNetworkImage(
-                                height: height / 7.3,
-                                width: width / 3.6,
-                                fit: BoxFit.fill,
-                                placeholder: (context, url) => const SizedBox(
-                                  child: Center(
-                                    child: CircularProgressIndicator(
-                                      color: AllColor.white,
-                                    ),
-                                  ),
-                                ),
-                                imageUrl:
-                                    "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
-                              ),
+                            backgroundColor: AllColor.linear2,
+                            child: CustomText(
+                              fontSize: 40,
+                              fontWeight: FontWeight.w400,
+                              text: userNameList![0].toString().substring(0, 1),
+                              fontColor: AllColor.white,
                             ),
                             // radius: 12,
                           ),
@@ -139,21 +138,23 @@ class TabLeaderBoardWidget extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const CustomText(
-                                text: "Jackie chan",
+                            CustomText(
+                                text: userNameList![1].toString(),
                                 fontWeight: FontWeight.w700,
                                 fontColor: AllColor.white,
                                 fontSize: 14),
-                            const CustomText(
-                                text: "@Jackie",
+                            CustomText(
+                                text: leaderBoard![1]
+                                    .toString()
+                                    .replaceRange(6, 40, "....."),
                                 fontWeight: FontWeight.w400,
                                 fontColor: AllColor.white,
                                 fontSize: 11),
                             SizedBox(
                               height: height / 30,
                             ),
-                            const CustomText(
-                                text: "1024",
+                            CustomText(
+                                text: pointsList![1].toString(),
                                 fontWeight: FontWeight.w700,
                                 fontColor: AllColor.white,
                                 fontSize: 15),
@@ -166,22 +167,15 @@ class TabLeaderBoardWidget extends StatelessWidget {
                         child: Center(
                           child: CircleAvatar(
                             maxRadius: height / 14,
-                            backgroundColor: AllColor.linear1,
-                            child: ClipOval(
-                              child: CachedNetworkImage(
-                                height: height / 7.3,
-                                width: width / 3.6,
-                                fit: BoxFit.fill,
-                                placeholder: (context, url) => const SizedBox(
-                                  child: Center(
-                                    child: CircularProgressIndicator(
-                                      color: AllColor.white,
-                                    ),
-                                  ),
-                                ),
-                                imageUrl:
-                                    "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
-                              ),
+                            backgroundColor: AllColor.linear2,
+                            child: CustomText(
+                              fontSize: 40,
+                              fontWeight: FontWeight.w400,
+                              text: userNameList![1]
+                                  .toString()
+                                  .substring(0, 1)
+                                  .toUpperCase(),
+                              fontColor: AllColor.white,
                             ),
                             // radius: 12,
                           ),
@@ -230,21 +224,23 @@ class TabLeaderBoardWidget extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const CustomText(
-                                text: "Jackie chan",
+                            CustomText(
+                                text: userNameList![2].toString(),
                                 fontWeight: FontWeight.w700,
                                 fontColor: AllColor.white,
                                 fontSize: 14),
-                            const CustomText(
-                                text: "@Jackie",
+                            CustomText(
+                                text: leaderBoard![2]
+                                    .toString()
+                                    .replaceRange(6, 40, "....."),
                                 fontWeight: FontWeight.w400,
                                 fontColor: AllColor.white,
                                 fontSize: 11),
                             SizedBox(
                               height: height / 60,
                             ),
-                            const CustomText(
-                                text: "1024",
+                            CustomText(
+                                text: pointsList![2].toString(),
                                 fontWeight: FontWeight.w700,
                                 fontColor: AllColor.white,
                                 fontSize: 15),
@@ -258,22 +254,12 @@ class TabLeaderBoardWidget extends StatelessWidget {
                         child: Center(
                           child: CircleAvatar(
                             maxRadius: height / 14,
-                            backgroundColor: AllColor.linear1,
-                            child: ClipOval(
-                              child: CachedNetworkImage(
-                                height: height / 7.3,
-                                width: width / 3.6,
-                                fit: BoxFit.fill,
-                                placeholder: (context, url) => const SizedBox(
-                                  child: Center(
-                                    child: CircularProgressIndicator(
-                                      color: AllColor.white,
-                                    ),
-                                  ),
-                                ),
-                                imageUrl:
-                                    "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
-                              ),
+                            backgroundColor: AllColor.linear2,
+                            child: CustomText(
+                              fontSize: 40,
+                              fontWeight: FontWeight.w400,
+                              text: userNameList![2].toString().substring(0, 1),
+                              fontColor: AllColor.white,
                             ),
                             // radius: 12,
                           ),
@@ -313,6 +299,7 @@ class TabLeaderBoardWidget extends StatelessWidget {
                     children: [
                       Row(
                         children: [
+                          /*
                           const Padding(
                             padding:
                                 EdgeInsets.only(left: 10, top: 10, right: 30),
@@ -322,26 +309,19 @@ class TabLeaderBoardWidget extends StatelessWidget {
                                 fontColor: AllColor.white,
                                 fontSize: 20),
                           ),
+
+                           */
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: CircleAvatar(
                               maxRadius: height / 26,
                               backgroundColor: AllColor.linear2,
-                              child: ClipOval(
-                                child: CachedNetworkImage(
-                                  height: height / 11,
-                                  width: width / 5.3,
-                                  fit: BoxFit.fill,
-                                  placeholder: (context, url) => const SizedBox(
-                                    child: Center(
-                                      child: CircularProgressIndicator(
-                                        color: AllColor.white,
-                                      ),
-                                    ),
-                                  ),
-                                  imageUrl:
-                                      "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
-                                ),
+                              child: CustomText(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w400,
+                                text:
+                                    userNameList![3].toString().substring(0, 1),
+                                fontColor: AllColor.white,
                               ),
                               // radius: 12,
                             ),
@@ -353,9 +333,9 @@ class TabLeaderBoardWidget extends StatelessWidget {
                               child: SizedBox(
                                 height: height / 25,
                                 child: Column(
-                                  children: const [
+                                  children: [
                                     CustomText(
-                                        text: "Jackie Chan",
+                                        text: userNameList![3].toString(),
                                         fontWeight: FontWeight.w700,
                                         fontColor: AllColor.white,
                                         fontSize: 13),
@@ -363,7 +343,9 @@ class TabLeaderBoardWidget extends StatelessWidget {
                                       height: 2,
                                     ),
                                     CustomText(
-                                        text: "@Jackie",
+                                        text: leaderBoard![3]
+                                            .toString()
+                                            .replaceRange(6, 36, "....."),
                                         fontWeight: FontWeight.w300,
                                         fontColor: AllColor.white,
                                         fontSize: 8),
@@ -374,10 +356,10 @@ class TabLeaderBoardWidget extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(right: 10, top: 10),
                         child: CustomText(
-                            text: "1024",
+                            text: pointsList![3].toString(),
                             fontWeight: FontWeight.w700,
                             fontColor: AllColor.white,
                             fontSize: 12),
@@ -396,6 +378,7 @@ class TabLeaderBoardWidget extends StatelessWidget {
                     children: [
                       Row(
                         children: [
+                          /*
                           const Padding(
                             padding:
                                 EdgeInsets.only(left: 10, top: 10, right: 30),
@@ -405,26 +388,19 @@ class TabLeaderBoardWidget extends StatelessWidget {
                                 fontColor: AllColor.white,
                                 fontSize: 20),
                           ),
+
+                           */
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: CircleAvatar(
                               maxRadius: height / 26,
                               backgroundColor: AllColor.linear2,
-                              child: ClipOval(
-                                child: CachedNetworkImage(
-                                  height: height / 11,
-                                  width: width / 5.3,
-                                  fit: BoxFit.fill,
-                                  placeholder: (context, url) => const SizedBox(
-                                    child: Center(
-                                      child: CircularProgressIndicator(
-                                        color: AllColor.white,
-                                      ),
-                                    ),
-                                  ),
-                                  imageUrl:
-                                      "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
-                                ),
+                              child: CustomText(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w400,
+                                text:
+                                    userNameList![4].toString().substring(0, 1),
+                                fontColor: AllColor.white,
                               ),
                               // radius: 12,
                             ),
@@ -436,9 +412,9 @@ class TabLeaderBoardWidget extends StatelessWidget {
                               child: SizedBox(
                                 height: height / 25,
                                 child: Column(
-                                  children: const [
+                                  children: [
                                     CustomText(
-                                        text: "Jackie Chan",
+                                        text: userNameList![4].toString(),
                                         fontWeight: FontWeight.w700,
                                         fontColor: AllColor.white,
                                         fontSize: 13),
@@ -446,7 +422,9 @@ class TabLeaderBoardWidget extends StatelessWidget {
                                       height: 2,
                                     ),
                                     CustomText(
-                                        text: "@Jackie",
+                                        text: leaderBoard![4]
+                                            .toString()
+                                            .replaceRange(6, 36, "....."),
                                         fontWeight: FontWeight.w300,
                                         fontColor: AllColor.white,
                                         fontSize: 8),
@@ -457,10 +435,10 @@ class TabLeaderBoardWidget extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(right: 10, top: 10),
                         child: CustomText(
-                            text: "1024",
+                            text: pointsList![4].toString(),
                             fontWeight: FontWeight.w700,
                             fontColor: AllColor.white,
                             fontSize: 12),
@@ -479,6 +457,7 @@ class TabLeaderBoardWidget extends StatelessWidget {
                     children: [
                       Row(
                         children: [
+                          /*
                           const Padding(
                             padding:
                                 EdgeInsets.only(left: 10, top: 10, right: 30),
@@ -488,26 +467,19 @@ class TabLeaderBoardWidget extends StatelessWidget {
                                 fontColor: AllColor.white,
                                 fontSize: 20),
                           ),
+
+                           */
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: CircleAvatar(
                               maxRadius: height / 26,
                               backgroundColor: AllColor.linear2,
-                              child: ClipOval(
-                                child: CachedNetworkImage(
-                                  height: height / 11,
-                                  width: width / 5.3,
-                                  fit: BoxFit.fill,
-                                  placeholder: (context, url) => const SizedBox(
-                                    child: Center(
-                                      child: CircularProgressIndicator(
-                                        color: AllColor.white,
-                                      ),
-                                    ),
-                                  ),
-                                  imageUrl:
-                                      "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
-                                ),
+                              child: CustomText(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w400,
+                                text:
+                                    userNameList![5].toString().substring(0, 1),
+                                fontColor: AllColor.white,
                               ),
                               // radius: 12,
                             ),
@@ -519,9 +491,9 @@ class TabLeaderBoardWidget extends StatelessWidget {
                               child: SizedBox(
                                 height: height / 25,
                                 child: Column(
-                                  children: const [
+                                  children: [
                                     CustomText(
-                                        text: "Jackie Chan",
+                                        text: userNameList![5].toString(),
                                         fontWeight: FontWeight.w700,
                                         fontColor: AllColor.white,
                                         fontSize: 13),
@@ -529,7 +501,9 @@ class TabLeaderBoardWidget extends StatelessWidget {
                                       height: 2,
                                     ),
                                     CustomText(
-                                        text: "@Jackie",
+                                        text: leaderBoard![5]
+                                            .toString()
+                                            .replaceRange(6, 36, "....."),
                                         fontWeight: FontWeight.w300,
                                         fontColor: AllColor.white,
                                         fontSize: 8),
@@ -540,10 +514,10 @@ class TabLeaderBoardWidget extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 10, top: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10, top: 10),
                         child: CustomText(
-                            text: "1024",
+                            text: pointsList![5].toString(),
                             fontWeight: FontWeight.w700,
                             fontColor: AllColor.white,
                             fontSize: 12),
@@ -551,16 +525,12 @@ class TabLeaderBoardWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Divider(
-                  thickness: 2,
-                  color: AllColor.linear2,
-                ),
               ],
             ),
           ),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height / 9,
+          height: MediaQuery.of(context).size.height / 15,
         ),
       ],
     );

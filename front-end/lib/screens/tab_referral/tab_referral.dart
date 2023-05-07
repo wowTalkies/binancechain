@@ -46,6 +46,7 @@ class _LayOut extends StatelessWidget {
               child: ListView(
             children: [
               TabReferralWidget(
+                  referralPoint: cubit.referralPoint,
                   itemCount: 6,
                   onPressed: () {
                     Navigator.pushNamed(context, AppRoutes.referral);
