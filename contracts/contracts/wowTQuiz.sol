@@ -2,6 +2,7 @@
 pragma solidity ^0.8.9;
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {WowTPoints} from "./wowTPoints.sol";
+import {WowTCommunity} from "./wowTCommunity.sol";
 
 //import "hardhat/console.sol";
 contract WowTQuiz is OwnableUpgradeable {
@@ -17,6 +18,7 @@ contract WowTQuiz is OwnableUpgradeable {
     // string private secret;
     //Points conracts
     WowTPoints private points;
+    WowTCommunity private community;
     //Structure to hold Questions and answers. correct index needs to be encripted
     // struct Question {
     //     string question;
@@ -45,7 +47,8 @@ contract WowTQuiz is OwnableUpgradeable {
         uint16 _createEligibility,
         uint16 _pointsToAnswer,
         //string memory _secret,
-        address _pointsContract
+        address _pointsContract,
+        address _communityContract
     ) external initializer {
         __Ownable_init();
         quizePoints = _quizePoints;
@@ -53,10 +56,12 @@ contract WowTQuiz is OwnableUpgradeable {
         pointsToAnswer = _pointsToAnswer;
         //secret = _secret;
         points = WowTPoints(_pointsContract);
+        community = WowTCommunity(_communityContract);
     }
 
     //Create Quiz
     function createQuiz(
+        string memory _communityName,
         string memory _quizName,
         // Question memory _question,
         string memory _description,
@@ -71,12 +76,26 @@ contract WowTQuiz is OwnableUpgradeable {
             userPoints > 20 || _creatorAddress == owner(),
             "Not enough point to create Quiz"
         );
-        quizmap[_quizName].description = _description;
-        quizmap[_quizName].question = _question;
-        quizmap[_quizName].options = _options;
-        quizmap[_quizName].answer = _answer;
-        quizmap[_quizName].imageUrl = _imageUrl;
-        quizmap[_quizName].creatorAddress = _creatorAddress;
+        require(
+            community.checkCommunityExists(_communityName),
+            "Community doesn't exist"
+        );
+        quizmap[_quizName] = Quiz(
+            _description,
+            _imageUrl,
+            _question,
+            _options,
+            _answer,
+            _creatorAddress
+        );
+        community.updateCommunityQuizes(_communityName, _quizName);
+
+        // quizmap[_quizName].description = _description;
+        // quizmap[_quizName].question = _question;
+        // quizmap[_quizName].options = _options;
+        // quizmap[_quizName].answer = _answer;
+        // quizmap[_quizName].imageUrl = _imageUrl;
+        // quizmap[_quizName].creatorAddress = _creatorAddress;
     }
 
     function getQuizdetails(

@@ -2,9 +2,10 @@
 pragma solidity ^0.8.9;
 
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {AccessControlUpgradeable} from "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import {WowTPoints} from "./wowTPoints.sol";
 
-contract WowTCommunity is OwnableUpgradeable {
+contract WowTCommunity is OwnableUpgradeable, AccessControlUpgradeable {
     uint16 public communityEntryPoints;
     address public pointsContract;
     string[] private communities;
@@ -36,11 +37,21 @@ contract WowTCommunity is OwnableUpgradeable {
 
     // mapping(address => UserPosts[]) private userPostMap;
 
+    bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE"); // Admin role for authorization
+
+    /// @dev Modifier to restrict function access to only those with the admin role.
+    modifier adminOnly() {
+        require(hasRole(ADMIN_ROLE, _msgSender()), "Must have admin role");
+        _;
+    }
+
     function initialize(
         address _pointsContract,
         uint16 _communityEntryPoints
     ) external initializer {
         __Ownable_init();
+        _grantRole(ADMIN_ROLE, _msgSender());
+        _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
         communityEntryPoints = _communityEntryPoints;
         points = WowTPoints(_pointsContract);
     }
@@ -54,9 +65,12 @@ contract WowTCommunity is OwnableUpgradeable {
     function createCommunity(
         string memory _communityName,
         string memory _description,
-        string memory _imageUrl,
-        string[] memory _quizesforEntry
-    ) external onlyOwner {
+        string memory _imageUrl
+    )
+        external
+        // string[] memory _quizesforEntry
+        onlyOwner
+    {
         // Check if community exists
         require(
             !communityMap[_communityName].exists,
@@ -67,7 +81,7 @@ contract WowTCommunity is OwnableUpgradeable {
         communityMap[_communityName].description = _description;
         communityMap[_communityName].exists = true;
         communityMap[_communityName].imageUrl = _imageUrl;
-        communityMap[_communityName].quizesforEntry = _quizesforEntry;
+        // communityMap[_communityName].quizesforEntry = _quizesforEntry;
     }
 
     function addMembers(
@@ -129,6 +143,13 @@ contract WowTCommunity is OwnableUpgradeable {
         communityEntryPoints = _newCommunityEntryPoints;
     }
 
+    function updateCommunityQuizes(
+        string memory _communityName,
+        string memory _quizName
+    ) public adminOnly {
+        communityMap[_communityName].quizesforEntry.push(_quizName);
+    }
+
     function checkMembership(
         string memory _communityName,
         address _communityParticipant
@@ -144,6 +165,12 @@ contract WowTCommunity is OwnableUpgradeable {
 
     function getCommunities() public view returns (string[] memory) {
         return communities;
+    }
+
+    function checkCommunityExists(
+        string memory _communityName
+    ) public view returns (bool) {
+        return communityMap[_communityName].exists;
     }
 
     function getPosts(
