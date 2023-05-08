@@ -5,12 +5,12 @@ async function main() {
   const factory = await hre.ethers.getContractFactory('WowTBadge');
 
   // const contract = await upgrades.deployProxy(factory, [
-  //   'https://wowtalkiesdevbucket.s3.ap-south-1.amazonaws.com/logo1.png',
-  //   '0xbAf59D95709F960a047130D3f9721887B9Db3E10',
+  //   'https://wowtalkiestestbucket.s3.ap-south-1.amazonaws.com/binancechain/badge/Gold.png',
+  //   '0xB192bb107DffaB91F8e6EB4D86f31567dC92Afc6',
   // ]);
 
   const contract = await upgrades.upgradeProxy(
-    '0x8D311f53c9970941B9507f31A20A4C9C122334db', // 0x36ecE8a451A211670d27f20D700b7C5D547F556b
+    '0xBA73EA1a276B25a237D455a8682AA3c991AAC4C8', // 0x36ecE8a451A211670d27f20D700b7C5D547F556b
     factory
   );
 

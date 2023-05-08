@@ -24,7 +24,9 @@ contract WowTReferral is OwnableUpgradeable {
     /**
      * @dev A mapping to store referral data for each user.
      */
-    mapping(address => ReferralUser) private referral;
+    mapping(address => ReferralUser) private referrer;
+
+    mapping(address => address[]) private referrals;
 
     /// @dev The WowTPoints contract to which referral points are added.
     WowTPoints private points;
@@ -47,15 +49,20 @@ contract WowTReferral is OwnableUpgradeable {
         address _installAddress,
         address _referralAddress
     ) public onlyOwner {
+        require(
+            !referrer[_installAddress].referralExists,
+            "Already have referrar"
+        );
         points.addPoints(_referralAddress, points.levelOnePoints());
-        referral[_installAddress].referralAddress = _referralAddress;
-        referral[_installAddress].referralExists = true;
-        points.updateReferralPoints(_referralAddress, points.levelOnePoints());
-        if (referral[_referralAddress].referralExists) {
-            address secondLevelAddress = referral[_referralAddress]
+        referrer[_installAddress].referralAddress = _referralAddress;
+        referrer[_installAddress].referralExists = true;
+        referrals[_referralAddress].push(_installAddress);
+        points.addReferralPoints(_referralAddress, points.levelOnePoints());
+        if (referrer[_referralAddress].referralExists) {
+            address secondLevelAddress = referrer[_referralAddress]
                 .referralAddress;
             points.addPoints(secondLevelAddress, points.levelTwoPoints());
-            points.updateReferralPoints(
+            points.addReferralPoints(
                 secondLevelAddress,
                 points.levelTwoPoints()
             );
@@ -64,12 +71,23 @@ contract WowTReferral is OwnableUpgradeable {
 
     /**
      * @dev Gets the referral data for a given user.
-     * @param _user The Ethereum address of the user.
+     * @param _account The Ethereum address of the user.
      * @return ReferralUser The referral data for the user.
      */
-    function getReferrals(
-        address _user
+    function getReferrer(
+        address _account
     ) public view returns (ReferralUser memory) {
-        return referral[_user];
+        return referrer[_account];
+    }
+
+    /**
+     * @dev Gets the list of referrals for a given user.
+     * @param _account The Ethereum address of the user.
+     * @return address[] The list of referrals for the user.
+     */
+    function getReferrals(
+        address _account
+    ) public view returns (address[] memory) {
+        return referrals[_account];
     }
 }

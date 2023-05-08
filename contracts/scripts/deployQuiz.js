@@ -4,17 +4,18 @@ const hre = require('hardhat');
 async function main() {
   const factory = await hre.ethers.getContractFactory('WowTQuiz');
 
-  const contract = await upgrades.deployProxy(factory, [
-    2,
-    20,
-    2,
-    '0xbAf59D95709F960a047130D3f9721887B9Db3E10',
-  ]);
+  // const contract = await upgrades.deployProxy(factory, [
+  //   2,
+  //   20,
+  //   2,
+  //   '0xB192bb107DffaB91F8e6EB4D86f31567dC92Afc6',
+  //   '0x10e8C8FB6Ccf12fFb388Ce527a2F69FCE5c74bF9',
+  // ]);
 
-  // const contract = await upgrades.upgradeProxy(
-  //   '0x79fAB6cE00896bc64d64dFEd6e56b25A7D35d07E',
-  //   factory
-  // );
+  const contract = await upgrades.upgradeProxy(
+    '0x203B9d8B1EB14BfD8C298ff2ea030F6f2217E786', // 0xC9809Cb6Cdb99b883798fDdb1EDAbe863Ef5f0F1
+    factory
+  );
 
   const [owner] = await hre.ethers.getSigners();
 

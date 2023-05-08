@@ -13,7 +13,7 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
     uint16 public levelTwoPoints; // Point threshold for Level 2
     uint16 public activeUserPoints; // Points earned by active users
     uint256 public minimumPointsForConvertion; // Minimum points required to convert to erc20 token
-    address[10] private topLeaderBoardAddress; // Array to store top 10 leaderboard positions
+    address[10] public topLeaderBoardAddress; // Array to store top 10 leaderboard positions
 
     mapping(address => uint256) private points; // Mapping to store points earned by each user
     mapping(address => uint256) private referralPoints; // Mapping to store referral points earned by each user
@@ -54,9 +54,9 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
      * @param _points The number of points to add.
      */
     function addPoints(address account, uint256 _points) public adminOnly {
-        // uint totalPoints = points[account] + _points;
-        points[account] += _points;
-        updateLeaderBoard(account, _points);
+        uint totalPoints = points[account] + _points;
+        points[account] = totalPoints;
+        updateLeaderBoard(account, totalPoints);
     }
 
     /**
@@ -67,7 +67,12 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
         addPoints(account, activeUserPoints);
     }
 
-    function updateReferralPoints(
+    /**
+     * @dev Adds referral points to a user's account.
+     * @param _account The address of the user's account to add referral points to.
+     * @param _points The number of referral points to add.
+     */
+    function addReferralPoints(
         address _account,
         uint256 _points
     ) public adminOnly {
@@ -92,16 +97,24 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
      * @param _points Amount of points earned by the user
      */
     function updateLeaderBoard(address account, uint256 _points) private {
-        uint i = 0;
-        for (i; i < topLeaderBoardAddress.length; i++) {
-            if (getPoints(topLeaderBoardAddress[i]) < _points) {
+        for (uint i = 0; i < topLeaderBoardAddress.length; i++) {
+            if (topLeaderBoardAddress[i] == account) {
+                delete topLeaderBoardAddress[i];
+                for (uint l = i; l < topLeaderBoardAddress.length - 1; l++) {
+                    topLeaderBoardAddress[l] = topLeaderBoardAddress[l + 1];
+                }
+            }
+        }
+        uint j = 0;
+        for (j; j < topLeaderBoardAddress.length; j++) {
+            if (getPoints(topLeaderBoardAddress[j]) < _points) {
                 break;
             }
         }
-        for (uint j = topLeaderBoardAddress.length - 1; j > i; j--) {
-            topLeaderBoardAddress[j] = topLeaderBoardAddress[j - 1];
+        for (uint k = topLeaderBoardAddress.length - 1; k > j; k--) {
+            topLeaderBoardAddress[k] = topLeaderBoardAddress[k - 1];
         }
-        topLeaderBoardAddress[i] = account;
+        topLeaderBoardAddress[j] = account;
     }
 
     /**
@@ -113,6 +126,11 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
         return points[account];
     }
 
+    /**
+     * @dev Gets the referral points earned by a user.
+     * @param account The address of the user's account.
+     * @return The number of referral points earned.
+     */
     function getReferralPoints(address account) public view returns (uint256) {
         return referralPoints[account];
     }

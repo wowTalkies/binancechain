@@ -16,7 +16,7 @@ async function main() {
   // ]);
 
   const contract = await upgrades.upgradeProxy(
-    '0x7faf3239A9bE79072a1FaA43A3acb664F2af78f9', // 0xbAf59D95709F960a047130D3f9721887B9Db3E10
+    '0xB192bb107DffaB91F8e6EB4D86f31567dC92Afc6', // 0xbAf59D95709F960a047130D3f9721887B9Db3E10
     factory
   );
 
@@ -35,10 +35,8 @@ async function main() {
 
   // console.log(`Initialized transaction hash is ${tx.hash}`);
 
-  // const getPoints = await contract.getPoints(
-  //   '0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65'
-  // );
-  // console.log('getPoints ', getPoints);
+  // const getTopLeaderBoards = await contract.getTopLeaderBoards();
+  // console.log('getTopLeaderBoards ', getTopLeaderBoards);
 
   // const grantRole = await contract.grantRole(
   //   '0xa49807205ce4d355092ef5a8a18f56e8913cf4a201fbe287825b095693c21775',
