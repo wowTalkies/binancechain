@@ -1,5 +1,4 @@
 import 'package:bnbapp/screens/discovery/cubit/discovery_cubit.dart';
-import 'package:bnbapp/widgets/gridcard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,19 +36,23 @@ class _LayOut extends StatelessWidget {
     final cubit = context.read<DiscoverCubit>();
     return BlocBuilder(
       bloc: cubit,
-      builder: (context, state) => Column(
-        children: [
-          Expanded(
-              child: ListView(
+      builder: (context, state) =>
+          Column(
             children: [
+              Expanded(
+                  child: ListView(
+                    children: const [
+                      /*
               GridCard(
                 imageUrl: cubit.list,
                 itemCount: cubit.list.length,
               )
+
+               */
+                    ],
+                  ))
             ],
-          ))
-        ],
-      ),
+          ),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'button.dart';
@@ -9,6 +8,8 @@ class TabReferralWidget extends StatelessWidget {
   final String? buttonText;
   final Function()? onPressed;
   final List<String>? list;
+  final List<String>? fullNameList;
+
   final int? itemCount;
   final BigInt? referralPoint;
 
@@ -18,7 +19,8 @@ class TabReferralWidget extends StatelessWidget {
       this.buttonText,
       this.list,
       this.itemCount,
-      this.referralPoint})
+      this.referralPoint,
+      this.fullNameList})
       : super(key: key);
 
   @override
@@ -31,7 +33,7 @@ class TabReferralWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              height: height / 10,
+              height: height / 8,
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(8),
@@ -54,7 +56,9 @@ class TabReferralWidget extends StatelessWidget {
                             fontWeight: FontWeight.w700),
                       ),
                       CustomText(
-                          text: referralPoint.toString() ?? '0',
+                          text: referralPoint.toString().isEmpty
+                              ? '0'
+                              : referralPoint.toString(),
                           fontSize: 20,
                           fontColor: AllColor.white,
                           fontWeight: FontWeight.w700),
@@ -78,8 +82,8 @@ class TabReferralWidget extends StatelessWidget {
                     ],
                   ),
                   Column(
-                    children: const [
-                      Padding(
+                    children: [
+                      const Padding(
                         padding: EdgeInsets.only(left: 10, top: 5, right: 10),
                         child: CustomText(
                             text: "   Total\nAccepted",
@@ -88,7 +92,9 @@ class TabReferralWidget extends StatelessWidget {
                             fontWeight: FontWeight.w700),
                       ),
                       CustomText(
-                          text: "0",
+                          text: list!.length.toString().isEmpty
+                              ? "0"
+                              : list!.length.toString(),
                           fontSize: 20,
                           fontColor: AllColor.white,
                           fontWeight: FontWeight.w700),
@@ -111,78 +117,82 @@ class TabReferralWidget extends StatelessWidget {
               onPressed: onPressed,
             ),
           ),
-          ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: itemCount,
-            shrinkWrap: true,
-            itemBuilder: (context, index) => Column(
-              children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircleAvatar(
-                        radius: MediaQuery.of(context).size.height / 30,
-                        // width: MediaQuery.of(context).size.width / 0.9,
-                        child: ClipOval(
-                          // borderRadius: BorderRadius.circular(8.0),
-                          child: CachedNetworkImage(
-                              height: MediaQuery.of(context).size.height / 7,
-                              fit: BoxFit.fill,
-                              placeholder: (context, url) => const SizedBox(
-                                    child: Center(
-                                      child: CircularProgressIndicator(
-                                        color: AllColor.white,
-                                      ),
-                                    ),
-                                  ),
-                              imageUrl: list?[index] ?? ''),
+          fullNameList!.isEmpty
+              ? const CustomText(
+                  text: "No Referrals",
+                  fontColor: AllColor.black,
+                  fontSize: 11,
+                )
+              : ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: itemCount,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: CircleAvatar(
+                              backgroundColor: AllColor.linear2,
+                              radius: MediaQuery.of(context).size.height / 30,
+                              // width: MediaQuery.of(context).size.width / 0.9,
+                              child: ClipOval(
+                                // borderRadius: BorderRadius.circular(8.0),
+                                child: CustomText(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w400,
+                                  text: list![index].toString(),
+                                  fontColor: AllColor.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: width / 30,
+                          ),
+                          Column(
+                            children: [
+                              CustomText(
+                                  text: fullNameList![index].toString(),
+                                  fontSize: 20,
+                                  fontColor: AllColor.black,
+                                  fontWeight: FontWeight.w700),
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsets.only(left: width / 7, right: 20),
+                            child: Container(
+                              alignment: Alignment.centerRight,
+                              width: width / 4,
+                              height: height / 30,
+                              decoration: BoxDecoration(
+                                  color: AllColor.white,
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(12)),
+                                  border: Border.all(color: AllColor.linear1)),
+                              child: const Center(
+                                child: CustomText(
+                                    text: "Accepted",
+                                    fontSize: 14,
+                                    fontColor: AllColor.linear1,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        child: Divider(
+                          thickness: 1,
+                          color: AllColor.linear2,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: width / 30,
-                    ),
-                    Column(
-                      children: const [
-                        CustomText(
-                            text: "Jackie chan",
-                            fontSize: 20,
-                            fontColor: AllColor.black,
-                            fontWeight: FontWeight.w700),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: width / 7, right: 20),
-                      child: Container(
-                        width: width / 4,
-                        height: height / 30,
-                        decoration: BoxDecoration(
-                            color: AllColor.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(12)),
-                            border: Border.all(color: AllColor.linear1)),
-                        child: const Center(
-                          child: CustomText(
-                              text: "Accepted",
-                              fontSize: 14,
-                              fontColor: AllColor.linear1,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
-                  child: Divider(
-                    thickness: 1,
-                    color: AllColor.linear2,
+                    ],
                   ),
-                ),
-              ],
-            ),
-          )
+                )
         ],
       ),
     );

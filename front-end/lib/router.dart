@@ -1,4 +1,4 @@
-import 'package:bnbapp/screens/community/cubit/cubit.dart';
+import 'package:bnbapp/screens/community/cubit/cummunity_cubit.dart';
 import 'package:bnbapp/screens/discovery/cubit/discovery_cubit.dart';
 import 'package:bnbapp/screens/faq/cubit/faq_cubit.dart';
 import 'package:bnbapp/screens/faq/faq_sreen.dart';

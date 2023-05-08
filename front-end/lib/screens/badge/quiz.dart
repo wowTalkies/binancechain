@@ -3,8 +3,8 @@ import 'package:bnbapp/widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'cubit/discovery_cubit.dart';
-import 'cubit/discovery_state.dart';
+import 'cubit/quiz_cubit.dart';
+import 'cubit/quiz_state.dart';
 
 class Quiz extends StatelessWidget {
   const Quiz({Key? key}) : super(key: key);

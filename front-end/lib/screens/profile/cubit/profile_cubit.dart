@@ -1,11 +1,14 @@
 import 'dart:convert';
 
 import 'package:bnbapp/auth_cubit/auth_cubit.dart';
+import 'package:bnbapp/contract/WowTBadge.g.dart';
+import 'package:bnbapp/contract/WowTPoints.g.dart';
 import 'package:bnbapp/contract/WowTReferral.g.dart';
 import 'package:bnbapp/paths/path.dart';
 import 'package:bnbapp/screens/profile/cubit/profile_state.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
 import 'package:bnbapp/utils/preferencehelper.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -27,6 +30,9 @@ class ProfileCubit extends BaseCubit<ProfileState> {
   List<String> referrerNameAndAddress = [];
   List<EthereumAddress> referrals = [];
   BigInt? points;
+  List<dynamic> badges = [];
+  List<dynamic> badgeYearList = [];
+  List<dynamic> badgeImageList = [];
 
   ProfileCubit(this.authCubit) : super(ProfileInitialState());
 
@@ -34,15 +40,21 @@ class ProfileCubit extends BaseCubit<ProfileState> {
     emit(ProfileLoadingState());
     await Future.delayed(const Duration(seconds: 3));
     userId = await PreferenceHelper.getUserId() ?? '';
-    await paths?.address
-        .child(userId.toString())
-        .child("About")
-        .onValue
-        .listen((event) {
-      about?.value = jsonDecode(jsonEncode(event.snapshot.value));
-      debugPrint("the about is ${about.value.toString()}");
-      aboutText = about.value.toString();
-    });
+    final aboutFb =
+        await paths?.address.child(userId.toString()).child("About").get();
+    debugPrint('the fbRead is ${aboutFb?.value.toString()}');
+    if (aboutFb?.value.toString() != null) {
+      await paths?.address
+          .child(userId.toString())
+          .child("About")
+          .onValue
+          .listen((event) {
+        about?.value = jsonDecode(jsonEncode(event.snapshot.value));
+        debugPrint("the about is ${about.value.toString()}");
+        aboutText = about.value.toString();
+      });
+    }
+
     Web3Client client = Web3Client(authCubit.node.toString(), httpClient);
     debugPrint(
         'its coming ${userId.toString().substring(2)} ${EthereumAddress.fromHex(userId.toString())}');
@@ -56,6 +68,24 @@ class ProfileCubit extends BaseCubit<ProfileState> {
       client: client,
     );
     referrals = await wowTReferral.getReferrals(address);
+    WowTPoints wowTPoints = WowTPoints(
+        client: client,
+        address:
+            EthereumAddress.fromHex(authCubit.profileModel!.points.toString()));
+
+    WowTBadge wowTBadge = WowTBadge(
+        client: client,
+        address:
+            EthereumAddress.fromHex(authCubit.profileModel!.badge.toString()));
+    badges = await wowTBadge.getBadges(address);
+    for (var z = 0; z < badges.length; z++) {
+      badgeYearList.add(badges[z][0]);
+      badgeImageList.add(badges[z][1]);
+    }
+
+    debugPrint('the all badge year list ${badgeImageList.toString()}');
+    debugPrint('the all badges was ${badgeYearList.toString()}');
+    // debugPrint('the all badges are ${badges[0].toString()}');
     for (var j = 0; j < referrals.length; j++) {
       var snapshot = await paths?.address
           .child(referrals[j].toString())
@@ -67,10 +97,8 @@ class ProfileCubit extends BaseCubit<ProfileState> {
       debugPrint("the username is ${snapshot?.value.toString()}");
     }
     debugPrint('the referral lis is ${referrals.toString()}');
-
     PendingDynamicLinkData? initialLink =
         await FirebaseDynamicLinks.instance.getInitialLink();
-
     debugPrint('referral cubit link ${initialLink?.link.toString()}');
     var firstInvite =
         await paths?.address.child(userId!).child("firstInvite").get();
@@ -78,7 +106,6 @@ class ProfileCubit extends BaseCubit<ProfileState> {
     Uri? initLink = initialLink?.link;
     String? inviteLink = firstInvite?.value.toString();
     debugPrint("initLink is $initLink and invite link is $inviteLink");
-
     try {
       if (initLink != null) {
         if (inviteLink == "null") {
@@ -88,10 +115,26 @@ class ProfileCubit extends BaseCubit<ProfileState> {
           var queryAddress = qAddress.toString().substring(10);
           debugPrint('the query address is ${queryAddress.toString()}');
           debugPrint('the link query is ${deepLink.query}');
-
           await paths?.address
               .child(userId!)
               .update({"firstInvite": "Invited"});
+          await Dio().post(
+            authCubit.profileModel!.requestUrl.toString(),
+            options: Options(
+                headers: {
+                  "x-api-key": authCubit.profileModel!.apiKey.toString()
+                },
+                followRedirects: false,
+                validateStatus: (status) {
+                  return status! < 500;
+                }),
+            data: {
+              "method": "addReferralPoints",
+              "userAddress": address,
+              "referralAddress":
+                  EthereumAddress.fromHex(queryAddress.toString())
+            },
+          );
         }
       }
     } catch (ex) {

@@ -1,8 +1,8 @@
 import 'package:bnbapp/auth_cubit/auth_cubit.dart';
-import 'package:bnbapp/screens/badge/cubit/discovery_cubit.dart';
+import 'package:bnbapp/screens/badge/cubit/quiz_cubit.dart';
 import 'package:bnbapp/screens/badge/quiz.dart';
-import 'package:bnbapp/screens/discovery/cubit/discovery_cubit.dart';
-import 'package:bnbapp/screens/discovery/discovery.dart';
+import 'package:bnbapp/screens/community/community_screen.dart';
+import 'package:bnbapp/screens/community/cubit/cummunity_cubit.dart';
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/appbar.dart';
 import 'package:bnbapp/widgets/tabs.dart';
@@ -20,7 +20,7 @@ class DiscoverTab extends StatelessWidget {
       child: Column(
         children: [
           const CustomAppBar(
-            title: "Discover Quizzes",
+            title: "Discover",
           ),
           const SizedBox(
             height: 10,
@@ -58,9 +58,9 @@ class DiscoverTab extends StatelessWidget {
                         create: (context) {
                           final AuthCubit authenticationCubit =
                               BlocProvider.of<AuthCubit>(context);
-                          return DiscoverCubit(authenticationCubit)..init();
+                          return CommunityCubit(authenticationCubit)..init();
                         },
-                        child: const Discover(),
+                        child: const Community(),
                       ),
                       BlocProvider(
                         create: (context) {

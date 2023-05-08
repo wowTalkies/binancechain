@@ -1,5 +1,6 @@
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class Tabs extends StatelessWidget {
@@ -17,9 +18,10 @@ class Tabs extends StatelessWidget {
   final String? text2;
   final String? faq;
   final double? imageContainerHeight;
+  final String? badgeYearList;
+  final String? badgeImageList;
 
-  const Tabs({
-    Key? key,
+  const Tabs({Key? key,
     this.color,
     this.text,
     this.fontSize,
@@ -34,7 +36,9 @@ class Tabs extends StatelessWidget {
     this.imageContainerHeight,
     this.faq,
     this.text2,
-  }) : super(key: key);
+    this.badgeYearList,
+    this.badgeImageList})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,55 +57,74 @@ class Tabs extends StatelessWidget {
           ),
           child: assetImage == null && faq == null
               ? Center(
+            child: CustomText(
+              text: text ?? '',
+              fontSize: fontSize,
+              fontColor: color,
+            ),
+          )
+              : faq != null && assetImage == null
+              ? Column(
+            children: [
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
                   child: CustomText(
                     text: text ?? '',
-                    fontSize: fontSize,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
                     fontColor: color,
                   ),
-                )
-              : faq != null && assetImage == null
-                  ? Column(
-                      children: [
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
-                            child: CustomText(
-                              text: text ?? '',
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
-                              fontColor: color,
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
-                            child: CustomText(
-                              text: text2 ?? '',
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              fontColor: color,
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  : Center(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.rectangle,
+                ),
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
+                  child: CustomText(
+                    text: text2 ?? '',
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    fontColor: color,
+                  ),
+                ),
+              ),
+            ],
+          )
+              : Center(
+            child: Container(
+              decoration: const BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  color: AllColor.white,
+                  borderRadius: BorderRadius.all(Radius.circular(8))),
+              height: imageContainerHeight,
+              width: imageContainerWidth,
+              child: Row(
+                children: [
+
+                  CachedNetworkImage(
+                      height: MediaQuery
+                          .of(context)
+                          .size
+                          .height / 7,
+                      fit: BoxFit.fill,
+                      placeholder: (context, url) =>
+                      const SizedBox(
+                        child: Center(
+                          child: CircularProgressIndicator(
                             color: AllColor.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
-                        height: imageContainerHeight,
-                        width: imageContainerWidth,
-                        child: Image.asset(
-                          assetImage.toString(),
-                          fit: fit,
-                          width: imageWidth,
-                          height: imageHeight,
+                          ),
                         ),
                       ),
-                    )),
+                      imageUrl: badgeImageList.toString() ?? ''), CustomText(
+                    text: badgeYearList.toString() ?? '',
+                    fontWeight: FontWeight.w400,
+                    fontSize: 11,
+                    fontColor: color,
+                  ),
+                ],
+              ),
+            ),
+          )),
     );
   }
 }

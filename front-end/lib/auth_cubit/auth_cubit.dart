@@ -17,6 +17,7 @@ class AuthCubit extends BaseCubit<AuthState> {
   static const Color white = Color(0xffffffff);
   String? profileAbout;
   String? address = "";
+  ValueNotifier<String> addressNotifier = ValueNotifier("");
   ProfileModel? profileModel;
 
   // int? points = 0;
@@ -32,6 +33,9 @@ class AuthCubit extends BaseCubit<AuthState> {
     await Future.delayed(const Duration(seconds: 3));
     final userId = await PreferenceHelper.getUserId() ?? '';
     address = userId.toString();
+    addressNotifier.value = address.toString();
+    debugPrint(
+        'the notifier is ${addressNotifier.value.toString()} ${addressNotifier.value.toString()}');
     final snapshot = await paths?.node.get();
     node = snapshot?.value.toString();
 
@@ -48,7 +52,8 @@ class AuthCubit extends BaseCubit<AuthState> {
           EthereumAddress.fromHex(profileModel!.points!);
       WowTPoints wowTPoints = WowTPoints(address: cdAddress, client: client);
       var owner = await wowTPoints.owner();
-      debugPrint('owner address  coming ${owner.toString()}');
+      debugPrint(
+          'owner address  coming ${owner.toString()} ${address.toString()}');
       points = await wowTPoints.getPoints(addresss);
       leaderBoard = await wowTPoints.getTopLeaderBoards();
       debugPrint('the leader board list was ${leaderBoard.toString()}');

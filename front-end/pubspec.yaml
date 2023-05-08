@@ -60,7 +60,7 @@ dependencies:
     git: https://github.com/danilof/dio-http-cache
   http: ^0.13.6
   google_fonts: ^4.0.4
-
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:

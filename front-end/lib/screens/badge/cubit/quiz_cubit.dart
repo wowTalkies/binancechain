@@ -2,7 +2,7 @@ import 'package:bnbapp/auth_cubit/auth_cubit.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
 import 'package:flutter/material.dart';
 
-import 'discovery_state.dart';
+import 'quiz_state.dart';
 
 class QuizCubit extends BaseCubit<QuizState> {
   final AuthCubit authCubit;

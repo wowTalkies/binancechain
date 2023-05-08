@@ -1,3 +1,4 @@
+import 'package:bnbapp/widgets/custom_circular_progress_indicator.dart';
 import 'package:bnbapp/widgets/tab_leaderboard_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,11 +43,17 @@ class _LayOut extends StatelessWidget {
           Expanded(
               child: ListView(
             children: [
-              TabLeaderBoardWidget(
-                leaderBoard: cubit.leaderBoard,
-                pointsList: cubit.pointsList,
-                userNameList: cubit.userNameList,
-              )
+              cubit.state is! LeaderBoardLoadedState
+                  ? Column(
+                      children: const [
+                        CustomCircularProgressIndicator(),
+                      ],
+                    )
+                  : TabLeaderBoardWidget(
+                      leaderBoard: cubit.leaderBoard,
+                      pointsList: cubit.pointsList,
+                      userNameList: cubit.userNameList,
+                    )
             ],
           ))
         ],

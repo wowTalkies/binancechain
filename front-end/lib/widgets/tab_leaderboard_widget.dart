@@ -67,12 +67,12 @@ class TabLeaderBoardWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               CustomText(
-                                  text: userNameList![0].toString(),
+                                  text: userNameList![1].toString(),
                                   fontWeight: FontWeight.w700,
                                   fontColor: AllColor.white,
                                   fontSize: 14),
                               CustomText(
-                                  text: leaderBoard![0]
+                                  text: leaderBoard![1]
                                       .toString()
                                       .replaceRange(6, 40, "....."),
                                   fontWeight: FontWeight.w400,
@@ -82,7 +82,7 @@ class TabLeaderBoardWidget extends StatelessWidget {
                                 height: height / 50,
                               ),
                               CustomText(
-                                  text: pointsList![0].toString(),
+                                  text: pointsList![1].toString(),
                                   fontWeight: FontWeight.w700,
                                   fontColor: AllColor.white,
                                   fontSize: 15),
@@ -101,7 +101,7 @@ class TabLeaderBoardWidget extends StatelessWidget {
                             child: CustomText(
                               fontSize: 40,
                               fontWeight: FontWeight.w400,
-                              text: userNameList![0].toString().substring(0, 1),
+                              text: userNameList![1].toString().substring(0, 1),
                               fontColor: AllColor.white,
                             ),
                             // radius: 12,
@@ -139,12 +139,12 @@ class TabLeaderBoardWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CustomText(
-                                text: userNameList![1].toString(),
+                                text: userNameList![0].toString(),
                                 fontWeight: FontWeight.w700,
                                 fontColor: AllColor.white,
                                 fontSize: 14),
                             CustomText(
-                                text: leaderBoard![1]
+                                text: leaderBoard![0]
                                     .toString()
                                     .replaceRange(6, 40, "....."),
                                 fontWeight: FontWeight.w400,
@@ -154,7 +154,7 @@ class TabLeaderBoardWidget extends StatelessWidget {
                               height: height / 30,
                             ),
                             CustomText(
-                                text: pointsList![1].toString(),
+                                text: pointsList![0].toString(),
                                 fontWeight: FontWeight.w700,
                                 fontColor: AllColor.white,
                                 fontSize: 15),
@@ -171,7 +171,7 @@ class TabLeaderBoardWidget extends StatelessWidget {
                             child: CustomText(
                               fontSize: 40,
                               fontWeight: FontWeight.w400,
-                              text: userNameList![1]
+                              text: userNameList![0]
                                   .toString()
                                   .substring(0, 1)
                                   .toUpperCase(),
@@ -339,8 +339,8 @@ class TabLeaderBoardWidget extends StatelessWidget {
                                         fontWeight: FontWeight.w700,
                                         fontColor: AllColor.white,
                                         fontSize: 13),
-                                    SizedBox(
-                                      height: 2,
+                                    const SizedBox(
+                                      height: 0,
                                     ),
                                     CustomText(
                                         text: leaderBoard![3]
@@ -419,7 +419,7 @@ class TabLeaderBoardWidget extends StatelessWidget {
                                         fontColor: AllColor.white,
                                         fontSize: 13),
                                     SizedBox(
-                                      height: 2,
+                                      height: 0,
                                     ),
                                     CustomText(
                                         text: leaderBoard![4]
@@ -436,7 +436,7 @@ class TabLeaderBoardWidget extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: 10, top: 10),
+                        padding: const EdgeInsets.only(right: 10, top: 10),
                         child: CustomText(
                             text: pointsList![4].toString(),
                             fontWeight: FontWeight.w700,
@@ -497,8 +497,8 @@ class TabLeaderBoardWidget extends StatelessWidget {
                                         fontWeight: FontWeight.w700,
                                         fontColor: AllColor.white,
                                         fontSize: 13),
-                                    SizedBox(
-                                      height: 2,
+                                    const SizedBox(
+                                      height: 0,
                                     ),
                                     CustomText(
                                         text: leaderBoard![5]

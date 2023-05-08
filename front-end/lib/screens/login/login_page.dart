@@ -60,6 +60,7 @@ class _LoginsState extends State<Logins> {
                     height: MediaQuery.of(context).size.height / 3,
                   ),
                   SizedBox(
+                    height: 50,
                     child: Center(
                       child: CustomTextField(
                         obscure: false,

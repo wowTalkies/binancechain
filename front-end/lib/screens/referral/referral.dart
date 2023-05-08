@@ -68,19 +68,19 @@ class _LayOut extends StatelessWidget {
                 referral3: "Multilevel referral",
                 referral4: "Unlock experiences with points",
                 whatsAppOnPressed: () async {
-                  await cubit.createLinkandShare("WhatsApp");
+                  await cubit.createLinkandShare("WhatsApp", "");
                   //  await cubit.flutterShareMe.shareToWhatsApp();
                 },
                 instagramOnPressed: () async {
-                  await cubit.createLinkandShare("Instagram");
+                  await cubit.createLinkandShare("Instagram", "");
                   //   await cubit.flutterShareMe.shareToInstagram(filePath: "");
                 },
                 telegramOnPressed: () async {
-                  await cubit.createLinkandShare("Telegram");
+                  await cubit.createLinkandShare("Telegram", "");
                   // await cubit.flutterShareMe.shareToTelegram(msg: "Telegram");
                 },
                 linkOnPressed: () async {
-                  await cubit.createLinkandShare("Link");
+                  await cubit.createLinkandShare("Link", "");
                   // await cubit.flutterShareMe.shareToWhatsApp();
                 },
                 fontSize3: 11,
@@ -178,23 +178,31 @@ class _LayOut extends StatelessWidget {
                                                     null
                                                 ? InkWell(
                                                     onTap: () async {
-                                                      await cubit.sendMessage(
-                                                          '${cubit.textEditingController.value.text}\n${cubit.initialLink}',
-                                                          cubit
-                                                              .contacts[index]
-                                                              .phones[0]
-                                                              .number);
+                                                      debugPrint('hi hello');
+
+                                                      await cubit
+                                                          .createLinkandShare(
+                                                              "Message",
+                                                              cubit
+                                                                  .contacts[
+                                                                      index]
+                                                                  .phones[0]
+                                                                  .number);
                                                     },
                                                     child: const Icon(
                                                         Icons.person))
                                                 : InkWell(
                                                     onTap: () async {
-                                                      await cubit.sendMessage(
-                                                          '${cubit.textEditingController.value.text}\n${cubit.initialLink}',
-                                                          cubit
-                                                              .contacts[index]
-                                                              .phones[0]
-                                                              .number);
+                                                      debugPrint('hi hello');
+
+                                                      await cubit
+                                                          .createLinkandShare(
+                                                              "Message",
+                                                              cubit
+                                                                  .contacts[
+                                                                      index]
+                                                                  .phones[0]
+                                                                  .number);
                                                     },
                                                     child: CircleAvatar(
                                                       radius: 25,
@@ -238,8 +246,8 @@ class _LayOut extends StatelessWidget {
                                         padding: const EdgeInsets.all(0.0),
                                         child: InkWell(
                                           onTap: () async {
-                                            await cubit
-                                                .createLinkandShare("Email");
+                                            await cubit.createLinkandShare(
+                                                "Email", "");
                                           },
                                           child: Image.asset(
                                             fit: BoxFit.contain,
@@ -315,8 +323,8 @@ class _LayOut extends StatelessWidget {
                                             0, 0, 0, 9),
                                         child: InkWell(
                                           onTap: () async {
-                                            await cubit
-                                                .createLinkandShare("WhatsApp");
+                                            await cubit.createLinkandShare(
+                                                "WhatsApp", "");
                                           },
                                           child: Image.asset(
                                             fit: BoxFit.fill,

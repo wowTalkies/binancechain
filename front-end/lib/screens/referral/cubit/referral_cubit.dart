@@ -91,7 +91,7 @@ class ReferralCubit extends BaseCubit<ReferralState> {
     await sendSMS(message: message, recipients: rece);
   }
 
-  createLinkandShare(String channel) async {
+  createLinkandShare(String channel, recepients) async {
     debugPrint("address is ${authCubit.address} ");
     final dynamicLinkParams = DynamicLinkParameters(
       link: Uri.parse(
@@ -124,6 +124,17 @@ class ReferralCubit extends BaseCubit<ReferralState> {
           // statements;
         }
         break;
+      case "Message":
+        {
+          List<String> rece = [];
+          rece.add(recepients);
+          await sendSMS(
+              message:
+                  'Use my referral link to download the wowTalkies app - ${dynamicLink.shortUrl}',
+              recipients: rece);
+          // statements;
+        }
+        break;
       case "Link":
         {
           Clipboard.setData(
@@ -135,7 +146,7 @@ class ReferralCubit extends BaseCubit<ReferralState> {
       case "Email":
         var email = Email(
           body:
-              'Use my referral link to download the wowTalkies app - ${dynamicLink.shortUrl}',
+              'Use my referral link to download the wowTalkies app - ${dynamicLink.shortUrl.toString()}',
           subject: 'App invitation',
           recipients: [],
           isHTML: false,

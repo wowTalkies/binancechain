@@ -1,14 +1,24 @@
 import 'package:bnbapp/utils/colors.dart';
-import 'package:bnbapp/widgets/button.dart';
 import 'package:bnbapp/widgets/text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class GridCard extends StatelessWidget {
   final int? itemCount;
-  final List<String?>? imageUrl;
+  final List<String>? imageUrl;
 
-  const GridCard({Key? key, this.itemCount, this.imageUrl}) : super(key: key);
+  final List<String>? descriptionList;
+  final List<BigInt>? totalMembers;
+  final List<String>? communityNameList;
+
+  const GridCard(
+      {Key? key,
+      this.itemCount,
+      this.imageUrl,
+      this.descriptionList,
+      this.totalMembers,
+      this.communityNameList})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +67,7 @@ class GridCard extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                            imageUrl: imageUrl?[index] ?? ''),
+                            imageUrl: imageUrl![index].toString() ?? ''),
                       ),
                     ),
                   ),
@@ -66,16 +76,16 @@ class GridCard extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
+                        children: [
                           CustomText(
-                              text: "200",
+                              text: totalMembers![index].toString(),
                               fontWeight: FontWeight.w700,
-                              fontColor: Colors.grey,
+                              fontColor: AllColor.white,
                               fontSize: 19),
-                          Icon(
+                          const Icon(
                             Icons.person,
                             size: 40,
-                            color: Colors.grey,
+                            color: AllColor.white,
                           )
                         ],
                       ),
@@ -97,42 +107,62 @@ class GridCard extends StatelessWidget {
                               end: Alignment.bottomCenter,
                             ),
                             color: AllColor.white),
-                        child: Row(
-                          //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: ListView(
                           children: [
-                            Column(
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              100,
+                                    ),
+                                    SizedBox(
+                                      width: 300,
+                                      child: CustomText(
+                                          text: communityNameList![index]
+                                              .toString(),
+                                          fontWeight: FontWeight.w700,
+                                          fontColor: AllColor.white,
+                                          fontSize: 19),
+                                    ),
+                                    SizedBox(
+                                      width:
+                                          MediaQuery.of(context).size.height /
+                                              4,
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              100,
+                                    ),
+                                    SizedBox(
+                                      width: 300,
+                                      child: CustomText(
+                                          text: descriptionList![index]
+                                              .toString(),
+                                          fontWeight: FontWeight.w400,
+                                          fontColor: AllColor.white,
+                                          fontSize: 14),
+                                    ),
+                                  ],
+                                ),
                                 SizedBox(
+                                  width: MediaQuery.of(context).size.width / 6,
+                                ),
+                                /*
+                                Button(
+                                  text: "Take Quiz",
+                                  textSize: 14,
                                   height:
-                                      MediaQuery.of(context).size.height / 100,
+                                      MediaQuery.of(context).size.height / 20,
+                                  // width: MediaQuery.of(context).size.width / 3.8,
                                 ),
-                                const CustomText(
-                                    text: "Community 1",
-                                    fontWeight: FontWeight.w700,
-                                    fontColor: AllColor.white,
-                                    fontSize: 19),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.height / 4,
-                                ),
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height / 100,
-                                ),
-                                const CustomText(
-                                    text: "Jackie chan community",
-                                    fontWeight: FontWeight.w400,
-                                    fontColor: AllColor.white,
-                                    fontSize: 14),
+
+                                 */
                               ],
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width / 6,
-                            ),
-                            Button(
-                              text: "Take Quiz",
-                              textSize: 14,
-                              height: MediaQuery.of(context).size.height / 20,
-                              // width: MediaQuery.of(context).size.width / 3.8,
                             ),
                           ],
                         )),
