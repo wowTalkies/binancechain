@@ -4,6 +4,7 @@ import 'package:bnbapp/contract/WowTReferral.g.dart';
 import 'package:bnbapp/paths/path.dart';
 import 'package:bnbapp/screens/tab_referral/cubit/tab_referral_state.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
+import 'package:bnbapp/utils/preferencehelper.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:web3dart/web3dart.dart';
@@ -37,10 +38,14 @@ class TabReferralCubit extends BaseCubit<TabReferralState> {
           EthereumAddress.fromHex(authCubit.profileModel!.referrals.toString()),
       client: client,
     );
+    var preAddress = await PreferenceHelper.getUserId();
     var referrals = await wowTReferrals
-        .getReferrals(EthereumAddress.fromHex(authCubit.address.toString()));
-    referralPoint = await wowTReferral.getReferralPoints(
-        EthereumAddress.fromHex(authCubit.address.toString()));
+        .getReferrals(EthereumAddress.fromHex(preAddress.toString()));
+    var address = await PreferenceHelper.getUserId();
+    debugPrint(
+        'the  userid is ${authCubit.address.toString()}  ${address.toString()}');
+    referralPoint = await wowTReferral
+        .getReferralPoints(EthereumAddress.fromHex(address.toString()));
     for (var j = 0; j < referrals.length; j++) {
       var snapshot = await paths?.address
           .child(referrals[j].toString())

@@ -8,6 +8,14 @@ class QuizLoadingState extends QuizState {}
 
 class QuizLoadedState extends QuizState {}
 
+class QuizBackButtonState extends QuizState {}
+
+class QuizAnswerClickedState extends QuizState {}
+
+class QuizAnsweredState extends QuizState {}
+
+class QuizWrongAnswerState extends QuizState {}
+
 class QuizErrorState extends QuizState {
   final String error;
 

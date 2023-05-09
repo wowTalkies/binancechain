@@ -250,11 +250,15 @@ class ProfileWidget extends StatelessWidget {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    CustomText(
-                                        text: "${cubit.authCubit.points}",
-                                        fontWeight: FontWeight.w700,
-                                        fontColor: AllColor.white,
-                                        fontSize: 14),
+                                    ValueListenableBuilder(
+                                      valueListenable: cubit.points,
+                                      builder: (context, value, child) =>
+                                          CustomText(
+                                              text: value.toString(),
+                                              fontWeight: FontWeight.w700,
+                                              fontColor: AllColor.white,
+                                              fontSize: 14),
+                                    ),
                                     const CustomText(
                                         text: "Points",
                                         fontWeight: FontWeight.w400,
@@ -274,6 +278,7 @@ class ProfileWidget extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              /*
                               ValueListenableBuilder(
                                 valueListenable:
                                     cubit.authCubit.addressNotifier,
@@ -285,6 +290,15 @@ class ProfileWidget extends StatelessWidget {
                                     fontColor: AllColor.white,
                                     fontSize: 12),
                               ),
+
+                               */
+                              CustomText(
+                                  text: cubit.userId.toString().isNotEmpty
+                                      ? "Wallet Address : ${cubit.userId.toString().replaceRange(6, 36, ".....")}"
+                                      : "Wallet Address : Loading...",
+                                  fontWeight: FontWeight.w400,
+                                  fontColor: AllColor.white,
+                                  fontSize: 12),
                               const SizedBox(
                                 width: 5,
                               ),

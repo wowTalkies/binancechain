@@ -29,7 +29,7 @@ class ProfileCubit extends BaseCubit<ProfileState> {
   List<String> referrerName = [];
   List<String> referrerNameAndAddress = [];
   List<EthereumAddress> referrals = [];
-  BigInt? points;
+  ValueNotifier<BigInt> points = ValueNotifier(BigInt.parse("0"));
   List<dynamic> badges = [];
   List<dynamic> badgeYearList = [];
   List<dynamic> badgeImageList = [];
@@ -40,6 +40,7 @@ class ProfileCubit extends BaseCubit<ProfileState> {
     emit(ProfileLoadingState());
     await Future.delayed(const Duration(seconds: 3));
     userId = await PreferenceHelper.getUserId() ?? '';
+
     final aboutFb =
         await paths?.address.child(userId.toString()).child("About").get();
     debugPrint('the fbRead is ${aboutFb?.value.toString()}');
@@ -72,7 +73,7 @@ class ProfileCubit extends BaseCubit<ProfileState> {
         client: client,
         address:
             EthereumAddress.fromHex(authCubit.profileModel!.points.toString()));
-
+    points.value = await wowTPoints.getPoints(address);
     WowTBadge wowTBadge = WowTBadge(
         client: client,
         address:
@@ -106,6 +107,10 @@ class ProfileCubit extends BaseCubit<ProfileState> {
     Uri? initLink = initialLink?.link;
     String? inviteLink = firstInvite?.value.toString();
     debugPrint("initLink is $initLink and invite link is $inviteLink");
+    debugPrint(
+        'the referral apikey ${authCubit.profileModel!.requestUrl.toString()}');
+    debugPrint(
+        'the referral request url ${authCubit.profileModel!.apiKey.toString()}');
     try {
       if (initLink != null) {
         if (inviteLink == "null") {
@@ -118,23 +123,29 @@ class ProfileCubit extends BaseCubit<ProfileState> {
           await paths?.address
               .child(userId!)
               .update({"firstInvite": "Invited"});
-          await Dio().post(
-            authCubit.profileModel!.requestUrl.toString(),
-            options: Options(
-                headers: {
-                  "x-api-key": authCubit.profileModel!.apiKey.toString()
-                },
-                followRedirects: false,
-                validateStatus: (status) {
-                  return status! < 500;
-                }),
-            data: {
-              "method": "addReferralPoints",
-              "userAddress": address,
-              "referralAddress":
-                  EthereumAddress.fromHex(queryAddress.toString())
-            },
-          );
+          debugPrint(
+              'the referral apikey ${authCubit.profileModel!.requestUrl.toString()}');
+          debugPrint(
+              'the referral request url ${authCubit.profileModel!.apiKey.toString()}');
+          // debugPrint('the referral apikey ${}');
+
+          var jsons = {
+            "method": "addReferralPoints",
+            "userAddress": userId.toString(),
+            "referralAddress": queryAddress.toString()
+          };
+          final result = await Dio().post(
+              authCubit.profileModel!.requestUrl.toString(),
+              options: Options(
+                  headers: {
+                    "x-api-key": authCubit.profileModel!.apiKey.toString()
+                  },
+                  followRedirects: false,
+                  validateStatus: (status) {
+                    return status! < 500;
+                  }),
+              data: jsons);
+          debugPrint('the result is ${result.toString()}');
         }
       }
     } catch (ex) {
