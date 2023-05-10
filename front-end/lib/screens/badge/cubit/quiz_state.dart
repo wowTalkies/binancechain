@@ -10,6 +10,12 @@ class QuizLoadedState extends QuizState {}
 
 class QuizBackButtonState extends QuizState {}
 
+class QuizCreateRequestedState extends QuizState {}
+
+class QuizAddedState extends QuizState {}
+
+class QuizNotAddedState extends QuizState {}
+
 class QuizAnswerClickedState extends QuizState {}
 
 class QuizAnsweredState extends QuizState {}

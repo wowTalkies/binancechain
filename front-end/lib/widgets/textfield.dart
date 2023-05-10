@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
   final bool? obscure;
   final Color? textFieldColor;
   final double? width;
+  final bool? enable;
   final double? height;
   final Widget? prefixWigdget;
 
@@ -18,9 +19,10 @@ class CustomTextField extends StatelessWidget {
       required this.hintText,
       required this.textFieldColor,
       this.prefixWigdget,
-      required this.width,
+      this.width,
       this.height,
-      this.obscure})
+      this.obscure,
+      this.enable})
       : super(key: key);
 
   @override
@@ -35,6 +37,7 @@ class CustomTextField extends StatelessWidget {
         height: height,
         width: width,
         child: TextField(
+          enabled: enable ?? true,
           maxLines: 20,
           style: const TextStyle(color: AllColor.black),
           controller: controller,

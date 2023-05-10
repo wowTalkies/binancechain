@@ -18,9 +18,15 @@ class Quiz extends StatelessWidget {
       body: BlocListener(
         bloc: cubit,
         listener: (context, state) {
-          if (state is QuizAnsweredState) {
+          if (state is QuizAddedState) {
             ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text("")));
+                .showSnackBar(const SnackBar(content: Text("Quiz added")));
+            Navigator.pop(context);
+          }
+          if (state is QuizNotAddedState) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(const SnackBar(content: Text("Quiz not added")));
+            Navigator.pop(context);
           }
           if (state is QuizErrorState) {
             if (!state.error.contains('404')) {
@@ -62,7 +68,7 @@ class _LayOut extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CreateQuiz(),
+                            builder: (context) => CreateQuiz(quizCubit: cubit),
                           ));
                     },
                     color2: AllColor.linear1),
