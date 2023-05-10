@@ -2,6 +2,7 @@ const Web3 = require('web3');
 const jsonInterface = require('../abi/WowTQuiz.json');
 
 const createQuiz = async (
+  communityName,
   quizName,
   description,
   imageUrl,
@@ -12,7 +13,8 @@ const createQuiz = async (
 ) => {
   if (
     quizName.trim() != '' &&
-    options.length != 0 &&
+    communityName.trim() != '' &&
+    options.length == 4 &&
     description.trim() != '' &&
     imageUrl.trim() != '' &&
     question.trim() != '' &&
@@ -28,7 +30,7 @@ const createQuiz = async (
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0x04a0b41e500f3068a8C1714bab1948a1309dD906'; // WowTQuiz contract address
+    const contractAddress = '0x203B9d8B1EB14BfD8C298ff2ea030F6f2217E786'; // WowTQuiz contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
@@ -36,6 +38,7 @@ const createQuiz = async (
       const gasPrice = await web3.eth.getGasPrice();
       const gasEstimate = await contract.methods
         .createQuiz(
+          communityName,
           quizName,
           description,
           imageUrl,
@@ -49,7 +52,16 @@ const createQuiz = async (
       console.log('gasPrice ', gasPrice, 'gasEstimate ', gasEstimate);
 
       const createQuiz = await contract.methods
-        .createQuiz(quizName, question, description, imageUrl, userAddress)
+        .createQuiz(
+          communityName,
+          quizName,
+          description,
+          imageUrl,
+          question,
+          options,
+          correctAnswer,
+          userAddress
+        )
         .send({ from: account, gasPrice: gasPrice, gas: gasEstimate });
 
       console.log('createQuiz txHash ', createQuiz.transactionHash);

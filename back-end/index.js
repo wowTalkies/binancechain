@@ -31,15 +31,22 @@ exports.handler = async (event) => {
       return await addMember(event.communityName, event.userAddress);
 
     case 'createQuiz': {
+      const options = [
+        event.option1,
+        event.option2,
+        event.option3,
+        event.option4,
+      ];
       const correctAnswer = await Web3.utils.keccak256(
         event.answer + process.env.secretKey
       );
       return await createQuiz(
+        event.communityName,
         event.quizName,
         event.description,
         event.imageUrl,
         event.question,
-        event.options,
+        options,
         correctAnswer,
         event.userAddress
       );

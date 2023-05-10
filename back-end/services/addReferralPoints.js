@@ -12,7 +12,7 @@ const addReferralPoints = async (userAddress, referralAddress) => {
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0x1BA50c0Db827d687E3e7687beE9d8EaF11b9798C'; // WowTReferral contract address
+    const contractAddress = '0xCd44eBDE97563A13c552da8eD46F0b1b88C408dF'; // WowTReferral contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 

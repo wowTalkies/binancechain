@@ -13,7 +13,7 @@ const addActiveUserPoints = async (userAddress) => {
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
 
-    const contractAddress = '0xbAf59D95709F960a047130D3f9721887B9Db3E10'; // WowTPoints contract address
+    const contractAddress = '0xB192bb107DffaB91F8e6EB4D86f31567dC92Afc6'; // WowTPoints contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 

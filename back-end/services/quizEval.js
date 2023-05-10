@@ -19,25 +19,43 @@ const quizEval = async (userAddress, quizName, choice) => {
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0x04a0b41e500f3068a8C1714bab1948a1309dD906'; // WowTQuiz contract address
+    const contractAddress = '0x203B9d8B1EB14BfD8C298ff2ea030F6f2217E786'; // WowTQuiz contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
     try {
-      const gasPrice = await web3.eth.getGasPrice();
-      const gasEstimate = await contract.methods
-        .quizEval(userAddress, quizName, choice)
-        .estimateGas({ from: account });
+      const evalStatus = await contract.methods
+        .getEvalStatus(quizName, userAddress)
+        .call();
+      console.log('evalStatus ', evalStatus);
 
-      console.log('gasPrice ', gasPrice, 'gasEstimate ', gasEstimate);
+      if (!evalStatus) {
+        const gasPrice = await web3.eth.getGasPrice();
+        const gasEstimate = await contract.methods
+          .quizEval(userAddress, quizName, choice)
+          .estimateGas({ from: account });
 
-      const quizEval = await contract.methods
-        .quizEval(userAddress, quizName, choice)
-        .send({ from: account, gasPrice: gasPrice, gas: gasEstimate });
+        console.log('gasPrice ', gasPrice, 'gasEstimate ', gasEstimate);
 
-      console.log('quizEval txHash ', quizEval.transactionHash);
+        const quizEval = await contract.methods
+          .quizEval(userAddress, quizName, choice)
+          .send({ from: account, gasPrice: gasPrice, gas: gasEstimate });
 
-      return { body: 'Quiz evaluated successfully' }; // Need changes for eval quiz via contract
+        console.log('quizEval txHash ', quizEval.transactionHash);
+        // console.log('quizEval ', JSON.stringify(quizEval));
+        // console.log('quizEval-1 ', await quizEval.wait());
+        const answer = quizEval.events.Answer.raw.topics[1];
+        if (parseInt(answer)) {
+          console.log('Correct answer');
+          return { body: 'Correct answer' };
+        } else {
+          console.log('Wrong answer');
+          return { body: 'Wrong answer' };
+        }
+      } else {
+        console.log('Already tired');
+        return { error: 'Already tried' };
+      }
     } catch (err) {
       console.log(err);
       return { error: 'Something went wrong' };
