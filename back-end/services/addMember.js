@@ -12,7 +12,7 @@ const addMember = async (CommunityName, userAddress) => {
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0x1A60169D778f060dd8c063ef5CB4839CBf67507a'; // WowTCommunity contract address
+    const contractAddress = '0x10e8C8FB6Ccf12fFb388Ce527a2F69FCE5c74bF9'; // WowTCommunity contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
