@@ -1,5 +1,6 @@
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/button.dart';
+import 'package:bnbapp/widgets/custom_circular_progress_indicator.dart';
 import 'package:bnbapp/widgets/quiz_create.dart';
 import 'package:bnbapp/widgets/take_quiz.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +31,8 @@ class Quiz extends StatelessWidget {
           }
           if (state is QuizErrorState) {
             if (!state.error.contains('404')) {
-              const SnackBar(
-                content: Text("error"),
-              );
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(state.error)));
             }
           }
         },
@@ -52,41 +52,50 @@ class _LayOut extends StatelessWidget {
     final cubit = context.read<QuizCubit>();
     return BlocBuilder(
       bloc: cubit,
-      builder: (context, state) => Column(
-        children: [
-          Expanded(
-              child: ListView(
-            children: [
-              Center(
-                child: Button(
-                    height: height / 20,
-                    width: width / 1.2,
-                    text: 'Create quiz',
-                    color1: AllColor.linear1,
-                    textColor: AllColor.white,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CreateQuiz(quizCubit: cubit),
-                          ));
-                    },
-                    color2: AllColor.linear1),
-              ),
-              TakeQuizWidget(
-                quizCubit: cubit,
-                maps: cubit.maps,
-                quizAnswer: cubit.answerList,
-                quizQuestion: cubit.questionList,
-                descriptionList: cubit.descriptionList,
-                itemCount: cubit.imageUrlList.length,
-                imageUrl: cubit.imageUrlList,
-                quizNameList: cubit.quizName,
-              )
-            ],
-          ))
-        ],
-      ),
+      builder: (context, state) => cubit.state is QuizLoadingState
+          ? const Center(child: CustomCircularProgressIndicator())
+          : Column(
+              children: [
+                Expanded(
+                    child: ListView(
+                  children: [
+                    Center(
+                      child: ValueListenableBuilder(
+                        valueListenable: cubit.points,
+                        builder: (context, value, child) => Visibility(
+                          visible: int.parse(value.toString()) > 20,
+                          child: Button(
+                              height: height / 20,
+                              width: width / 1.2,
+                              text: 'Create quiz',
+                              color1: AllColor.linear1,
+                              textColor: AllColor.white,
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          CreateQuiz(quizCubit: cubit),
+                                    ));
+                              },
+                              color2: AllColor.linear1),
+                        ),
+                      ),
+                    ),
+                    TakeQuizWidget(
+                      quizCubit: cubit,
+                      maps: cubit.maps,
+                      quizAnswer: cubit.answerList,
+                      quizQuestion: cubit.questionList,
+                      descriptionList: cubit.descriptionList,
+                      itemCount: cubit.imageUrlList.length,
+                      imageUrl: cubit.imageUrlList,
+                      quizNameList: cubit.quizName,
+                    )
+                  ],
+                ))
+              ],
+            ),
     );
   }
 }

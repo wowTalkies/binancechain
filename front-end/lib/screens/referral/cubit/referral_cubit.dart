@@ -1,6 +1,7 @@
 import 'package:bnbapp/auth_cubit/auth_cubit.dart';
 import 'package:bnbapp/screens/referral/cubit/refrral_state.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
+import 'package:bnbapp/utils/preferencehelper.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,6 +20,7 @@ class ReferralCubit extends BaseCubit<ReferralState> {
   Uri? initialLink;
   Uri? deepLink;
   String? queryAddress;
+  String? userAddress;
 
   ReferralCubit(this.authCubit) : super(ReferralInitialState());
 
@@ -26,6 +28,7 @@ class ReferralCubit extends BaseCubit<ReferralState> {
     emit(ReferralLoadingState());
     debugPrint('referral cubit init');
     debugPrint('the userId is ${authCubit.address}');
+    userAddress = await PreferenceHelper.getUserId();
     /*
     final dynamicLinkParams = DynamicLinkParameters(
       link: Uri.parse("https://wowtbnb.page.link/"),
@@ -95,7 +98,7 @@ class ReferralCubit extends BaseCubit<ReferralState> {
     debugPrint("address is ${authCubit.address} ");
     final dynamicLinkParams = DynamicLinkParameters(
       link: Uri.parse(
-          "https://www.wowtalkies.com/referral?invitedby=${authCubit.address}"),
+          "https://www.wowtalkies.com/referral?invitedby=${userAddress.toString()}"),
       uriPrefix: "https://wowtbnb.page.link",
       //   "https://wowtbnb.page.link/referral?invitedby=987654321",
       androidParameters:

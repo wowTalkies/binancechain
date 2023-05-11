@@ -559,17 +559,38 @@ class CreateQuiz extends StatelessWidget {
                                                         MainAxisAlignment
                                                             .center,
                                                     children: [
-                                                      const CustomText(
-                                                        fontColor:
-                                                            AllColor.white,
-                                                        text: "Add option1",
-                                                      ),
+                                                      quizCubit!.option1.value
+                                                              .text.isEmpty
+                                                          ? const CustomText(
+                                                              fontColor:
+                                                                  AllColor
+                                                                      .white,
+                                                              text:
+                                                                  "Add option1",
+                                                            )
+                                                          : CustomText(
+                                                              fontColor:
+                                                                  AllColor
+                                                                      .white,
+                                                              text: quizCubit!
+                                                                  .option1
+                                                                  .value
+                                                                  .text,
+                                                            ),
                                                       SizedBox(
                                                         height: height / 60,
                                                       ),
-                                                      const Icon(Icons.add,
-                                                          color:
-                                                              AllColor.white),
+                                                      Visibility(
+                                                        visible: quizCubit!
+                                                            .option1
+                                                            .value
+                                                            .text
+                                                            .isEmpty,
+                                                        child: const Icon(
+                                                            Icons.add,
+                                                            color:
+                                                                AllColor.white),
+                                                      ),
                                                     ],
                                                   ),
                                                 ),
@@ -679,17 +700,38 @@ class CreateQuiz extends StatelessWidget {
                                                           MainAxisAlignment
                                                               .center,
                                                       children: [
-                                                        const CustomText(
-                                                          fontColor:
-                                                              AllColor.white,
-                                                          text: "Add option2",
-                                                        ),
+                                                        quizCubit!.option2.value
+                                                                .text.isEmpty
+                                                            ? const CustomText(
+                                                                fontColor:
+                                                                    AllColor
+                                                                        .white,
+                                                                text:
+                                                                    "Add option2",
+                                                              )
+                                                            : CustomText(
+                                                                fontColor:
+                                                                    AllColor
+                                                                        .white,
+                                                                text: quizCubit!
+                                                                    .option2
+                                                                    .value
+                                                                    .text,
+                                                              ),
                                                         SizedBox(
                                                           height: height / 60,
                                                         ),
-                                                        const Icon(Icons.add,
-                                                            color:
-                                                                AllColor.white),
+                                                        Visibility(
+                                                          visible: quizCubit!
+                                                              .option2
+                                                              .value
+                                                              .text
+                                                              .isEmpty,
+                                                          child: const Icon(
+                                                              Icons.add,
+                                                              color: AllColor
+                                                                  .white),
+                                                        ),
                                                       ],
                                                     ),
                                                   ),
@@ -809,17 +851,38 @@ class CreateQuiz extends StatelessWidget {
                                                           MainAxisAlignment
                                                               .center,
                                                       children: [
-                                                        const CustomText(
-                                                          fontColor:
-                                                              AllColor.white,
-                                                          text: "Add option3",
-                                                        ),
+                                                        quizCubit!.option3.value
+                                                                .text.isEmpty
+                                                            ? const CustomText(
+                                                                fontColor:
+                                                                    AllColor
+                                                                        .white,
+                                                                text:
+                                                                    "Add option3",
+                                                              )
+                                                            : CustomText(
+                                                                fontColor:
+                                                                    AllColor
+                                                                        .white,
+                                                                text: quizCubit!
+                                                                    .option3
+                                                                    .value
+                                                                    .text,
+                                                              ),
                                                         SizedBox(
                                                           height: height / 60,
                                                         ),
-                                                        const Icon(Icons.add,
-                                                            color:
-                                                                AllColor.white),
+                                                        Visibility(
+                                                          visible: quizCubit!
+                                                              .option3
+                                                              .value
+                                                              .text
+                                                              .isEmpty,
+                                                          child: const Icon(
+                                                              Icons.add,
+                                                              color: AllColor
+                                                                  .white),
+                                                        ),
                                                       ],
                                                     ),
                                                   ),
@@ -930,17 +993,38 @@ class CreateQuiz extends StatelessWidget {
                                                           MainAxisAlignment
                                                               .center,
                                                       children: [
-                                                        const CustomText(
-                                                          fontColor:
-                                                              AllColor.white,
-                                                          text: "Add option4",
-                                                        ),
+                                                        quizCubit!.option4.value
+                                                                .text.isEmpty
+                                                            ? const CustomText(
+                                                                fontColor:
+                                                                    AllColor
+                                                                        .white,
+                                                                text:
+                                                                    "Add option4",
+                                                              )
+                                                            : CustomText(
+                                                                fontColor:
+                                                                    AllColor
+                                                                        .white,
+                                                                text: quizCubit!
+                                                                    .option4
+                                                                    .value
+                                                                    .text,
+                                                              ),
                                                         SizedBox(
                                                           height: height / 60,
                                                         ),
-                                                        const Icon(Icons.add,
-                                                            color:
-                                                                AllColor.white),
+                                                        Visibility(
+                                                          visible: quizCubit!
+                                                              .option4
+                                                              .value
+                                                              .text
+                                                              .isEmpty,
+                                                          child: const Icon(
+                                                              Icons.add,
+                                                              color: AllColor
+                                                                  .white),
+                                                        ),
                                                       ],
                                                     ),
                                                   ),

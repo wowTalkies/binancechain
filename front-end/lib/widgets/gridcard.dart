@@ -6,6 +6,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'button.dart';
+
 class GridCard extends StatelessWidget {
   final int? itemCount;
   final List<String>? imageUrl;
@@ -68,12 +70,7 @@ class GridCard extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: InkWell(
-                              onTap: () {
-                                debugPrint(
-                                    'the name is ${communityNameList![index].toString()}');
-                                cubit!.checkMembership(
-                                    communityNameList![index].toString());
-                              },
+                              onTap: () {},
                               child: CachedNetworkImage(
                                   fit: BoxFit.fill,
                                   placeholder: (context, url) => const SizedBox(
@@ -111,53 +108,52 @@ class GridCard extends StatelessWidget {
                       Positioned.fill(
                         top: null,
                         child: Container(
-                            width: MediaQuery.of(context).size.width / 1.1,
-                            height: MediaQuery.of(context).size.height / 12,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(8),
-                                    bottomRight: Radius.circular(8)),
-                                gradient: LinearGradient(
-                                  colors: [AllColor.linear1, AllColor.linear2],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                ),
-                                color: AllColor.white),
-                            child: ListView(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        SizedBox(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              100,
-                                        ),
-                                        SizedBox(
-                                          width: 300,
-                                          child: CustomText(
-                                              text: communityNameList![index]
-                                                  .toString(),
-                                              fontWeight: FontWeight.w700,
-                                              fontColor: AllColor.white,
-                                              fontSize: 19),
-                                        ),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              4,
-                                        ),
-                                        SizedBox(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              100,
-                                        ),
+                          width: MediaQuery.of(context).size.width / 1.1,
+                          height: MediaQuery.of(context).size.height / 12,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(8),
+                                  bottomRight: Radius.circular(8)),
+                              gradient: LinearGradient(
+                                colors: [AllColor.linear1, AllColor.linear2],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
+                              color: AllColor.white),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height /
+                                        100,
+                                  ),
+                                  Column(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            top: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                50,
+                                            left: 5),
+                                        child: CustomText(
+                                            text: communityNameList![index]
+                                                .toString(),
+                                            fontWeight: FontWeight.w700,
+                                            fontColor: AllColor.white,
+                                            fontSize: 19),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height /
+                                        100,
+                                  ),
+                                  /*
                                         SizedBox(
                                           width: 300,
                                           child: CustomText(
@@ -167,14 +163,15 @@ class GridCard extends StatelessWidget {
                                               fontColor: AllColor.white,
                                               fontSize: 14),
                                         ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width /
-                                          100,
-                                    ),
 
-                                    /*
+                                         */
+                                ],
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width / 100,
+                              ),
+
+                              /*
                                     Button(
                                       text: "Take Quiz",
                                       textSize: 14,
@@ -184,10 +181,41 @@ class GridCard extends StatelessWidget {
                                     ),
 
                                      */
-                                  ],
-                                ),
-                              ],
-                            )),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: MediaQuery.of(context).size.height / 4.1,
+                        left: MediaQuery.of(context).size.width / 1.3,
+                        child: cubit?.state is CommunityJoinCheckState &&
+                                cubit?.checkIndex == index
+                            ? Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                    color: AllColor.black,
+                                    borderRadius: BorderRadius.circular(8),
+                                    shape: BoxShape.rectangle),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(1.0),
+                                  child: CircularProgressIndicator(
+                                      color: AllColor.white),
+                                ))
+                            : Button(
+                                onPressed: () {
+                                  cubit?.checkIndex = index;
+                                  debugPrint(
+                                      'the name is ${communityNameList![index].toString()}');
+                                  cubit!.checkMembership(
+                                      communityNameList![index].toString());
+                                },
+                                height: 30,
+                                text: cubit?.joinOrOpen[index].toString() ==
+                                        "joined"
+                                    ? 'Posts'
+                                    : "Join",
+                              ),
                       )
                     ],
                   ),

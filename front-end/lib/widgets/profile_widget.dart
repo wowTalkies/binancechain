@@ -253,11 +253,17 @@ class ProfileWidget extends StatelessWidget {
                                     ValueListenableBuilder(
                                       valueListenable: cubit.points,
                                       builder: (context, value, child) =>
-                                          CustomText(
-                                              text: value.toString(),
-                                              fontWeight: FontWeight.w700,
-                                              fontColor: AllColor.white,
-                                              fontSize: 14),
+                                          value.toString().isEmpty ||
+                                                  value.toString() == "0"
+                                              ? const CustomText(
+                                                  text: "..",
+                                                  fontColor: AllColor.white,
+                                                )
+                                              : CustomText(
+                                                  text: value.toString(),
+                                                  fontWeight: FontWeight.w700,
+                                                  fontColor: AllColor.white,
+                                                  fontSize: 14),
                                     ),
                                     const CustomText(
                                         text: "Points",

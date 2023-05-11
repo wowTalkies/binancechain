@@ -104,11 +104,12 @@ Widget addAuth(BuildContext context, Widget widget) {
       bloc: authCubit,
       builder: (BuildContext context, AuthState state) {
         debugPrint("memcheck : in Blockbuilder ");
-        if (state is AuthInitialState) {
+        if (state is AuthInitialState || state is AuthLoadingState) {
           return Container(
             color: Colors.white,
-            child: const Center(
-              child: CircularProgressIndicator(),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height / 3,
+              child: Image.asset("images/playstore.png"),
             ),
           );
         } else {

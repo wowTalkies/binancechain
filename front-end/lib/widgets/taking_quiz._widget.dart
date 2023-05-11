@@ -145,7 +145,7 @@ class TakingQuizWidget extends StatelessWidget {
                             Column(
                               children: [
                                 InkWell(
-                                  onTap: quizCubit!.trueOrFalse![0]!
+                                  onTap: quizCubit!.trueOrFalse == false
                                       ? null
                                       : () async {
                                           await quizCubit?.answerEvaluate(
@@ -210,7 +210,7 @@ class TakingQuizWidget extends StatelessWidget {
                             Column(
                               children: [
                                 InkWell(
-                                  onTap: quizCubit!.trueOrFalse![1]!
+                                  onTap: quizCubit!.trueOrFalse == false
                                       ? null
                                       : () async {
                                           await quizCubit?.answerEvaluate(
@@ -274,7 +274,7 @@ class TakingQuizWidget extends StatelessWidget {
                             Column(
                               children: [
                                 InkWell(
-                                  onTap: quizCubit!.trueOrFalse![2]!
+                                  onTap: quizCubit!.trueOrFalse == false
                                       ? null
                                       : () async {
                                           await quizCubit?.answerEvaluate(
@@ -336,10 +336,11 @@ class TakingQuizWidget extends StatelessWidget {
                             Column(
                               children: [
                                 InkWell(
-                                  onTap: quizCubit!.trueOrFalse![3]!
+                                  onTap: quizCubit!.trueOrFalse == false
                                       ? null
                                       : () async {
-                                          debugPrint('hello siva ');
+                                          debugPrint(
+                                              'hello siva ${quizCubit!.trueOrFalse!} ');
                                           await quizCubit?.answerEvaluate(
                                               answerList![3].toString(),
                                               quizName.toString(),

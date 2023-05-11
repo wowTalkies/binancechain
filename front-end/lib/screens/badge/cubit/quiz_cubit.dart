@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bnbapp/auth_cubit/auth_cubit.dart';
 import 'package:bnbapp/contract/WowTCommunity.g.dart';
+import 'package:bnbapp/contract/WowTPoints.g.dart';
 import 'package:bnbapp/contract/WowTQuiz.g.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
 import 'package:bnbapp/utils/preferencehelper.dart';
@@ -19,9 +20,10 @@ class QuizCubit extends BaseCubit<QuizState> {
   List<String> descriptionList = [];
   List<String> questionList = [];
   List<String> answerList = [];
+  ValueNotifier<BigInt> points = ValueNotifier(BigInt.parse("0"));
   int? index = 0;
   String imagePath = '';
-  List<bool>? trueOrFalse = [];
+  bool? trueOrFalse = true;
   ValueNotifier<String> communityName = ValueNotifier('');
   File? fileImage;
   ValueNotifier<File> valueNotifier = ValueNotifier(File(''));
@@ -36,6 +38,7 @@ class QuizCubit extends BaseCubit<QuizState> {
   TextEditingController option4 = TextEditingController();
   TextEditingController textEditingController9 = TextEditingController();
   bool trueOrFalseCheck = false;
+  Map<String, Map<List<dynamic>, List<List<dynamic>>>> hardMap = {};
 
   QuizCubit(this.authCubit) : super(QuizInitialState());
   List<String> quizName = [];
@@ -52,9 +55,10 @@ class QuizCubit extends BaseCubit<QuizState> {
   Future<void> init() async {
     emit(QuizLoadingState());
     userid = await PreferenceHelper.getUserId();
+
     debugPrint('hi wellCome');
     final httpClient = Client();
-    trueOrFalse?.clear();
+    //trueOrFalse?.clear();
 
     Web3Client client = Web3Client(authCubit.node.toString(), httpClient);
     WowTCommunity wowTCommunity = WowTCommunity(
@@ -65,20 +69,33 @@ class QuizCubit extends BaseCubit<QuizState> {
         address:
             EthereumAddress.fromHex(authCubit.profileModel!.quiz.toString()),
         client: client);
+    WowTPoints wowTPoints = WowTPoints(
+        client: client,
+        address:
+            EthereumAddress.fromHex(authCubit.profileModel!.points.toString()));
 
+    points.value =
+        await wowTPoints.getPoints(EthereumAddress.fromHex(userid.toString()));
     // var userId = await PreferenceHelper.getUserId();
     var abc = await wowTCommunity.getCommunities();
     maps.clear();
     for (var i = 0; i < abc.length; i++) {
-      trueOrFalse?.add(false);
       debugPrint('the communities are ${abc.toString()}');
       var quizNames =
           await wowTCommunity.getCommunityDetails(abc[i].toString());
+      for (var c = 0; c < quizNames.var3.length; c++) {
+        debugPrint('the length is ${quizNames.var3.length.toString()}');
+        var ayy =
+            await wowTQuiz.getstringQuizdetails(quizNames.var3[c].toString());
+        debugPrint(
+            'the qu list ${ayy.var4.toString()} and ${ayy.var1.toString()} and ${ayy.var2.toString()} and ${ayy.var3.toString()}');
+      }
       debugPrint('get community details ${quizNames.var3[0].toString()}');
       debugPrint('get community details ${quizNames.var3[1].toString()}');
       var ayy =
           await wowTQuiz.getstringQuizdetails(quizNames.var3[0].toString());
       maps[ayy.var3.toString()] = ayy.var4;
+
       // maps.update(ayy.var3.toString(), (value) => ayy.var4);
       debugPrint('the quiz details ${ayy.var3.toString()} ');
       debugPrint('the quiz details ${ayy.var4.toString()} ');
@@ -98,7 +115,8 @@ class QuizCubit extends BaseCubit<QuizState> {
   }
 
   back() {
-    trueOrFalse?.add(false);
+    trueOrFalse = true;
+    //trueOrFalse?.add(false);
     emit(QuizBackButtonState());
   }
 
@@ -169,7 +187,8 @@ class QuizCubit extends BaseCubit<QuizState> {
   }
 
   answerEvaluate(choice, quizName, indexes) async {
-    trueOrFalse![indexes] = true;
+    trueOrFalse = false;
+
     debugPrint('index is ${index.toString()}');
     index = indexes;
     debugPrint('index is two ${index.toString()}');
@@ -198,6 +217,10 @@ class QuizCubit extends BaseCubit<QuizState> {
       emit(QuizAnsweredState());
     } else {
       emit(QuizWrongAnswerState());
+    }
+    if (result.data.toString().contains('Already tried')) {
+      debugPrint('the error is was the');
+      emit(QuizErrorState("Already tried"));
     }
   }
 }

@@ -57,10 +57,14 @@ class _LoginsState extends State<Logins> {
               child: ListView(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height / 3,
+                    height: MediaQuery.of(context).size.height / 5,
                   ),
                   SizedBox(
-                    height: 50,
+                    height: MediaQuery.of(context).size.height / 3,
+                    child: Image.asset("images/playstore.png"),
+                  ),
+                  SizedBox(
+                    height: 45,
                     child: Center(
                       child: CustomTextField(
                         obscure: false,
