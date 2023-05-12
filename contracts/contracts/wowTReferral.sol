@@ -53,6 +53,7 @@ contract WowTReferral is OwnableUpgradeable {
             !referrer[_installAddress].referralExists,
             "Already have referrar"
         );
+        require(referrer[_referralAddress].referralAddress != _installAddress, "You are refferer");
         points.addPoints(_referralAddress, points.levelOnePoints());
         referrer[_installAddress].referralAddress = _referralAddress;
         referrer[_installAddress].referralExists = true;
@@ -90,4 +91,13 @@ contract WowTReferral is OwnableUpgradeable {
     ) public view returns (address[] memory) {
         return referrals[_account];
     }
+
+    // // development 
+    // function changeReferrerStatus(address _account) public onlyOwner {
+    //     delete referrer[_account];
+    // }
+
+    // function changeReferralStatus(address _account) public onlyOwner {
+    //     delete referrals[_account];
+    // }
 }

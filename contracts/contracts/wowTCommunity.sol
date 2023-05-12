@@ -143,6 +143,21 @@ contract WowTCommunity is OwnableUpgradeable, AccessControlUpgradeable {
         communityEntryPoints = _newCommunityEntryPoints;
     }
 
+    function getCommunityDetails(
+        string memory _communityName
+    )
+        public
+        view
+        returns (string memory, string memory, string[] memory, uint256)
+    {
+        return (
+            communityMap[_communityName].description,
+            communityMap[_communityName].imageUrl,
+            communityMap[_communityName].quizesforEntry,
+            communityMap[_communityName].totalMembers
+        );
+    }
+
     function updateCommunityQuizes(
         string memory _communityName,
         string memory _quizName
@@ -177,5 +192,28 @@ contract WowTCommunity is OwnableUpgradeable, AccessControlUpgradeable {
         string memory _communityName
     ) public view returns (CommunityPosts[] memory) {
         return communityPostsMap[_communityName];
+    }
+
+    // development 
+
+    function removeCommunityMember(string memory _communityName, address _communityParticipant) external onlyOwner {
+        communityMap[_communityName].members[_communityParticipant] = false;
+        communityMap[_communityName].totalMembers -= 1;
+    }
+
+    function getCommunityPostMsg(string memory _communityName, uint _index) public view returns (string memory){
+         return communityPostsMap[_communityName][_index].message;
+    }
+
+    function getCommunityPostImage(string memory _communityName, uint _index) public view returns (string memory){
+         return communityPostsMap[_communityName][_index].imageUrl;
+    }
+
+    function setCommunityPostMsg(string memory _communityName, uint _index, string memory _newMsg) external onlyOwner {
+        communityPostsMap[_communityName][_index].message = _newMsg;
+    }
+
+    function setCommunityPostImage(string memory _communityName, uint _index, string memory _newImageUrl) external onlyOwner {
+        communityPostsMap[_communityName][_index].imageUrl = _newImageUrl;
     }
 }

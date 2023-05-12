@@ -38,6 +38,7 @@ contract WowTQuiz is OwnableUpgradeable {
     // Quiz[] public quizes;
     // Community --> Quiz
     mapping(string => Quiz) public quizmap;
+    mapping(string => mapping(address => bool)) public evalStatus;
 
     // for checking answer
     event Answer(bool indexed);
@@ -80,22 +81,22 @@ contract WowTQuiz is OwnableUpgradeable {
             community.checkCommunityExists(_communityName),
             "Community doesn't exist"
         );
-        quizmap[_quizName] = Quiz(
-            _description,
-            _imageUrl,
-            _question,
-            _options,
-            _answer,
-            _creatorAddress
-        );
+        // quizmap[_quizName] = Quiz(
+        //     _description,
+        //     _imageUrl,
+        //     _question,
+        //     _options,
+        //     _answer,
+        //     _creatorAddress
+        // );
         community.updateCommunityQuizes(_communityName, _quizName);
 
-        // quizmap[_quizName].description = _description;
-        // quizmap[_quizName].question = _question;
-        // quizmap[_quizName].options = _options;
-        // quizmap[_quizName].answer = _answer;
-        // quizmap[_quizName].imageUrl = _imageUrl;
-        // quizmap[_quizName].creatorAddress = _creatorAddress;
+        quizmap[_quizName].description = _description;
+        quizmap[_quizName].question = _question;
+        quizmap[_quizName].options = _options;
+        quizmap[_quizName].answer = _answer;
+        quizmap[_quizName].imageUrl = _imageUrl;
+        quizmap[_quizName].creatorAddress = _creatorAddress;
     }
 
     function getQuizdetails(
@@ -127,11 +128,13 @@ contract WowTQuiz is OwnableUpgradeable {
         string memory _quizName,
         bytes32 choice
     ) public onlyOwner {
+        require(!evalStatus[_quizName][_userAddress], "Already tried");
         Quiz memory qtemp = getQuizdetails(_quizName);
         // Question memory tempQuestion = qtemp.question;
         bytes32 answer = qtemp.answer;
         // if (keccak256(bytes(answer)) == keccak256(bytes(choice))){
         quizeEvaluatePoints(answer, choice, _userAddress, qtemp.creatorAddress);
+        evalStatus[_quizName][_userAddress] = true;
         //return _userAddress; //Need implementation
     }
 
@@ -164,6 +167,10 @@ contract WowTQuiz is OwnableUpgradeable {
         points.addPoints(_creatorAddress, quizePoints);
     }
 
+    function getEvalStatus(string memory _quizName, address _userAddress) public view returns (bool) {
+        return evalStatus[_quizName][_userAddress];
+    }
+
     /*
     function addQuizePoints( address _userAddress,  uint16 _quizePoints) public onlyOwner{
         //addPoints(userAddress, quizePoints)
@@ -194,5 +201,10 @@ contract WowTQuiz is OwnableUpgradeable {
 
     function setPointsToAnswer(uint16 _pointsToAnswer) external onlyOwner {
         pointsToAnswer = _pointsToAnswer;
+    }
+
+    // for development
+    function setQuizImage( string memory _quizName, string memory _imageUrl) external onlyOwner {
+        quizmap[_quizName].imageUrl = _imageUrl;
     }
 }

@@ -100,8 +100,8 @@ contract WowTPoints is OwnableUpgradeable, AccessControlUpgradeable {
         for (uint i = 0; i < topLeaderBoardAddress.length; i++) {
             if (topLeaderBoardAddress[i] == account) {
                 delete topLeaderBoardAddress[i];
-                for (uint l = i; l < topLeaderBoardAddress.length - 1; l++) {
-                    topLeaderBoardAddress[l] = topLeaderBoardAddress[l + 1];
+                for (uint m = i; m < topLeaderBoardAddress.length - 1; m++) {
+                    topLeaderBoardAddress[m] = topLeaderBoardAddress[m + 1];
                 }
             }
         }
