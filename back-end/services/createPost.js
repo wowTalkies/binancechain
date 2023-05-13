@@ -17,7 +17,7 @@ const createPost = async (communityName, message, imageUrl, userAddress) => {
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0x10e8C8FB6Ccf12fFb388Ce527a2F69FCE5c74bF9'; // WowTCommunity contract address
+    const contractAddress = '0x5aB333BCa2eba08529b83f26C7F1012Eff8949A4'; // WowTCommunity contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
@@ -37,10 +37,11 @@ const createPost = async (communityName, message, imageUrl, userAddress) => {
 
       return { body: 'post created successfully' };
     } catch (err) {
-      // console.log(err);
+      console.log('createPost ', err);
       return { error: 'Something went wrong' };
     }
   } else {
+    console.log('Some event missing');
     return { error: 'Some event missing' };
   }
 };

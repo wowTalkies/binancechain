@@ -10,8 +10,7 @@ const createCommunity = async (
   if (
     communityName.trim() != '' &&
     communityDescription.trim() != '' &&
-    communityImage.trim() != '' &&
-    communityQuizes.length != 0
+    communityImage.trim() != ''
   ) {
     const privateKey = process.env.privateKey;
     const provider = process.env.provider;
@@ -22,40 +21,31 @@ const createCommunity = async (
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0x10e8C8FB6Ccf12fFb388Ce527a2F69FCE5c74bF9'; // WowTCommunity contract address
+    const contractAddress = '0x5aB333BCa2eba08529b83f26C7F1012Eff8949A4'; // WowTCommunity contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
     try {
       const gasPrice = await web3.eth.getGasPrice();
       const gasEstimate = await contract.methods
-        .createCommunity(
-          communityName,
-          communityDescription,
-          communityImage,
-          communityQuizes
-        )
+        .createCommunity(communityName, communityDescription, communityImage)
         .estimateGas({ from: account });
 
       console.log('gasPrice ', gasPrice, 'gasEstimate ', gasEstimate);
 
       const createCommunity = await contract.methods
-        .createCommunity(
-          communityName,
-          communityDescription,
-          communityImage,
-          communityQuizes
-        )
+        .createCommunity(communityName, communityDescription, communityImage)
         .send({ from: account, gasPrice: gasPrice, gas: gasEstimate });
 
       console.log('createCommunity txHash ', createCommunity.transactionHash);
 
       return { body: 'Community created successfully' };
     } catch (err) {
-      // console.log(err);
+      console.log('createCommunity ', err);
       return { error: 'Something went wrong' };
     }
   } else {
+    console.log('Some event missing');
     return { error: 'Some event missing' };
   }
 };

@@ -13,7 +13,7 @@ const addActiveUserPoints = async (userAddress) => {
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
 
-    const contractAddress = '0xB192bb107DffaB91F8e6EB4D86f31567dC92Afc6'; // WowTPoints contract address
+    const contractAddress = '0x39abC2Ef96408dba4532cdD9405eD6FB1A8533a6'; // WowTPoints contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
@@ -34,10 +34,11 @@ const addActiveUserPoints = async (userAddress) => {
       );
       return { body: 'Daily active points added successfully' };
     } catch (err) {
-      // console.log(err);
+      console.log('addActiveUserPoints ', err);
       return { error: 'Something went wrong' };
     }
   } else {
+    console.log('Some event missing');
     return { error: 'Some event missing' };
   }
 };

@@ -19,7 +19,7 @@ const quizEval = async (userAddress, quizName, choice) => {
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0x203B9d8B1EB14BfD8C298ff2ea030F6f2217E786'; // WowTQuiz contract address
+    const contractAddress = '0x582436D3C1232d1126Dbb9B4AC67Af37766d5713'; // WowTQuiz contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
@@ -57,10 +57,11 @@ const quizEval = async (userAddress, quizName, choice) => {
         return { error: 'Already tried' };
       }
     } catch (err) {
-      console.log(err);
+      console.log('quizEval ', err);
       return { error: 'Something went wrong' };
     }
   } else {
+    console.log('Some event missing ');
     return { error: 'Some event missing' };
   }
 };

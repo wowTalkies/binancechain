@@ -12,7 +12,7 @@ const addReferralPoints = async (userAddress, referralAddress) => {
 
     const account = web3.eth.accounts.wallet[0].address;
     // console.log('account ', account);
-    const contractAddress = '0xCd44eBDE97563A13c552da8eD46F0b1b88C408dF'; // WowTReferral contract address
+    const contractAddress = '0x3683C2BD02EB9823AdfB5489A2F4769991C3214a'; // WowTReferral contract address
 
     const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
@@ -35,10 +35,11 @@ const addReferralPoints = async (userAddress, referralAddress) => {
 
       return { body: 'Referral points added successfully' };
     } catch (err) {
-      // console.log(err);
+      console.log('addReferralPoints ', err);
       return { error: 'Something went wrong' };
     }
   } else {
+    console.log('Some event missing');
     return { error: 'Some event missing' };
   }
 };

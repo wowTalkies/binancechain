@@ -12,7 +12,7 @@ const updateBadge = async () => {
 
   const account = web3.eth.accounts.wallet[0].address;
   // console.log('account ', account);
-  const contractAddress = '0xBA73EA1a276B25a237D455a8682AA3c991AAC4C8'; // WowTBadge contract address
+  const contractAddress = '0x02E4b8cbd97303111471d53DC602434Ed151df6e'; // WowTBadge contract address
 
   const contract = new web3.eth.Contract(jsonInterface.abi, contractAddress);
 
