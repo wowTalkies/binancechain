@@ -5,12 +5,12 @@ async function main() {
   const factory = await hre.ethers.getContractFactory('WowTCommunity');
 
   // const contract = await upgrades.deployProxy(factory, [
-  //   '0xB192bb107DffaB91F8e6EB4D86f31567dC92Afc6',
+  //   '0x39abC2Ef96408dba4532cdD9405eD6FB1A8533a6',
   //   10,
   // ]);
 
   const contract = await upgrades.upgradeProxy(
-    '0x10e8C8FB6Ccf12fFb388Ce527a2F69FCE5c74bF9', // 0x4001Eb86748c1125322da5d43d7f7fdf47e3aDfa
+    '0x5aB333BCa2eba08529b83f26C7F1012Eff8949A4', // 0x10e8C8FB6Ccf12fFb388Ce527a2F69FCE5c74bF9
     factory
   );
 

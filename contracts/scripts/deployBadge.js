@@ -6,11 +6,11 @@ async function main() {
 
   // const contract = await upgrades.deployProxy(factory, [
   //   'https://wowtalkiestestbucket.s3.ap-south-1.amazonaws.com/binancechain/badge/Gold.png',
-  //   '0xB192bb107DffaB91F8e6EB4D86f31567dC92Afc6',
+  //   '0x39abC2Ef96408dba4532cdD9405eD6FB1A8533a6',
   // ]);
 
   const contract = await upgrades.upgradeProxy(
-    '0xBA73EA1a276B25a237D455a8682AA3c991AAC4C8', // 0x36ecE8a451A211670d27f20D700b7C5D547F556b
+    '0x02E4b8cbd97303111471d53DC602434Ed151df6e', // 0xBA73EA1a276B25a237D455a8682AA3c991AAC4C8
     factory
   );
 

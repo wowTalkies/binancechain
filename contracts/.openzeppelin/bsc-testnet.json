@@ -1,1484 +1,40 @@
 {
   "manifestVersion": "3.2",
   "admin": {
-    "address": "0x69246eC5543b13c0a3a067837ac8836423cFec9e",
-    "txHash": "0xe94274a45d3019b905b89ac196cd16d39b8a7ddb467b1dfc0d986c114b6f0b5e"
+    "address": "0x74f5c0098E4caAb3A3A7F915e2BDD977F52B05Da",
+    "txHash": "0x870c37c17572e473f4f93eff33052be0f1be877f1ce51391e3d3374ed54c69e8"
   },
   "proxies": [
     {
-      "address": "0xB192bb107DffaB91F8e6EB4D86f31567dC92Afc6",
-      "txHash": "0xd088d7ccbcd39c46f6e20c1eb1b521d08a0af542b00b056921fa163972889a04",
+      "address": "0x39abC2Ef96408dba4532cdD9405eD6FB1A8533a6",
+      "txHash": "0xf03e6436e7f7348b572459ad3540f9088fa5980343b8458f934f235689eec45a",
       "kind": "transparent"
     },
     {
-      "address": "0xBA73EA1a276B25a237D455a8682AA3c991AAC4C8",
-      "txHash": "0x121dc46b84db4a58900f3eb731fa80cfa6892071afcdf2cad72ab5ae36c2c348",
+      "address": "0x3683C2BD02EB9823AdfB5489A2F4769991C3214a",
+      "txHash": "0x5d0d9d4580940dc4e91426b55941563d9197cd3206284e65d8af81b56e0ce14c",
       "kind": "transparent"
     },
     {
-      "address": "0x10e8C8FB6Ccf12fFb388Ce527a2F69FCE5c74bF9",
-      "txHash": "0x83cd9658abe825ec7b820898b83ca6d16e2b48aa0a21e02bc312aeee6b6b2186",
+      "address": "0x5aB333BCa2eba08529b83f26C7F1012Eff8949A4",
+      "txHash": "0xc131e31966148800c630a049a98c88487cce8bce6d61ce632dc5af084de1a4e3",
       "kind": "transparent"
     },
     {
-      "address": "0x203B9d8B1EB14BfD8C298ff2ea030F6f2217E786",
-      "txHash": "0x31a3109b1632ffed5da4a2349c5c38ebadbc5bc7eef7748194d2516b87db1ccf",
+      "address": "0x582436D3C1232d1126Dbb9B4AC67Af37766d5713",
+      "txHash": "0xe02292b2c54abfe51cf99b0da34b29750029c514809590a127ea03667e592987",
       "kind": "transparent"
     },
     {
-      "address": "0xbE01532e15a77aeB60850446016FAb7033D45B97",
-      "txHash": "0x84c22c8760b9b830245824af4d2aa921dbd84f7adc5a73a21bcca79ee2eee567",
-      "kind": "transparent"
-    },
-    {
-      "address": "0xcf55C0A4D7beDc4Cf63cE4101d1bc6C715A47152",
-      "txHash": "0xfc39e81d91cde43216730524447bff22f62cd6d016a7b423541c5b150a6d8da5",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x614720e8C3B487A2587796bdf6C0De59B52bC318",
-      "txHash": "0x22cd0d558b0e6dd5cdf66b9c26a1b67300668c76c65ccf3bd58a41fd0e3525fb",
-      "kind": "transparent"
-    },
-    {
-      "address": "0xCd44eBDE97563A13c552da8eD46F0b1b88C408dF",
+      "address": "0x02E4b8cbd97303111471d53DC602434Ed151df6e",
+      "txHash": "0xeff3f0998c73b6701aa5932b39db9c448a33c56233483b24aaec85f9b40c98fa",
       "kind": "transparent"
     }
   ],
   "impls": {
-    "e4b4b72cd33df6b4b54291461e1b8a63a7a7c85ac7af78941301470d71e5a178": {
-      "address": "0x978EE29a7F72094F7BE4c1f14A9C183027D2FB31",
-      "txHash": "0xb9bd99af273ad22c93d6537b3485e2fc68442b927181c7979e3a9a70a342c935",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ERC165Upgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:41"
-          },
-          {
-            "label": "_roles",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_mapping(t_bytes32,t_struct(RoleData)34_storage)",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:61"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:259"
-          },
-          {
-            "label": "levelOnePoints",
-            "offset": 0,
-            "slot": "201",
-            "type": "t_uint16",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:12"
-          },
-          {
-            "label": "levelTwoPoints",
-            "offset": 2,
-            "slot": "201",
-            "type": "t_uint16",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:13"
-          },
-          {
-            "label": "activeUserPoints",
-            "offset": 4,
-            "slot": "201",
-            "type": "t_uint16",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:14"
-          },
-          {
-            "label": "minimumPointsForConvertion",
-            "offset": 0,
-            "slot": "202",
-            "type": "t_uint256",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:15"
-          },
-          {
-            "label": "topLeaderBoardAddress",
-            "offset": 0,
-            "slot": "203",
-            "type": "t_array(t_address)10_storage",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:16"
-          },
-          {
-            "label": "points",
-            "offset": 0,
-            "slot": "213",
-            "type": "t_mapping(t_address,t_uint256)",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:18"
-          },
-          {
-            "label": "referralPoints",
-            "offset": 0,
-            "slot": "214",
-            "type": "t_mapping(t_address,t_uint256)",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:19"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)10_storage": {
-            "label": "address[10]",
-            "numberOfBytes": "320"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_uint256)": {
-            "label": "mapping(address => uint256)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(RoleData)34_storage)": {
-            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(RoleData)34_storage": {
-            "label": "struct AccessControlUpgradeable.RoleData",
-            "members": [
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "adminRole",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "fa84aaef3b11ad979555422f6ce5de4c7be22d392710cf60e9e216950ab761c6": {
-      "address": "0xA655beF74Cf389A18c6492f4636C4955b5792764",
-      "txHash": "0xb6c3277625b14ebcedabdea72e1a995f040f7bb2b37209fcc98032a75591584a",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "imageUri",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_string_storage",
-            "contract": "WowTBadge",
-            "src": "contracts\\wowTBadge.sol:8"
-          },
-          {
-            "label": "pointsContract",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_address",
-            "contract": "WowTBadge",
-            "src": "contracts\\wowTBadge.sol:9"
-          },
-          {
-            "label": "points",
-            "offset": 0,
-            "slot": "103",
-            "type": "t_contract(WowTPoints)2611",
-            "contract": "WowTBadge",
-            "src": "contracts\\wowTBadge.sol:10"
-          },
-          {
-            "label": "badges",
-            "offset": 0,
-            "slot": "104",
-            "type": "t_mapping(t_address,t_array(t_struct(Badge)2151_storage)dyn_storage)",
-            "contract": "WowTBadge",
-            "src": "contracts\\wowTBadge.sol:18"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_struct(Badge)2151_storage)dyn_storage": {
-            "label": "struct WowTBadge.Badge[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_contract(WowTPoints)2611": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_array(t_struct(Badge)2151_storage)dyn_storage)": {
-            "label": "mapping(address => struct WowTBadge.Badge[])",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(Badge)2151_storage": {
-            "label": "struct WowTBadge.Badge",
-            "members": [
-              {
-                "label": "yearWeek",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "image",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "3ca07ecb346dfa15adcfa6cc798578328c3acbdc5af388ad51c0456269cff610": {
-      "address": "0x1C4Bbc265b92Bf74645af9D8b19e1DBbE842069C",
-      "txHash": "0x01dae53eb1628a1141e816860da22ad65cd6e97c0f93ad8a46ae8c42eb79b690",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ERC165Upgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:41"
-          },
-          {
-            "label": "_roles",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_mapping(t_bytes32,t_struct(RoleData)34_storage)",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:61"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:259"
-          },
-          {
-            "label": "communityEntryPoints",
-            "offset": 0,
-            "slot": "201",
-            "type": "t_uint16",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:9"
-          },
-          {
-            "label": "pointsContract",
-            "offset": 2,
-            "slot": "201",
-            "type": "t_address",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:10"
-          },
-          {
-            "label": "communities",
-            "offset": 0,
-            "slot": "202",
-            "type": "t_array(t_string_storage)dyn_storage",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:11"
-          },
-          {
-            "label": "points",
-            "offset": 0,
-            "slot": "203",
-            "type": "t_contract(WowTPoints)3007",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:12"
-          },
-          {
-            "label": "communityMap",
-            "offset": 0,
-            "slot": "204",
-            "type": "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2278_storage)",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:35"
-          },
-          {
-            "label": "communityPostsMap",
-            "offset": 0,
-            "slot": "205",
-            "type": "t_mapping(t_string_memory_ptr,t_array(t_struct(CommunityPosts)2285_storage)dyn_storage)",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:36"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_string_storage)dyn_storage": {
-            "label": "string[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_struct(CommunityPosts)2285_storage)dyn_storage": {
-            "label": "struct WowTCommunity.CommunityPosts[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_contract(WowTPoints)3007": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(RoleData)34_storage)": {
-            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_array(t_struct(CommunityPosts)2285_storage)dyn_storage)": {
-            "label": "mapping(string => struct WowTCommunity.CommunityPosts[])",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2278_storage)": {
-            "label": "mapping(string => struct WowTCommunity.CommunityDetails)",
-            "numberOfBytes": "32"
-          },
-          "t_string_memory_ptr": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(CommunityDetails)2278_storage": {
-            "label": "struct WowTCommunity.CommunityDetails",
-            "members": [
-              {
-                "label": "description",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "quizesforEntry",
-                "type": "t_array(t_string_storage)dyn_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "totalMembers",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "exists",
-                "type": "t_bool",
-                "offset": 0,
-                "slot": "5"
-              }
-            ],
-            "numberOfBytes": "192"
-          },
-          "t_struct(CommunityPosts)2285_storage": {
-            "label": "struct WowTCommunity.CommunityPosts",
-            "members": [
-              {
-                "label": "message",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "createrAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "2"
-              }
-            ],
-            "numberOfBytes": "96"
-          },
-          "t_struct(RoleData)34_storage": {
-            "label": "struct AccessControlUpgradeable.RoleData",
-            "members": [
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "adminRole",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "45d01693f191bd47da08549bdf765446334fb0bb836c654a3e70e4096061a7b2": {
-      "address": "0xAC758BB7D06714181E3471C4352c9C5f22aF3963",
-      "txHash": "0xdfddff2337e505188a5571a767f99f60c08a6cdcb26c79b8774193f3d5313074",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "quizePoints",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_uint16",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:10"
-          },
-          {
-            "label": "createEligibility",
-            "offset": 2,
-            "slot": "101",
-            "type": "t_uint16",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:14"
-          },
-          {
-            "label": "pointsToAnswer",
-            "offset": 4,
-            "slot": "101",
-            "type": "t_uint16",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:16"
-          },
-          {
-            "label": "points",
-            "offset": 6,
-            "slot": "101",
-            "type": "t_contract(WowTPoints)3047",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:20"
-          },
-          {
-            "label": "community",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_contract(WowTCommunity)2635",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:21"
-          },
-          {
-            "label": "quizmap",
-            "offset": 0,
-            "slot": "103",
-            "type": "t_mapping(t_string_memory_ptr,t_struct(Quiz)3084_storage)",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:40"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_string_storage)4_storage": {
-            "label": "string[4]",
-            "numberOfBytes": "128"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_contract(WowTCommunity)2635": {
-            "label": "contract WowTCommunity",
-            "numberOfBytes": "20"
-          },
-          "t_contract(WowTPoints)3047": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_string_memory_ptr,t_struct(Quiz)3084_storage)": {
-            "label": "mapping(string => struct WowTQuiz.Quiz)",
-            "numberOfBytes": "32"
-          },
-          "t_string_memory_ptr": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(Quiz)3084_storage": {
-            "label": "struct WowTQuiz.Quiz",
-            "members": [
-              {
-                "label": "description",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "question",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "options",
-                "type": "t_array(t_string_storage)4_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "answer",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "7"
-              },
-              {
-                "label": "creatorAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "8"
-              }
-            ],
-            "numberOfBytes": "288"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "a92da695d701810196997a7cd504357c8f9d392e5985831714c2ce858b4936f9": {
-      "address": "0xCf5a01AdBC61D0883ea7DEa6CA7fa521bD5985Ec",
-      "txHash": "0x92470eb95cbe00a084e490ae541b349fcbd4f7acf665bf660b97ffbe56767747",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "imageUri",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_string_storage",
-            "contract": "WowTBadge",
-            "src": "contracts\\wowTBadge.sol:8"
-          },
-          {
-            "label": "pointsContract",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_address",
-            "contract": "WowTBadge",
-            "src": "contracts\\wowTBadge.sol:9"
-          },
-          {
-            "label": "points",
-            "offset": 0,
-            "slot": "103",
-            "type": "t_contract(WowTPoints)2625",
-            "contract": "WowTBadge",
-            "src": "contracts\\wowTBadge.sol:10"
-          },
-          {
-            "label": "badges",
-            "offset": 0,
-            "slot": "104",
-            "type": "t_mapping(t_address,t_array(t_struct(Badge)2151_storage)dyn_storage)",
-            "contract": "WowTBadge",
-            "src": "contracts\\wowTBadge.sol:18"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_struct(Badge)2151_storage)dyn_storage": {
-            "label": "struct WowTBadge.Badge[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_contract(WowTPoints)2625": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_array(t_struct(Badge)2151_storage)dyn_storage)": {
-            "label": "mapping(address => struct WowTBadge.Badge[])",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(Badge)2151_storage": {
-            "label": "struct WowTBadge.Badge",
-            "members": [
-              {
-                "label": "yearWeek",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "image",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "b3aa204f97d1227c8f3099eacbe00c502983a877110b5b3825927102120e7257": {
-      "address": "0x7bA05e31c27DC102FE90442828BF7824A5FCe614",
-      "txHash": "0xa087c751e49be53e78473f161a0a0b483bd143be3e39e0c6164fa86968a9f693",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ERC165Upgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:41"
-          },
-          {
-            "label": "_roles",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_mapping(t_bytes32,t_struct(RoleData)34_storage)",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:61"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:259"
-          },
-          {
-            "label": "levelOnePoints",
-            "offset": 0,
-            "slot": "201",
-            "type": "t_uint16",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:12"
-          },
-          {
-            "label": "levelTwoPoints",
-            "offset": 2,
-            "slot": "201",
-            "type": "t_uint16",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:13"
-          },
-          {
-            "label": "activeUserPoints",
-            "offset": 4,
-            "slot": "201",
-            "type": "t_uint16",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:14"
-          },
-          {
-            "label": "minimumPointsForConvertion",
-            "offset": 0,
-            "slot": "202",
-            "type": "t_uint256",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:15"
-          },
-          {
-            "label": "topLeaderBoardAddress",
-            "offset": 0,
-            "slot": "203",
-            "type": "t_array(t_address)10_storage",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:16"
-          },
-          {
-            "label": "points",
-            "offset": 0,
-            "slot": "213",
-            "type": "t_mapping(t_address,t_uint256)",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:18"
-          },
-          {
-            "label": "referralPoints",
-            "offset": 0,
-            "slot": "214",
-            "type": "t_mapping(t_address,t_uint256)",
-            "contract": "WowTPoints",
-            "src": "contracts\\wowTPoints.sol:19"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)10_storage": {
-            "label": "address[10]",
-            "numberOfBytes": "320"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_uint256)": {
-            "label": "mapping(address => uint256)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(RoleData)34_storage)": {
-            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(RoleData)34_storage": {
-            "label": "struct AccessControlUpgradeable.RoleData",
-            "members": [
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "adminRole",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "b80a476f81021444ebb98aa1c9a25847ce384747a513dde98986483cf9cafb5d": {
-      "address": "0xffF35D61BC1C469F796A555d584b0F154C4a4315",
-      "txHash": "0xd46ba53e24f4b61a59b9fa13a239b4d2a6e61392c8dd4ffec91203677e88c622",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ERC165Upgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:41"
-          },
-          {
-            "label": "_roles",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_mapping(t_bytes32,t_struct(RoleData)34_storage)",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:61"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:259"
-          },
-          {
-            "label": "communityEntryPoints",
-            "offset": 0,
-            "slot": "201",
-            "type": "t_uint16",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:9"
-          },
-          {
-            "label": "pointsContract",
-            "offset": 2,
-            "slot": "201",
-            "type": "t_address",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:10"
-          },
-          {
-            "label": "communities",
-            "offset": 0,
-            "slot": "202",
-            "type": "t_array(t_string_storage)dyn_storage",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:11"
-          },
-          {
-            "label": "points",
-            "offset": 0,
-            "slot": "203",
-            "type": "t_contract(WowTPoints)2933",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:12"
-          },
-          {
-            "label": "communityMap",
-            "offset": 0,
-            "slot": "204",
-            "type": "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2169_storage)",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:35"
-          },
-          {
-            "label": "communityPostsMap",
-            "offset": 0,
-            "slot": "205",
-            "type": "t_mapping(t_string_memory_ptr,t_array(t_struct(CommunityPosts)2176_storage)dyn_storage)",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:36"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_string_storage)dyn_storage": {
-            "label": "string[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_struct(CommunityPosts)2176_storage)dyn_storage": {
-            "label": "struct WowTCommunity.CommunityPosts[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_contract(WowTPoints)2933": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(RoleData)34_storage)": {
-            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_array(t_struct(CommunityPosts)2176_storage)dyn_storage)": {
-            "label": "mapping(string => struct WowTCommunity.CommunityPosts[])",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2169_storage)": {
-            "label": "mapping(string => struct WowTCommunity.CommunityDetails)",
-            "numberOfBytes": "32"
-          },
-          "t_string_memory_ptr": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(CommunityDetails)2169_storage": {
-            "label": "struct WowTCommunity.CommunityDetails",
-            "members": [
-              {
-                "label": "description",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "quizesforEntry",
-                "type": "t_array(t_string_storage)dyn_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "totalMembers",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "exists",
-                "type": "t_bool",
-                "offset": 0,
-                "slot": "5"
-              }
-            ],
-            "numberOfBytes": "192"
-          },
-          "t_struct(CommunityPosts)2176_storage": {
-            "label": "struct WowTCommunity.CommunityPosts",
-            "members": [
-              {
-                "label": "message",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "createrAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "2"
-              }
-            ],
-            "numberOfBytes": "96"
-          },
-          "t_struct(RoleData)34_storage": {
-            "label": "struct AccessControlUpgradeable.RoleData",
-            "members": [
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "adminRole",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
     "2b6a1b02709db795b110f7411d9eb6f759665f40efc48fcd10b1ad9b9a0b06f5": {
-      "address": "0x73029816AC51509889d530851B89BFd72d0304A8",
-      "txHash": "0xcb842f0cbe3e8103076de5b6c6a6cf0462c166587849b9b9770d8cf2df2f33c8",
+      "address": "0xc94f4835Cc5d0bcDA71cD5C81bfB9BCD808C01a1",
+      "txHash": "0xb407222aef1ca99de27cf4ad7432ea687be5b127959a851e53d4116606890e90",
       "layout": {
         "solcVersion": "0.8.17",
         "storage": [
@@ -1662,487 +218,6 @@
           "t_uint16": {
             "label": "uint16",
             "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "756c642341cf73b1e6d1c8cf2a0ee4cb61c449eba9aca6971beea608de6e90a9": {
-      "address": "0x60edDC04850eAD7bC44fc602cf68bd83Eaf511B5",
-      "txHash": "0x6f13f6d565aa47ef49875bc0ce4a0288a1bbc11865b85948c28e230d771828b5",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "quizePoints",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_uint16",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:10"
-          },
-          {
-            "label": "createEligibility",
-            "offset": 2,
-            "slot": "101",
-            "type": "t_uint16",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:14"
-          },
-          {
-            "label": "pointsToAnswer",
-            "offset": 4,
-            "slot": "101",
-            "type": "t_uint16",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:16"
-          },
-          {
-            "label": "points",
-            "offset": 6,
-            "slot": "101",
-            "type": "t_contract(WowTPoints)2933",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:20"
-          },
-          {
-            "label": "community",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_contract(WowTCommunity)2521",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:21"
-          },
-          {
-            "label": "quizmap",
-            "offset": 0,
-            "slot": "103",
-            "type": "t_mapping(t_string_memory_ptr,t_struct(Quiz)2970_storage)",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:40"
-          },
-          {
-            "label": "evalStatus",
-            "offset": 0,
-            "slot": "104",
-            "type": "t_mapping(t_string_memory_ptr,t_mapping(t_address,t_bool))",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:41"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_string_storage)4_storage": {
-            "label": "string[4]",
-            "numberOfBytes": "128"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_contract(WowTCommunity)2521": {
-            "label": "contract WowTCommunity",
-            "numberOfBytes": "20"
-          },
-          "t_contract(WowTPoints)2933": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_mapping(t_address,t_bool))": {
-            "label": "mapping(string => mapping(address => bool))",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_struct(Quiz)2970_storage)": {
-            "label": "mapping(string => struct WowTQuiz.Quiz)",
-            "numberOfBytes": "32"
-          },
-          "t_string_memory_ptr": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(Quiz)2970_storage": {
-            "label": "struct WowTQuiz.Quiz",
-            "members": [
-              {
-                "label": "description",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "question",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "options",
-                "type": "t_array(t_string_storage)4_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "answer",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "7"
-              },
-              {
-                "label": "creatorAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "8"
-              }
-            ],
-            "numberOfBytes": "288"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "8ace9dff20344f6632a5ab577774d8f562522eaf0638c761262c447aeb04eb46": {
-      "address": "0xCd2EE2110B57a366EDD1446b4249FFE647d625A9",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "referrer",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_mapping(t_address,t_struct(ReferralUser)2557_storage)",
-            "contract": "WowTReferral",
-            "src": "contracts\\wowTReferral.sol:27"
-          },
-          {
-            "label": "referrals",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_mapping(t_address,t_array(t_address)dyn_storage)",
-            "contract": "WowTReferral",
-            "src": "contracts\\wowTReferral.sol:29"
-          },
-          {
-            "label": "points",
-            "offset": 0,
-            "slot": "103",
-            "type": "t_contract(WowTPoints)2543",
-            "contract": "WowTReferral",
-            "src": "contracts\\wowTReferral.sol:32"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)dyn_storage": {
-            "label": "address[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_contract(WowTPoints)2543": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_array(t_address)dyn_storage)": {
-            "label": "mapping(address => address[])",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_struct(ReferralUser)2557_storage)": {
-            "label": "mapping(address => struct WowTReferral.ReferralUser)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(ReferralUser)2557_storage": {
-            "label": "struct WowTReferral.ReferralUser",
-            "members": [
-              {
-                "label": "referralAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "referralExists",
-                "type": "t_bool",
-                "offset": 20,
-                "slot": "0"
-              }
-            ],
-            "numberOfBytes": "32"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "f3d182e7a56bf064065bdbc54de6e57becd83bcbb3271ce218b2218514f565f3": {
-      "address": "0x87915347acda57165865B300dc6402eD0A5dD762",
-      "txHash": "0x1f3caec713cc3832ee91f5e97afa8071e676b8e816fb14d7c8e3a8f673c3dbe4",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "referrer",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_mapping(t_address,t_struct(ReferralUser)2557_storage)",
-            "contract": "WowTReferral",
-            "src": "contracts\\wowTReferral.sol:27"
-          },
-          {
-            "label": "referrals",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_mapping(t_address,t_array(t_address)dyn_storage)",
-            "contract": "WowTReferral",
-            "src": "contracts\\wowTReferral.sol:29"
-          },
-          {
-            "label": "points",
-            "offset": 0,
-            "slot": "103",
-            "type": "t_contract(WowTPoints)2543",
-            "contract": "WowTReferral",
-            "src": "contracts\\wowTReferral.sol:32"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_address)dyn_storage": {
-            "label": "address[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_contract(WowTPoints)2543": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_array(t_address)dyn_storage)": {
-            "label": "mapping(address => address[])",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_address,t_struct(ReferralUser)2557_storage)": {
-            "label": "mapping(address => struct WowTReferral.ReferralUser)",
-            "numberOfBytes": "32"
-          },
-          "t_struct(ReferralUser)2557_storage": {
-            "label": "struct WowTReferral.ReferralUser",
-            "members": [
-              {
-                "label": "referralAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "referralExists",
-                "type": "t_bool",
-                "offset": 20,
-                "slot": "0"
-              }
-            ],
-            "numberOfBytes": "32"
           },
           "t_uint256": {
             "label": "uint256",
@@ -2156,8 +231,8 @@
       }
     },
     "45ba8e2d27c32f951827422a15c80e369bed2b1b7a2b3594b7767bf0fd2654cc": {
-      "address": "0x25474D3c1F47EC3bF243b0fB221d4121ae3E6Dd8",
-      "txHash": "0xe1f45c004eff63ed427c507055f02448899aca7457fcf3fd16a1d35ea81cdc98",
+      "address": "0xa034F914BAe9508c99dc7FB49a9B8D73D80870aa",
+      "txHash": "0xb79a0e18939560bc87357fe5943bb90a63f55727340383af5259a3e0e9faabba",
       "layout": {
         "solcVersion": "0.8.17",
         "storage": [
@@ -2289,1051 +364,9 @@
         }
       }
     },
-    "2292be0545713829cda1ba65060f18762ae92feb3ef9481d6f239ee1dba0c738": {
-      "address": "0xF2239018C3fd8a9d856b6ef23F103fcdBdAC8268",
-      "txHash": "0x81a0a21af89ea4c57a0a7e14a56628892ded2e828bc2730ea3052f888229516a",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "quizePoints",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_uint16",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:10"
-          },
-          {
-            "label": "createEligibility",
-            "offset": 2,
-            "slot": "101",
-            "type": "t_uint16",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:14"
-          },
-          {
-            "label": "pointsToAnswer",
-            "offset": 4,
-            "slot": "101",
-            "type": "t_uint16",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:16"
-          },
-          {
-            "label": "points",
-            "offset": 6,
-            "slot": "101",
-            "type": "t_contract(WowTPoints)2933",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:20"
-          },
-          {
-            "label": "community",
-            "offset": 0,
-            "slot": "102",
-            "type": "t_contract(WowTCommunity)2521",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:21"
-          },
-          {
-            "label": "quizmap",
-            "offset": 0,
-            "slot": "103",
-            "type": "t_mapping(t_string_memory_ptr,t_struct(Quiz)2970_storage)",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:40"
-          },
-          {
-            "label": "evalStatus",
-            "offset": 0,
-            "slot": "104",
-            "type": "t_mapping(t_string_memory_ptr,t_mapping(t_address,t_bool))",
-            "contract": "WowTQuiz",
-            "src": "contracts\\wowTQuiz.sol:41"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_string_storage)4_storage": {
-            "label": "string[4]",
-            "numberOfBytes": "128"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_contract(WowTCommunity)2521": {
-            "label": "contract WowTCommunity",
-            "numberOfBytes": "20"
-          },
-          "t_contract(WowTPoints)2933": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_mapping(t_address,t_bool))": {
-            "label": "mapping(string => mapping(address => bool))",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_struct(Quiz)2970_storage)": {
-            "label": "mapping(string => struct WowTQuiz.Quiz)",
-            "numberOfBytes": "32"
-          },
-          "t_string_memory_ptr": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(Quiz)2970_storage": {
-            "label": "struct WowTQuiz.Quiz",
-            "members": [
-              {
-                "label": "description",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "question",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "options",
-                "type": "t_array(t_string_storage)4_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "answer",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "7"
-              },
-              {
-                "label": "creatorAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "8"
-              }
-            ],
-            "numberOfBytes": "288"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "4d6f2f665689239f9de2909f757b113d7b86b90f22c4400f2eadb3def100dd61": {
-      "address": "0x166Fb3C9025242f8d5e1DEef4084d2c7b9f50444",
-      "txHash": "0xe68b43c6f59786322e6be24f52cfc66f41ff86c78c1bd1b746855fc2181ae42b",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ERC165Upgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:41"
-          },
-          {
-            "label": "_roles",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_mapping(t_bytes32,t_struct(RoleData)34_storage)",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:61"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:259"
-          },
-          {
-            "label": "communityEntryPoints",
-            "offset": 0,
-            "slot": "201",
-            "type": "t_uint16",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:9"
-          },
-          {
-            "label": "pointsContract",
-            "offset": 2,
-            "slot": "201",
-            "type": "t_address",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:10"
-          },
-          {
-            "label": "communities",
-            "offset": 0,
-            "slot": "202",
-            "type": "t_array(t_string_storage)dyn_storage",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:11"
-          },
-          {
-            "label": "points",
-            "offset": 0,
-            "slot": "203",
-            "type": "t_contract(WowTPoints)2959",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:12"
-          },
-          {
-            "label": "communityMap",
-            "offset": 0,
-            "slot": "204",
-            "type": "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2169_storage)",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:35"
-          },
-          {
-            "label": "communityPostsMap",
-            "offset": 0,
-            "slot": "205",
-            "type": "t_mapping(t_string_memory_ptr,t_array(t_struct(CommunityPosts)2176_storage)dyn_storage)",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:36"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_string_storage)dyn_storage": {
-            "label": "string[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_struct(CommunityPosts)2176_storage)dyn_storage": {
-            "label": "struct WowTCommunity.CommunityPosts[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_contract(WowTPoints)2959": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(RoleData)34_storage)": {
-            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_array(t_struct(CommunityPosts)2176_storage)dyn_storage)": {
-            "label": "mapping(string => struct WowTCommunity.CommunityPosts[])",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2169_storage)": {
-            "label": "mapping(string => struct WowTCommunity.CommunityDetails)",
-            "numberOfBytes": "32"
-          },
-          "t_string_memory_ptr": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(CommunityDetails)2169_storage": {
-            "label": "struct WowTCommunity.CommunityDetails",
-            "members": [
-              {
-                "label": "description",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "quizesforEntry",
-                "type": "t_array(t_string_storage)dyn_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "totalMembers",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "exists",
-                "type": "t_bool",
-                "offset": 0,
-                "slot": "5"
-              }
-            ],
-            "numberOfBytes": "192"
-          },
-          "t_struct(CommunityPosts)2176_storage": {
-            "label": "struct WowTCommunity.CommunityPosts",
-            "members": [
-              {
-                "label": "message",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "createrAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "2"
-              }
-            ],
-            "numberOfBytes": "96"
-          },
-          "t_struct(RoleData)34_storage": {
-            "label": "struct AccessControlUpgradeable.RoleData",
-            "members": [
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "adminRole",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "d3d1bbd0f4db4c81e91d582e59a98a1bfb8fd9458048d8a1d542f86520bb6907": {
-      "address": "0xAD0451D034fa9B3C63fd795C0a619f1bAa4b6771",
-      "txHash": "0xf1ddab53a0e975a61f9964b4a9dadb28f237b72ad3f735143bdb352020dc3e33",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ERC165Upgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:41"
-          },
-          {
-            "label": "_roles",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_mapping(t_bytes32,t_struct(RoleData)34_storage)",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:61"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:259"
-          },
-          {
-            "label": "communityEntryPoints",
-            "offset": 0,
-            "slot": "201",
-            "type": "t_uint16",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:9"
-          },
-          {
-            "label": "pointsContract",
-            "offset": 2,
-            "slot": "201",
-            "type": "t_address",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:10"
-          },
-          {
-            "label": "communities",
-            "offset": 0,
-            "slot": "202",
-            "type": "t_array(t_string_storage)dyn_storage",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:11"
-          },
-          {
-            "label": "points",
-            "offset": 0,
-            "slot": "203",
-            "type": "t_contract(WowTPoints)2976",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:12"
-          },
-          {
-            "label": "communityMap",
-            "offset": 0,
-            "slot": "204",
-            "type": "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2169_storage)",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:35"
-          },
-          {
-            "label": "communityPostsMap",
-            "offset": 0,
-            "slot": "205",
-            "type": "t_mapping(t_string_memory_ptr,t_array(t_struct(CommunityPosts)2176_storage)dyn_storage)",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:36"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_string_storage)dyn_storage": {
-            "label": "string[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_struct(CommunityPosts)2176_storage)dyn_storage": {
-            "label": "struct WowTCommunity.CommunityPosts[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_contract(WowTPoints)2976": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(RoleData)34_storage)": {
-            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_array(t_struct(CommunityPosts)2176_storage)dyn_storage)": {
-            "label": "mapping(string => struct WowTCommunity.CommunityPosts[])",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2169_storage)": {
-            "label": "mapping(string => struct WowTCommunity.CommunityDetails)",
-            "numberOfBytes": "32"
-          },
-          "t_string_memory_ptr": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(CommunityDetails)2169_storage": {
-            "label": "struct WowTCommunity.CommunityDetails",
-            "members": [
-              {
-                "label": "description",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "quizesforEntry",
-                "type": "t_array(t_string_storage)dyn_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "totalMembers",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "exists",
-                "type": "t_bool",
-                "offset": 0,
-                "slot": "5"
-              }
-            ],
-            "numberOfBytes": "192"
-          },
-          "t_struct(CommunityPosts)2176_storage": {
-            "label": "struct WowTCommunity.CommunityPosts",
-            "members": [
-              {
-                "label": "message",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "createrAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "2"
-              }
-            ],
-            "numberOfBytes": "96"
-          },
-          "t_struct(RoleData)34_storage": {
-            "label": "struct AccessControlUpgradeable.RoleData",
-            "members": [
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "adminRole",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
-    "0fb8d00e2b46285f7d8b527281872a605d7b9a5d25e63cbe08c5557b803ae30e": {
-      "address": "0xF321B96C72E17806A2f647582cA90ddC3360EC41",
-      "txHash": "0x3f3969818110805efeb80a5960080ad4c7a18c3e114046492212aba655781d0d",
-      "layout": {
-        "solcVersion": "0.8.17",
-        "storage": [
-          {
-            "label": "_initialized",
-            "offset": 0,
-            "slot": "0",
-            "type": "t_uint8",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
-            "retypedFrom": "bool"
-          },
-          {
-            "label": "_initializing",
-            "offset": 1,
-            "slot": "0",
-            "type": "t_bool",
-            "contract": "Initializable",
-            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "1",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ContextUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
-          },
-          {
-            "label": "_owner",
-            "offset": 0,
-            "slot": "51",
-            "type": "t_address",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "52",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "OwnableUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "101",
-            "type": "t_array(t_uint256)50_storage",
-            "contract": "ERC165Upgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\utils\\introspection\\ERC165Upgradeable.sol:41"
-          },
-          {
-            "label": "_roles",
-            "offset": 0,
-            "slot": "151",
-            "type": "t_mapping(t_bytes32,t_struct(RoleData)34_storage)",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:61"
-          },
-          {
-            "label": "__gap",
-            "offset": 0,
-            "slot": "152",
-            "type": "t_array(t_uint256)49_storage",
-            "contract": "AccessControlUpgradeable",
-            "src": "@openzeppelin\\contracts-upgradeable\\access\\AccessControlUpgradeable.sol:259"
-          },
-          {
-            "label": "communityEntryPoints",
-            "offset": 0,
-            "slot": "201",
-            "type": "t_uint16",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:9"
-          },
-          {
-            "label": "pointsContract",
-            "offset": 2,
-            "slot": "201",
-            "type": "t_address",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:10"
-          },
-          {
-            "label": "communities",
-            "offset": 0,
-            "slot": "202",
-            "type": "t_array(t_string_storage)dyn_storage",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:11"
-          },
-          {
-            "label": "points",
-            "offset": 0,
-            "slot": "203",
-            "type": "t_contract(WowTPoints)2993",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:12"
-          },
-          {
-            "label": "communityMap",
-            "offset": 0,
-            "slot": "204",
-            "type": "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2169_storage)",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:35"
-          },
-          {
-            "label": "communityPostsMap",
-            "offset": 0,
-            "slot": "205",
-            "type": "t_mapping(t_string_memory_ptr,t_array(t_struct(CommunityPosts)2176_storage)dyn_storage)",
-            "contract": "WowTCommunity",
-            "src": "contracts\\wowTCommunity.sol:36"
-          }
-        ],
-        "types": {
-          "t_address": {
-            "label": "address",
-            "numberOfBytes": "20"
-          },
-          "t_array(t_string_storage)dyn_storage": {
-            "label": "string[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_struct(CommunityPosts)2176_storage)dyn_storage": {
-            "label": "struct WowTCommunity.CommunityPosts[]",
-            "numberOfBytes": "32"
-          },
-          "t_array(t_uint256)49_storage": {
-            "label": "uint256[49]",
-            "numberOfBytes": "1568"
-          },
-          "t_array(t_uint256)50_storage": {
-            "label": "uint256[50]",
-            "numberOfBytes": "1600"
-          },
-          "t_bool": {
-            "label": "bool",
-            "numberOfBytes": "1"
-          },
-          "t_bytes32": {
-            "label": "bytes32",
-            "numberOfBytes": "32"
-          },
-          "t_contract(WowTPoints)2993": {
-            "label": "contract WowTPoints",
-            "numberOfBytes": "20"
-          },
-          "t_mapping(t_address,t_bool)": {
-            "label": "mapping(address => bool)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_bytes32,t_struct(RoleData)34_storage)": {
-            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_array(t_struct(CommunityPosts)2176_storage)dyn_storage)": {
-            "label": "mapping(string => struct WowTCommunity.CommunityPosts[])",
-            "numberOfBytes": "32"
-          },
-          "t_mapping(t_string_memory_ptr,t_struct(CommunityDetails)2169_storage)": {
-            "label": "mapping(string => struct WowTCommunity.CommunityDetails)",
-            "numberOfBytes": "32"
-          },
-          "t_string_memory_ptr": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_string_storage": {
-            "label": "string",
-            "numberOfBytes": "32"
-          },
-          "t_struct(CommunityDetails)2169_storage": {
-            "label": "struct WowTCommunity.CommunityDetails",
-            "members": [
-              {
-                "label": "description",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "2"
-              },
-              {
-                "label": "quizesforEntry",
-                "type": "t_array(t_string_storage)dyn_storage",
-                "offset": 0,
-                "slot": "3"
-              },
-              {
-                "label": "totalMembers",
-                "type": "t_uint256",
-                "offset": 0,
-                "slot": "4"
-              },
-              {
-                "label": "exists",
-                "type": "t_bool",
-                "offset": 0,
-                "slot": "5"
-              }
-            ],
-            "numberOfBytes": "192"
-          },
-          "t_struct(CommunityPosts)2176_storage": {
-            "label": "struct WowTCommunity.CommunityPosts",
-            "members": [
-              {
-                "label": "message",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "imageUrl",
-                "type": "t_string_storage",
-                "offset": 0,
-                "slot": "1"
-              },
-              {
-                "label": "createrAddress",
-                "type": "t_address",
-                "offset": 0,
-                "slot": "2"
-              }
-            ],
-            "numberOfBytes": "96"
-          },
-          "t_struct(RoleData)34_storage": {
-            "label": "struct AccessControlUpgradeable.RoleData",
-            "members": [
-              {
-                "label": "members",
-                "type": "t_mapping(t_address,t_bool)",
-                "offset": 0,
-                "slot": "0"
-              },
-              {
-                "label": "adminRole",
-                "type": "t_bytes32",
-                "offset": 0,
-                "slot": "1"
-              }
-            ],
-            "numberOfBytes": "64"
-          },
-          "t_uint16": {
-            "label": "uint16",
-            "numberOfBytes": "2"
-          },
-          "t_uint256": {
-            "label": "uint256",
-            "numberOfBytes": "32"
-          },
-          "t_uint8": {
-            "label": "uint8",
-            "numberOfBytes": "1"
-          }
-        }
-      }
-    },
     "e9f97617e418fde72ad1280a9ece2047a9039cd170a29f4f74c57b866d394b13": {
-      "address": "0x35481b9B653B7D95EFb3127BB45852b4416f3bD0",
-      "txHash": "0xc84b87ac79dd1bc0e6e6bfda01f6f06411375b45c928b5145c8161f3c2b40b38",
+      "address": "0x517Abefd02cA15943b198d85d70CCE8A9Ae909Ca",
+      "txHash": "0x0af06d370f18722e8656af4c77898478f44798d910c9e1c2687373fac901811f",
       "layout": {
         "solcVersion": "0.8.17",
         "storage": [
@@ -3595,6 +628,362 @@
           "t_uint16": {
             "label": "uint16",
             "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "2292be0545713829cda1ba65060f18762ae92feb3ef9481d6f239ee1dba0c738": {
+      "address": "0x18D19cFAFFEd59f54A2E85536d90A710DC6bD13F",
+      "txHash": "0xe0c9c01cd0e767224a8813e01b50723383630b87002e3350fccd8e2effe5224a",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "quizePoints",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_uint16",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:10"
+          },
+          {
+            "label": "createEligibility",
+            "offset": 2,
+            "slot": "101",
+            "type": "t_uint16",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:14"
+          },
+          {
+            "label": "pointsToAnswer",
+            "offset": 4,
+            "slot": "101",
+            "type": "t_uint16",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:16"
+          },
+          {
+            "label": "points",
+            "offset": 6,
+            "slot": "101",
+            "type": "t_contract(WowTPoints)3035",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:20"
+          },
+          {
+            "label": "community",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_contract(WowTCommunity)2623",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:21"
+          },
+          {
+            "label": "quizmap",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_mapping(t_string_memory_ptr,t_struct(Quiz)3072_storage)",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:40"
+          },
+          {
+            "label": "evalStatus",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_mapping(t_string_memory_ptr,t_mapping(t_address,t_bool))",
+            "contract": "WowTQuiz",
+            "src": "contracts\\wowTQuiz.sol:41"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_string_storage)4_storage": {
+            "label": "string[4]",
+            "numberOfBytes": "128"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_contract(WowTCommunity)2623": {
+            "label": "contract WowTCommunity",
+            "numberOfBytes": "20"
+          },
+          "t_contract(WowTPoints)3035": {
+            "label": "contract WowTPoints",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_string_memory_ptr,t_mapping(t_address,t_bool))": {
+            "label": "mapping(string => mapping(address => bool))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_string_memory_ptr,t_struct(Quiz)3072_storage)": {
+            "label": "mapping(string => struct WowTQuiz.Quiz)",
+            "numberOfBytes": "32"
+          },
+          "t_string_memory_ptr": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Quiz)3072_storage": {
+            "label": "struct WowTQuiz.Quiz",
+            "members": [
+              {
+                "label": "description",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "imageUrl",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "question",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "options",
+                "type": "t_array(t_string_storage)4_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "answer",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "7"
+              },
+              {
+                "label": "creatorAddress",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "8"
+              }
+            ],
+            "numberOfBytes": "288"
+          },
+          "t_uint16": {
+            "label": "uint16",
+            "numberOfBytes": "2"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "a92da695d701810196997a7cd504357c8f9d392e5985831714c2ce858b4936f9": {
+      "address": "0xD71B30E7154dBF3208e82084FD277Ef4b2c82BD2",
+      "txHash": "0x363e4be48cfed3bde4b5e259d4b02c126c14724327d660662f8a2b427024ee52",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\utils\\ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin\\contracts-upgradeable\\access\\OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "imageUri",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_string_storage",
+            "contract": "WowTBadge",
+            "src": "contracts\\wowTBadge.sol:22"
+          },
+          {
+            "label": "pointsContract",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_address",
+            "contract": "WowTBadge",
+            "src": "contracts\\wowTBadge.sol:23"
+          },
+          {
+            "label": "points",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_contract(WowTPoints)3047",
+            "contract": "WowTBadge",
+            "src": "contracts\\wowTBadge.sol:24"
+          },
+          {
+            "label": "badges",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_mapping(t_address,t_array(t_struct(Badge)2145_storage)dyn_storage)",
+            "contract": "WowTBadge",
+            "src": "contracts\\wowTBadge.sol:26"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_struct(Badge)2145_storage)dyn_storage": {
+            "label": "struct WowTBadge.Badge[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(WowTPoints)3047": {
+            "label": "contract WowTPoints",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_array(t_struct(Badge)2145_storage)dyn_storage)": {
+            "label": "mapping(address => struct WowTBadge.Badge[])",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Badge)2145_storage": {
+            "label": "struct WowTBadge.Badge",
+            "members": [
+              {
+                "label": "yearWeek",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "image",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
           },
           "t_uint256": {
             "label": "uint256",

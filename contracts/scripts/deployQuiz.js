@@ -8,12 +8,12 @@ async function main() {
   //   2,
   //   20,
   //   2,
-  //   '0xB192bb107DffaB91F8e6EB4D86f31567dC92Afc6',
-  //   '0x10e8C8FB6Ccf12fFb388Ce527a2F69FCE5c74bF9',
+  //   '0x39abC2Ef96408dba4532cdD9405eD6FB1A8533a6',
+  //   '0x5aB333BCa2eba08529b83f26C7F1012Eff8949A4',
   // ]);
 
   const contract = await upgrades.upgradeProxy(
-    '0x203B9d8B1EB14BfD8C298ff2ea030F6f2217E786', // 0xC9809Cb6Cdb99b883798fDdb1EDAbe863Ef5f0F1
+    '0x582436D3C1232d1126Dbb9B4AC67Af37766d5713', // 0x203B9d8B1EB14BfD8C298ff2ea030F6f2217E786
     factory
   );
 

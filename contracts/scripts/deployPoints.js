@@ -16,7 +16,7 @@ async function main() {
   // ]);
 
   const contract = await upgrades.upgradeProxy(
-    '0xB192bb107DffaB91F8e6EB4D86f31567dC92Afc6', // 0xbAf59D95709F960a047130D3f9721887B9Db3E10
+    '0x39abC2Ef96408dba4532cdD9405eD6FB1A8533a6', // 0xB192bb107DffaB91F8e6EB4D86f31567dC92Afc6
     factory
   );
 
