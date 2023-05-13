@@ -1,20 +1,18 @@
 import 'package:bnbapp/auth_cubit/auth_cubit.dart';
+import 'package:bnbapp/screens/community/community_screen.dart';
+import 'package:bnbapp/screens/community/cubit/cummunity_cubit.dart';
 import 'package:bnbapp/screens/leaderboard/cubit/leaderboard_cubit.dart';
 import 'package:bnbapp/screens/leaderboard/leaderboard.dart';
 import 'package:bnbapp/screens/profile/cubit/profile_cubit.dart';
 import 'package:bnbapp/screens/profile/cubit/profile_state.dart';
 import 'package:bnbapp/screens/profile/profile.dart';
-import 'package:bnbapp/screens/tab_community/tab_community.dart';
 import 'package:bnbapp/screens/tab_referral/cubit/tab_referral_cubit.dart';
 import 'package:bnbapp/screens/tab_referral/tab_referral.dart';
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/tabs.dart';
 import 'package:bnbapp/widgets/text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../screens/tab_community/cubit/tab_community_cubit.dart';
 
 class ProfileWidget extends StatelessWidget {
   final Function()? copyPressed;
@@ -131,12 +129,24 @@ class ProfileWidget extends StatelessWidget {
                                     create: (context) {
                                       final AuthCubit authenticationCubit =
                                           BlocProvider.of<AuthCubit>(context);
+                                      return CommunityCubit(authenticationCubit)
+                                        ..init();
+                                    },
+                                    child: const Community(extraSize: "yes"),
+                                  ),
+                                  /*
+                                  BlocProvider(
+                                    create: (context) {
+                                      final AuthCubit authenticationCubit =
+                                          BlocProvider.of<AuthCubit>(context);
                                       return TabCommunityCubit(
                                           authenticationCubit)
                                         ..init();
                                     },
                                     child: const TabCommunityScreen(),
                                   ),
+
+                                   */
                                   BlocProvider(
                                     create: (context) {
                                       final AuthCubit authenticationCubit =
@@ -206,7 +216,19 @@ class ProfileWidget extends StatelessWidget {
                             maxRadius: height / 14,
                             backgroundColor: AllColor.linear1,
                             child: ClipOval(
-                              child: CachedNetworkImage(
+                              child: CircleAvatar(
+                                radius: height / 14.5,
+                                backgroundColor: AllColor.linear2,
+                                foregroundColor: AllColor.linear2,
+                                child: CustomText(
+                                  fontSize: 50,
+                                  fontWeight: FontWeight.w400,
+                                  text: cubit.fbName ?? "...",
+                                  fontColor: AllColor.white,
+                                ),
+                              ),
+                              /*
+                              CachedNetworkImage(
                                 height: height / 7.3,
                                 width: width / 3.6,
                                 fit: BoxFit.fill,
@@ -220,6 +242,8 @@ class ProfileWidget extends StatelessWidget {
                                 imageUrl:
                                     "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
                               ),
+
+                               */
                             ),
                             // radius: 12,
                           ),

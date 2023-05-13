@@ -44,10 +44,10 @@ class _LayOut extends StatelessWidget {
               child: ListView(
             children: [
               cubit.state is! LeaderBoardLoadedState
-                  ? Column(
-                      children: const [
-                        CustomCircularProgressIndicator(),
-                      ],
+                  ? const Center(
+                      child: SizedBox(
+                        child: CustomCircularProgressIndicator(),
+                      ),
                     )
                   : TabLeaderBoardWidget(
                       leaderBoard: cubit.leaderBoard,

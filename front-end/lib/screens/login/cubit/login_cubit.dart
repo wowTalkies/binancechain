@@ -18,9 +18,7 @@ class LoginCubit extends BaseCubit<LoginState> {
   Paths path = Paths();
   String userName = '';
 
-  Future<void> init() async {
-    debugPrint('hi wellCome go');
-  }
+  Future<void> init() async {}
 
   login() async {
     await magic.auth
@@ -32,11 +30,9 @@ class LoginCubit extends BaseCubit<LoginState> {
         break;
       }
     }
-    debugPrint("the user name is ${userName.toString()}");
     var account = await MagicCredential(magic.provider).getAccount();
     var address = account.toString();
     await PreferenceHelper.saveUserId(address.toString());
-    debugPrint("the address is ${address.toString()}");
     var email = controller.value.text;
     await FirebaseAuth.instance.signInAnonymously();
     var user = FirebaseAuth.instance.currentUser?.uid;
@@ -50,19 +46,15 @@ class LoginCubit extends BaseCubit<LoginState> {
       PendingDynamicLinkData? initialLink =
           await FirebaseDynamicLinks.instance.getInitialLink();
 
-      debugPrint('referral cubit link ${initialLink?.link.toString()}');
       var firstInvite =
           await path?.address.child(address!).child("firstInvite").get();
-      debugPrint("first invite is ${firstInvite?.value.toString()}");
       try {
         if (initialLink?.link.toString() != null &&
             firstInvite?.value.toString() == null) {
           Uri deepLink = initialLink!.link;
-          debugPrint('the link is ${deepLink.toString()}');
           var qAddress = deepLink.query;
           var queryAddress = qAddress.toString().substring(10);
-          debugPrint('the query address is ${queryAddress.toString()}');
-          debugPrint('the link query is ${deepLink.query}');
+
           await path?.address
               .child(address!)
               .update({"firstInvite": "Invited"});

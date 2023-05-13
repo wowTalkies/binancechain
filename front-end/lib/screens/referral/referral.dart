@@ -50,6 +50,7 @@ class _LayOut extends StatelessWidget {
           child: ListView(
             children: [
               CustomPage(
+                cubit: cubit,
                 text: "it's no Fun without\nFriends",
                 fontSize: 25,
                 fontWeight: FontWeight.w700,
@@ -324,7 +325,7 @@ class _LayOut extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () async {
                                             await cubit.createLinkandShare(
-                                                "WhatsApp", "");
+                                                "WhatsAppS", "");
                                           },
                                           child: Image.asset(
                                             fit: BoxFit.fill,

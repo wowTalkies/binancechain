@@ -12,6 +12,7 @@ class TabReferralWidget extends StatelessWidget {
 
   final int? itemCount;
   final BigInt? referralPoint;
+  final BigInt? totalPoint;
 
   const TabReferralWidget(
       {Key? key,
@@ -20,7 +21,8 @@ class TabReferralWidget extends StatelessWidget {
       this.list,
       this.itemCount,
       this.referralPoint,
-      this.fullNameList})
+      this.fullNameList,
+      this.totalPoint})
       : super(key: key);
 
   @override
@@ -65,17 +67,17 @@ class TabReferralWidget extends StatelessWidget {
                     ],
                   ),
                   Column(
-                    children: const [
-                      Padding(
+                    children: [
+                      const Padding(
                         padding: EdgeInsets.only(left: 10, top: 5),
                         child: CustomText(
-                            text: "  Total \nInvites",
+                            text: "  Total\n Points",
                             fontSize: 16,
                             fontColor: AllColor.white,
                             fontWeight: FontWeight.w700),
                       ),
                       CustomText(
-                          text: "0",
+                          text: totalPoint.toString(),
                           fontSize: 20,
                           fontColor: AllColor.white,
                           fontWeight: FontWeight.w700),
@@ -130,6 +132,7 @@ class TabReferralWidget extends StatelessWidget {
                   itemBuilder: (context, index) => Column(
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -148,9 +151,6 @@ class TabReferralWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: width / 30,
-                          ),
                           Column(
                             children: [
                               CustomText(
@@ -161,8 +161,7 @@ class TabReferralWidget extends StatelessWidget {
                             ],
                           ),
                           Padding(
-                            padding:
-                                EdgeInsets.only(left: width / 7, right: 20),
+                            padding: EdgeInsets.only(left: 0),
                             child: Container(
                               alignment: Alignment.centerRight,
                               width: width / 4,

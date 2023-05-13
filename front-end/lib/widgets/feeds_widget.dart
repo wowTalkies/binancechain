@@ -501,10 +501,23 @@ class FeedsWidget extends StatelessWidget {
                                                         ValueListenableBuilder(
                                                           valueListenable:
                                                               cubit!.feeds,
-                                                          builder: (context,
-                                                                  value,
-                                                                  child) =>
-                                                              value.isEmpty
+                                                          builder: (context, value, child) => value
+                                                                  .isEmpty
+                                                              ? Container()
+                                                              : (value[cubit!.communityNameForPost.toString()]!
+                                                                          .reversed
+                                                                          .toList()![
+                                                                              index]
+                                                                              [
+                                                                              1]
+                                                                          .toString()
+                                                                          .isEmpty ||
+                                                                      value[cubit!.communityNameForPost.toString()]
+                                                                              ?.reversed
+                                                                              .toList()![index][1]
+                                                                              .toString() ==
+                                                                          "")
+                                                                  //post check
                                                                   ? Container()
                                                                   : Padding(
                                                                       padding: const EdgeInsets

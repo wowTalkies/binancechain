@@ -31,393 +31,525 @@ class TakingQuizWidget extends StatelessWidget {
     return BlocBuilder<QuizCubit, QuizState>(
       bloc: quizCubit,
       builder: (context, state) => Scaffold(
-        body: Container(
-          width: width,
-          height: height,
-          color: AllColor.bottomSheet,
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
-                          child: InkWell(
-                            onTap: () {
-                              quizCubit?.back();
-                              Navigator.pop(context);
-                            },
-                            child: Icon(
-                              size: MediaQuery.of(context).size.height / 29,
-                              Icons.close,
-                              color: AllColor.black,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: CustomText(
-                        text: quizName.toString(),
-                        fontSize: 20,
-                        fontColor: AllColor.black,
-                        fontWeight: FontWeight.w600,
+        body: quizCubit?.state is TakeQuizRequestedState
+            ? const Center(
+                child: CustomCircularProgressIndicator(),
+              )
+            : Container(
+                width: width,
+                height: height,
+                color: AllColor.bottomSheet,
+                child: ListView.builder(
+                  itemCount:
+                      quizCubit?.hardMap[communityName.toString()]?.keys.length,
+                  itemBuilder: (context, index) => Column(
+                    children: [
+                      const SizedBox(
+                        height: 30,
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: CustomText(
-                        text: communityName.toString(),
-                        fontSize: 16,
-                        fontColor: AllColor.black,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Divider(
-                      endIndent: 20,
-                      indent: 20,
-                      thickness: 2,
-                      color: AllColor.linear2,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: height / 1.4,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                          shape: BoxShape.rectangle,
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [AllColor.linear1, AllColor.linear2],
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: CustomText(
+                          text: quizCubit?.quizTittle!.var3[index].toString(),
+                          fontSize: 20,
+                          fontColor: AllColor.black,
+                          fontWeight: FontWeight.w600,
                         ),
-                        child: Column(
-                          children: [
-                            const SizedBox(
-                              height: 5,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: CustomText(
+                          text: communityName.toString(),
+                          fontSize: 16,
+                          fontColor: AllColor.black,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Divider(
+                        endIndent: 20,
+                        indent: 20,
+                        thickness: 2,
+                        color: AllColor.linear2,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: height / 1.4,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                            shape: BoxShape.rectangle,
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [AllColor.linear1, AllColor.linear2],
                             ),
-                            Row(
-                              children: const [
-                                Padding(
-                                  padding: EdgeInsets.only(left: 10),
-                                  child: CustomText(
-                                    text: 'Question',
-                                    fontSize: 20,
-                                    fontColor: AllColor.white,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: SizedBox(
-                                    width: width / 1.2,
+                          ),
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
                                     child: CustomText(
-                                      text: questionList.toString(),
-                                      fontSize: 15,
+                                      text:
+                                          'Question ${(index + 1).toString()}',
+                                      fontSize: 20,
                                       fontColor: AllColor.white,
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Column(
-                              children: [
-                                InkWell(
-                                  onTap: quizCubit!.trueOrFalse == false
-                                      ? null
-                                      : () async {
-                                          await quizCubit?.answerEvaluate(
-                                              answerList![0].toString(),
-                                              quizName.toString(),
-                                              0);
-                                          debugPrint(
-                                              'the index is ${quizCubit?.index.toString()}');
-                                          // Navigator.pop(context);
-                                        },
-                                  child: Container(
-                                    width: width / 1.2,
-                                    height: height / 20,
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(8)),
-                                      shape: BoxShape.rectangle,
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          quizCubit?.state
-                                                      is QuizWrongAnswerState &&
-                                                  quizCubit?.index == 0
-                                              ? Colors.red
-                                              : quizCubit?.state
-                                                          is QuizAnsweredState &&
-                                                      quizCubit?.index == 0
-                                                  ? Colors.green
-                                                  : AllColor.bottomSheet,
-                                          quizCubit?.state
-                                                      is QuizWrongAnswerState &&
-                                                  quizCubit?.index == 0
-                                              ? Colors.red
-                                              : quizCubit?.state
-                                                          is QuizAnsweredState &&
-                                                      quizCubit?.index == 0
-                                                  ? Colors.green
-                                                  : AllColor.bottomSheet
-                                        ],
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: SizedBox(
+                                      width: width / 1.2,
+                                      child: CustomText(
+                                        text: quizCubit
+                                            ?.hardMap[communityName.toString()]
+                                            ?.keys
+                                            .toList()[index]
+                                            .toString(),
+                                        fontSize: 15,
+                                        fontColor: AllColor.white,
+                                        fontWeight: FontWeight.w700,
                                       ),
                                     ),
-                                    child: Center(
-                                      child: (quizCubit?.state
-                                                  is QuizAnswerClickedState &&
-                                              quizCubit?.index == 0)
-                                          ? const CustomCircularProgressIndicator()
-                                          : CustomText(
-                                              text: answerList![0].toString(),
-                                              fontSize: 15,
-                                              fontColor: AllColor.black,
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                    ),
                                   ),
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Column(
-                              children: [
-                                InkWell(
-                                  onTap: quizCubit!.trueOrFalse == false
-                                      ? null
-                                      : () async {
-                                          await quizCubit?.answerEvaluate(
-                                              answerList![1].toString(),
-                                              quizName.toString(),
-                                              1);
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Column(
+                                children: [
+                                  InkWell(
+                                    onTap: quizCubit!.boolList![index] == true
+                                        ? null
+                                        : () async {
+                                            await quizCubit?.answerEvaluate(
+                                                quizCubit
+                                                    ?.hardMap[communityName
+                                                        .toString()]
+                                                    ?.values
+                                                    .toList()[index][0]
+                                                    .toString(),
+                                                quizCubit
+                                                    ?.quizTittle!.var3[index]
+                                                    .toString(),
+                                                0,
+                                                index);
+                                            debugPrint(
+                                                'the index is ${quizCubit?.index.toString()}');
+                                            // Navigator.pop(context);
+                                          },
+                                    child: Container(
+                                      width: width / 1.2,
+                                      height: height / 20,
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(8)),
+                                        shape: BoxShape.rectangle,
+                                        gradient: LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            (quizCubit?.state
+                                                        is QuizWrongAnswerState &&
+                                                    quizCubit?.index == 0 &&
+                                                    quizCubit?.listIndex ==
+                                                        index)
+                                                ? Colors.red
+                                                : (quizCubit?.state
+                                                            is QuizAnsweredState &&
+                                                        quizCubit?.index == 0 &&
+                                                        quizCubit?.listIndex ==
+                                                            index)
+                                                    ? Colors.green
+                                                    : quizCubit!.boolList![
+                                                                index] ==
+                                                            true
+                                                        ? Colors.grey
+                                                        : AllColor.bottomSheet,
+                                            (quizCubit?.state
+                                                        is QuizWrongAnswerState &&
+                                                    quizCubit?.index == 0 &&
+                                                    quizCubit?.listIndex ==
+                                                        index)
+                                                ? Colors.red
+                                                : (quizCubit?.state
+                                                            is QuizAnsweredState &&
+                                                        quizCubit?.index == 0 &&
+                                                        quizCubit?.listIndex ==
+                                                            index)
+                                                    ? Colors.green
+                                                    : quizCubit!.boolList![
+                                                                index] ==
+                                                            true
+                                                        ? Colors.grey
+                                                        : AllColor.bottomSheet
+                                          ],
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: (quizCubit?.state
+                                                    is QuizAnswerClickedState &&
+                                                quizCubit?.index == 0 &&
+                                                quizCubit?.listIndex == index)
+                                            ? const CustomCircularProgressIndicator()
+                                            : CustomText(
+                                                text: quizCubit
+                                                    ?.hardMap[communityName
+                                                        .toString()]
+                                                    ?.values
+                                                    .toList()[index][0]
+                                                    .toString(),
+                                                fontSize: 15,
+                                                fontColor: AllColor.black,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Column(
+                                children: [
+                                  InkWell(
+                                    onTap: quizCubit!.boolList![index] == true
+                                        ? null
+                                        : () async {
+                                            await quizCubit?.answerEvaluate(
+                                                quizCubit
+                                                    ?.hardMap[communityName
+                                                        .toString()]
+                                                    ?.values
+                                                    .toList()[index][1]
+                                                    .toString(),
+                                                quizCubit
+                                                    ?.quizTittle!.var3[index]
+                                                    .toString(),
+                                                1,
+                                                index);
 
-                                          //  Navigator.pop(context);
-                                        },
-                                  child: Container(
-                                    width: width / 1.2,
-                                    height: height / 20,
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(8)),
-                                      shape: BoxShape.rectangle,
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          quizCubit?.state
-                                                      is QuizWrongAnswerState &&
-                                                  quizCubit?.index == 1
-                                              ? Colors.red
-                                              : quizCubit?.state
-                                                          is QuizAnsweredState &&
-                                                      quizCubit?.index == 1
-                                                  ? Colors.green
-                                                  : AllColor.bottomSheet,
-                                          quizCubit?.state
-                                                      is QuizWrongAnswerState &&
-                                                  quizCubit?.index == 1
-                                              ? Colors.red
-                                              : quizCubit?.state
-                                                          is QuizAnsweredState &&
-                                                      quizCubit?.index == 1
-                                                  ? Colors.green
-                                                  : AllColor.bottomSheet
-                                        ],
+                                            //  Navigator.pop(context);
+                                          },
+                                    child: Container(
+                                      width: width / 1.2,
+                                      height: height / 20,
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(8)),
+                                        shape: BoxShape.rectangle,
+                                        gradient: LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            (quizCubit?.state
+                                                        is QuizWrongAnswerState &&
+                                                    quizCubit?.index == 1 &&
+                                                    quizCubit?.listIndex ==
+                                                        index)
+                                                ? Colors.red
+                                                : (quizCubit?.state
+                                                            is QuizAnsweredState &&
+                                                        quizCubit?.index == 1 &&
+                                                        quizCubit?.listIndex ==
+                                                            index)
+                                                    ? Colors.green
+                                                    : quizCubit!.boolList![
+                                                                index] ==
+                                                            true
+                                                        ? Colors.grey
+                                                        : AllColor.bottomSheet,
+                                            (quizCubit?.state
+                                                        is QuizWrongAnswerState &&
+                                                    quizCubit?.index == 1 &&
+                                                    quizCubit?.listIndex ==
+                                                        index)
+                                                ? Colors.red
+                                                : (quizCubit?.state
+                                                            is QuizAnsweredState &&
+                                                        quizCubit?.index == 1 &&
+                                                        quizCubit?.listIndex ==
+                                                            index)
+                                                    ? Colors.green
+                                                    : quizCubit!.boolList![
+                                                                index] ==
+                                                            true
+                                                        ? Colors.grey
+                                                        : AllColor.bottomSheet
+                                          ],
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: (quizCubit?.state
+                                                    is QuizAnswerClickedState &&
+                                                quizCubit?.index == 1 &&
+                                                quizCubit?.listIndex == index)
+                                            ? const CustomCircularProgressIndicator()
+                                            : CustomText(
+                                                text: quizCubit
+                                                    ?.hardMap[communityName
+                                                        .toString()]
+                                                    ?.values
+                                                    .toList()[index][1]
+                                                    .toString(),
+                                                fontSize: 15,
+                                                fontColor: AllColor.black,
+                                                fontWeight: FontWeight.w700,
+                                              ),
                                       ),
                                     ),
-                                    child: Center(
-                                      child: (quizCubit?.state
-                                                  is QuizAnswerClickedState &&
-                                              quizCubit?.index == 1)
-                                          ? const CustomCircularProgressIndicator()
-                                          : CustomText(
-                                              text: answerList![1].toString(),
-                                              fontSize: 15,
-                                              fontColor: AllColor.black,
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Column(
-                              children: [
-                                InkWell(
-                                  onTap: quizCubit!.trueOrFalse == false
-                                      ? null
-                                      : () async {
-                                          await quizCubit?.answerEvaluate(
-                                              answerList![2].toString(),
-                                              quizName.toString(),
-                                              2);
-                                        },
-                                  child: Container(
-                                    width: width / 1.2,
-                                    height: height / 20,
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(8)),
-                                      shape: BoxShape.rectangle,
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          quizCubit?.state
-                                                      is QuizWrongAnswerState &&
-                                                  quizCubit?.index == 2
-                                              ? Colors.red
-                                              : quizCubit?.state
-                                                          is QuizAnsweredState &&
-                                                      quizCubit?.index == 2
-                                                  ? Colors.green
-                                                  : AllColor.bottomSheet,
-                                          quizCubit?.state
-                                                      is QuizWrongAnswerState &&
-                                                  quizCubit?.index == 2
-                                              ? Colors.red
-                                              : quizCubit?.state
-                                                          is QuizAnsweredState &&
-                                                      quizCubit?.index == 2
-                                                  ? Colors.green
-                                                  : AllColor.bottomSheet
-                                        ],
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Column(
+                                children: [
+                                  InkWell(
+                                    onTap: quizCubit!.boolList![index] == true
+                                        ? null
+                                        : () async {
+                                            await quizCubit?.answerEvaluate(
+                                                quizCubit
+                                                    ?.hardMap[communityName
+                                                        .toString()]
+                                                    ?.values
+                                                    .toList()[index][2]
+                                                    .toString(),
+                                                quizCubit
+                                                    ?.quizTittle!.var3[index]
+                                                    .toString(),
+                                                2,
+                                                index);
+                                          },
+                                    child: Container(
+                                      width: width / 1.2,
+                                      height: height / 20,
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(8)),
+                                        shape: BoxShape.rectangle,
+                                        gradient: LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            (quizCubit?.state
+                                                        is QuizWrongAnswerState &&
+                                                    quizCubit?.index == 2 &&
+                                                    quizCubit?.listIndex ==
+                                                        index)
+                                                ? Colors.red
+                                                : (quizCubit?.state
+                                                            is QuizAnsweredState &&
+                                                        quizCubit?.index == 2 &&
+                                                        quizCubit?.listIndex ==
+                                                            index)
+                                                    ? Colors.green
+                                                    : quizCubit!.boolList![
+                                                                index] ==
+                                                            true
+                                                        ? Colors.grey
+                                                        : AllColor.bottomSheet,
+                                            (quizCubit?.state
+                                                        is QuizWrongAnswerState &&
+                                                    quizCubit?.index == 2 &&
+                                                    quizCubit?.listIndex ==
+                                                        index)
+                                                ? Colors.red
+                                                : (quizCubit?.state
+                                                            is QuizAnsweredState &&
+                                                        quizCubit?.index == 2 &&
+                                                        quizCubit?.listIndex ==
+                                                            index)
+                                                    ? Colors.green
+                                                    : quizCubit!.boolList![
+                                                                index] ==
+                                                            true
+                                                        ? Colors.grey
+                                                        : AllColor.bottomSheet
+                                          ],
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: (quizCubit?.state
+                                                    is QuizAnswerClickedState &&
+                                                quizCubit?.index == 2 &&
+                                                quizCubit?.listIndex == index)
+                                            ? const CustomCircularProgressIndicator()
+                                            : CustomText(
+                                                text: quizCubit
+                                                    ?.hardMap[communityName
+                                                        .toString()]
+                                                    ?.values
+                                                    .toList()[index][2]
+                                                    .toString(),
+                                                fontSize: 15,
+                                                fontColor: AllColor.black,
+                                                fontWeight: FontWeight.w700,
+                                              ),
                                       ),
                                     ),
-                                    child: Center(
-                                      child: (quizCubit?.state
-                                                  is QuizAnswerClickedState &&
-                                              quizCubit?.index == 2)
-                                          ? const CustomCircularProgressIndicator()
-                                          : CustomText(
-                                              text: answerList![2].toString(),
-                                              fontSize: 15,
-                                              fontColor: AllColor.black,
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Column(
-                              children: [
-                                InkWell(
-                                  onTap: quizCubit!.trueOrFalse == false
-                                      ? null
-                                      : () async {
-                                          debugPrint(
-                                              'hello siva ${quizCubit!.trueOrFalse!} ');
-                                          await quizCubit?.answerEvaluate(
-                                              answerList![3].toString(),
-                                              quizName.toString(),
-                                              3);
-                                        },
-                                  child: Container(
-                                    width: width / 1.2,
-                                    height: height / 20,
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(8)),
-                                      shape: BoxShape.rectangle,
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          quizCubit?.state
-                                                      is QuizWrongAnswerState &&
-                                                  quizCubit?.index == 3
-                                              ? Colors.red
-                                              : quizCubit?.state
-                                                          is QuizAnsweredState &&
-                                                      quizCubit?.index == 3
-                                                  ? Colors.green
-                                                  : AllColor.bottomSheet,
-                                          quizCubit?.state
-                                                      is QuizWrongAnswerState &&
-                                                  quizCubit?.index == 3
-                                              ? Colors.red
-                                              : quizCubit?.state
-                                                          is QuizAnsweredState &&
-                                                      quizCubit?.index == 3
-                                                  ? Colors.green
-                                                  : AllColor.bottomSheet
-                                        ],
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Column(
+                                children: [
+                                  InkWell(
+                                    onTap: quizCubit!.boolList![index] == true
+                                        ? null
+                                        : () async {
+                                            debugPrint(
+                                                'hello siva ${quizCubit!.trueOrFalse!} ');
+                                            await quizCubit?.answerEvaluate(
+                                                quizCubit
+                                                    ?.hardMap[communityName
+                                                        .toString()]
+                                                    ?.values
+                                                    .toList()[index][3]
+                                                    .toString(),
+                                                quizCubit
+                                                    ?.quizTittle!.var3[index]
+                                                    .toString(),
+                                                3,
+                                                index);
+                                          },
+                                    child: Container(
+                                      width: width / 1.2,
+                                      height: height / 20,
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(8)),
+                                        shape: BoxShape.rectangle,
+                                        gradient: LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            (quizCubit?.state
+                                                        is QuizWrongAnswerState &&
+                                                    quizCubit?.index == 3 &&
+                                                    quizCubit?.listIndex ==
+                                                        index)
+                                                ? Colors.red
+                                                : (quizCubit?.state
+                                                            is QuizAnsweredState &&
+                                                        quizCubit?.index == 3 &&
+                                                        quizCubit?.listIndex ==
+                                                            index)
+                                                    ? Colors.green
+                                                    : quizCubit!.boolList![
+                                                                index] ==
+                                                            true
+                                                        ? Colors.grey
+                                                        : AllColor.bottomSheet,
+                                            (quizCubit?.state
+                                                        is QuizWrongAnswerState &&
+                                                    quizCubit?.index == 3 &&
+                                                    quizCubit?.listIndex ==
+                                                        index)
+                                                ? Colors.red
+                                                : (quizCubit?.state
+                                                            is QuizAnsweredState &&
+                                                        quizCubit?.index == 3 &&
+                                                        quizCubit?.listIndex ==
+                                                            index)
+                                                    ? Colors.green
+                                                    : quizCubit!.boolList![
+                                                                index] ==
+                                                            true
+                                                        ? Colors.grey
+                                                        : AllColor.bottomSheet
+                                          ],
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: (quizCubit?.state
+                                                    is QuizAnswerClickedState &&
+                                                quizCubit?.index == 3 &&
+                                                quizCubit?.listIndex == index)
+                                            ? const CustomCircularProgressIndicator()
+                                            : CustomText(
+                                                text: quizCubit
+                                                    ?.hardMap[communityName
+                                                        .toString()]
+                                                    ?.values
+                                                    .toList()[index][3]
+                                                    .toString(),
+                                                fontSize: 15,
+                                                fontColor: AllColor.black,
+                                                fontWeight: FontWeight.w700),
                                       ),
                                     ),
-                                    child: Center(
-                                      child: (quizCubit?.state
-                                                  is QuizAnswerClickedState &&
-                                              quizCubit?.index == 3)
-                                          ? const CustomCircularProgressIndicator()
-                                          : CustomText(
-                                              text: answerList![3].toString(),
-                                              fontSize: 15,
-                                              fontColor: AllColor.black,
-                                              fontWeight: FontWeight.w700),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: height / 7,
-                            ),
-                            /*
-                            Button(
-                              color1: AllColor.quizButtonColor,
-                              color2: AllColor.quizButtonColor,
-                              textColor: AllColor.white,
-                              width: width / 1.7,
-                              height: height / 25,
-                              onPressed: () {},
-                              text: "Next",
-                            )
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: height / 7,
+                              ),
+                              CustomText(
+                                text: quizCubit!.boolList![index] == true
+                                    ? 'Already Submitted'
+                                    : "",
+                                fontColor: AllColor.white,
+                              )
+                              /*
+                              Button(
+                                color1: AllColor.quizButtonColor,
+                                color2: AllColor.quizButtonColor,
+                                textColor: AllColor.white,
+                                width: width / 1.7,
+                                height: height / 25,
+                                onPressed: () {},
+                                text: "Next",
+                              )
 
-                             */
-                          ],
+                               */
+                            ],
+                          ),
                         ),
-                      ),
+                      )
+                    ],
+                  ),
+                )
+
+                /*
+          Column(
+                children: [
+                  Expanded(
+                    child: ListView(
+                      children: [
+
+                      ],
                     ),
-                  ],
-                ),
-              ),
-            ],
+                  ),
+                ],
           ),
-        ),
+
+          */
+                ),
       ),
     );
   }

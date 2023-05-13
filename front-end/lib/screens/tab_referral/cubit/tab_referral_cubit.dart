@@ -12,6 +12,7 @@ import 'package:web3dart/web3dart.dart';
 class TabReferralCubit extends BaseCubit<TabReferralState> {
   final AuthCubit authCubit;
   BigInt? referralPoint;
+  BigInt? totalPoint;
   Paths paths = Paths();
   List<String> userName = [];
   List<String> referralFullNameList = [];
@@ -44,6 +45,8 @@ class TabReferralCubit extends BaseCubit<TabReferralState> {
     var address = await PreferenceHelper.getUserId();
     debugPrint(
         'the  userid is ${authCubit.address.toString()}  ${address.toString()}');
+    totalPoint = await wowTReferral
+        .getPoints(EthereumAddress.fromHex(address.toString()));
     referralPoint = await wowTReferral
         .getReferralPoints(EthereumAddress.fromHex(address.toString()));
     for (var j = 0; j < referrals.length; j++) {

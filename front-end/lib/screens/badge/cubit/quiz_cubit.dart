@@ -4,6 +4,7 @@ import 'package:bnbapp/auth_cubit/auth_cubit.dart';
 import 'package:bnbapp/contract/WowTCommunity.g.dart';
 import 'package:bnbapp/contract/WowTPoints.g.dart';
 import 'package:bnbapp/contract/WowTQuiz.g.dart';
+import 'package:bnbapp/paths/path.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
 import 'package:bnbapp/utils/preferencehelper.dart';
 import 'package:dio/dio.dart';
@@ -22,6 +23,7 @@ class QuizCubit extends BaseCubit<QuizState> {
   List<String> answerList = [];
   ValueNotifier<BigInt> points = ValueNotifier(BigInt.parse("0"));
   int? index = 0;
+  int? listIndex = 0;
   String imagePath = '';
   bool? trueOrFalse = true;
   ValueNotifier<String> communityName = ValueNotifier('');
@@ -38,27 +40,32 @@ class QuizCubit extends BaseCubit<QuizState> {
   TextEditingController option4 = TextEditingController();
   TextEditingController textEditingController9 = TextEditingController();
   bool trueOrFalseCheck = false;
-  Map<String, Map<List<dynamic>, List<List<dynamic>>>> hardMap = {};
+  Map<String, Map<String, List<String>>> hardMap = {
+    "": {
+      "": ['']
+    }
+  };
 
   QuizCubit(this.authCubit) : super(QuizInitialState());
   List<String> quizName = [];
+  Map<String, List<String>> map = {};
   Map<String, List<String>> maps = {};
-  Map<List<String>, List<String>> mapsya = {};
-  Map<String, Map<List<String>, List<String>>> mapData = {};
+  Paths paths = Paths();
   String? userid;
+  List<bool>? boolList = [];
   List<String> list = [
     "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/jackie.jpg?alt=media&token=8fe45dfc-6e35-47a1-9bee-c60e4f494e0f",
     "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/marvel.jpg?alt=media&token=549b7f2f-ac05-4d81-87dd-3345166dd2e0",
     "https://firebasestorage.googleapis.com/v0/b/bnbhackathon.appspot.com/o/miim.jpg?alt=media&token=0ac0d1a3-a7d2-4c34-84c6-216efd85aee2"
   ];
 
+  GetCommunityDetails? quizTittle;
+
   Future<void> init() async {
     emit(QuizLoadingState());
     userid = await PreferenceHelper.getUserId();
 
-    debugPrint('hi wellCome');
     final httpClient = Client();
-    //trueOrFalse?.clear();
 
     Web3Client client = Web3Client(authCubit.node.toString(), httpClient);
     WowTCommunity wowTCommunity = WowTCommunity(
@@ -78,46 +85,85 @@ class QuizCubit extends BaseCubit<QuizState> {
         await wowTPoints.getPoints(EthereumAddress.fromHex(userid.toString()));
     // var userId = await PreferenceHelper.getUserId();
     var abc = await wowTCommunity.getCommunities();
+
     maps.clear();
+    map.clear();
+    hardMap.clear();
+
     for (var i = 0; i < abc.length; i++) {
-      debugPrint('the communities are ${abc.toString()}');
       var quizNames =
           await wowTCommunity.getCommunityDetails(abc[i].toString());
       for (var c = 0; c < quizNames.var3.length; c++) {
-        debugPrint('the length is ${quizNames.var3.length.toString()}');
         var ayy =
             await wowTQuiz.getstringQuizdetails(quizNames.var3[c].toString());
-        debugPrint(
-            'the qu list ${ayy.var4.toString()} and ${ayy.var1.toString()} and ${ayy.var2.toString()} and ${ayy.var3.toString()}');
       }
-      debugPrint('get community details ${quizNames.var3[0].toString()}');
-      debugPrint('get community details ${quizNames.var3[1].toString()}');
+
       var ayy =
           await wowTQuiz.getstringQuizdetails(quizNames.var3[0].toString());
       maps[ayy.var3.toString()] = ayy.var4;
 
-      // maps.update(ayy.var3.toString(), (value) => ayy.var4);
-      debugPrint('the quiz details ${ayy.var3.toString()} ');
-      debugPrint('the quiz details ${ayy.var4.toString()} ');
       imageUrlList.add(ayy.var2.toString());
       quizName.add(quizNames.var3[0].toString());
       questionList.add(ayy.var3);
       answerList.addAll(ayy.var4);
 
       descriptionList.add(abc[i]);
-      debugPrint('the quiz name is was ${ayy.var1.toString()}');
     }
 
-    debugPrint('the quiz name is was ${maps.toString()}');
-    // wowTQuiz.
-    // wowTQuiz.getQuizdetails();
+    debugPrint('the quiz name is was ${hardMap.keys.toString()}');
+
     emit(QuizLoadedState());
   }
 
-  back() {
-    trueOrFalse = true;
-    //trueOrFalse?.add(false);
-    emit(QuizBackButtonState());
+  back(community) async {
+    map.clear();
+    hardMap.clear();
+
+    emit(TakeQuizRequestedState());
+    final httpClient = Client();
+    Web3Client client = Web3Client(authCubit.node.toString(), httpClient);
+    WowTCommunity wowTCommunity = WowTCommunity(
+        address: EthereumAddress.fromHex(
+            authCubit.profileModel!.community.toString()),
+        client: client);
+    WowTQuiz wowTQuiz = WowTQuiz(
+        address:
+            EthereumAddress.fromHex(authCubit.profileModel!.quiz.toString()),
+        client: client);
+
+    var quizNames =
+        await wowTCommunity.getCommunityDetails(community.toString());
+
+    for (var c = 0; c < quizNames.var3.length; c++) {
+      var sss = await wowTQuiz.evalStatus(quizNames.var3[c].toString(),
+          EthereumAddress.fromHex(userid.toString()));
+
+      if (sss) {
+        /*
+        try {
+          final snapshot =
+              await paths.address.child(userid.toString()).child('Quiz').get();
+          debugPrint('the snaps ${snapshot.value.toString()}');
+        } catch (ex) {
+          debugPrint('the error was is ${ex.toString()}');
+        }
+         */
+
+        boolList?.add(true);
+        debugPrint('the length is ${boolList?.length}');
+      } else {
+        boolList?.add(false);
+      }
+
+      var ayy =
+          await wowTQuiz.getstringQuizdetails(quizNames.var3[c].toString());
+      quizTittle =
+          await wowTCommunity.getCommunityDetails(community.toString());
+      map[ayy.var3.toString()] = ayy.var4;
+      hardMap[community.toString()] = map;
+    }
+
+    emit(TakeQuizState());
   }
 
   Future<String> uploadFiles(String filepath) async {
@@ -186,12 +232,20 @@ class QuizCubit extends BaseCubit<QuizState> {
     }
   }
 
-  answerEvaluate(choice, quizName, indexes) async {
+  answerEvaluate(choice, quizName, indexes, listIndexis) async {
     trueOrFalse = false;
 
-    debugPrint('index is ${index.toString()}');
+    debugPrint('index is ${index.toString()} and ${listIndex.toString()}');
     index = indexes;
-    debugPrint('index is two ${index.toString()}');
+    listIndex = listIndexis;
+    /*
+    await paths.address
+        .child(userid.toString())
+        .child("Quiz")
+        .update({"quizName": "choice"});
+
+     */
+    debugPrint('index is two ${index.toString()} and ${listIndex.toString()}');
     debugPrint(
         'its come ya ${choice.toString()} ${quizName.toString()}  ${authCubit.address.toString()}');
     emit(QuizAnswerClickedState());
@@ -213,9 +267,13 @@ class QuizCubit extends BaseCubit<QuizState> {
 
     debugPrint('the result is ${result.data.toString()}');
     if (result.data.toString().contains('Correct answer')) {
-      debugPrint('contains result');
+      //  boolList?.add(true);
+      // debugPrint('contains result ${boolList?.length} and ${boolList?.toString()}');
       emit(QuizAnsweredState());
     } else {
+      // boolList?.clear();
+      // debugPrint('contains result ${boolList?.length} and ${boolList?.toString()}');
+      //boolList?.add(true);
       emit(QuizWrongAnswerState());
     }
     if (result.data.toString().contains('Already tried')) {

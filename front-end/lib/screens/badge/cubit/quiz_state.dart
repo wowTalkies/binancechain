@@ -8,6 +8,10 @@ class QuizLoadingState extends QuizState {}
 
 class QuizLoadedState extends QuizState {}
 
+class TakeQuizState extends QuizState {}
+
+class TakeQuizRequestedState extends QuizState {}
+
 class QuizBackButtonState extends QuizState {}
 
 class QuizCreateRequestedState extends QuizState {}

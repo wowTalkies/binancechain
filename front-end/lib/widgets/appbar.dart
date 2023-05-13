@@ -19,10 +19,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leadingWidth: 12,
       titleSpacing: 3,
-      leading: icon ??
-          Container(
-            width: 0,
-          ),
+      leading: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: icon ??
+            Container(
+              width: 0,
+            ),
+      ),
       systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: AllColor.white,
           statusBarBrightness: Brightness.light),

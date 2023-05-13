@@ -3,7 +3,6 @@ import 'package:bnbapp/contract/WowTCommunity.g.dart';
 import 'package:bnbapp/screens/tab_community/cubit/tab_community_state.dart';
 import 'package:bnbapp/utils/base_cubit.dart';
 import 'package:bnbapp/utils/preferencehelper.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:web3dart/web3dart.dart';
 
@@ -23,7 +22,6 @@ class TabCommunityCubit extends BaseCubit<TabCommunityState> {
 
   Future<void> init() async {
     emit(TabCommunityLoadingState());
-    debugPrint('hi wellCome');
     userId = await PreferenceHelper.getUserId() ?? '';
 
     EthereumAddress address =
@@ -35,8 +33,6 @@ class TabCommunityCubit extends BaseCubit<TabCommunityState> {
     for (var i = 0; i < lists.length; i++) {
       var abc = await wowTCommunity.communityMap(lists[i]);
       imageUrlList.add(abc.imageUrl.toString());
-      debugPrint(
-          'the community list is ${lists.toString()} ${abc.imageUrl.toString()}');
     }
 
     emit(TabCommunityLoadedState());

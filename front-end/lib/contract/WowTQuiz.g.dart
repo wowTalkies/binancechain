@@ -5,7 +5,7 @@ import 'package:web3dart/web3dart.dart' as _i1;
 import 'dart:typed_data' as _i2;
 
 final _contractAbi = _i1.ContractAbi.fromJson(
-  '[{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bool","name":"","type":"bool"}],"name":"Answer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint8","name":"version","type":"uint8"}],"name":"Initialized","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[{"internalType":"string","name":"_quizName","type":"string"},{"internalType":"bytes32","name":"choice","type":"bytes32"}],"name":"checkAnswer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"createEligibility","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_communityName","type":"string"},{"internalType":"string","name":"_quizName","type":"string"},{"internalType":"string","name":"_description","type":"string"},{"internalType":"string","name":"_imageUrl","type":"string"},{"internalType":"string","name":"_question","type":"string"},{"internalType":"string[4]","name":"_options","type":"string[4]"},{"internalType":"bytes32","name":"_answer","type":"bytes32"},{"internalType":"address","name":"_creatorAddress","type":"address"}],"name":"createQuiz","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"_quizName","type":"string"}],"name":"getQuizdetails","outputs":[{"components":[{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"imageUrl","type":"string"},{"internalType":"string","name":"question","type":"string"},{"internalType":"string[4]","name":"options","type":"string[4]"},{"internalType":"bytes32","name":"answer","type":"bytes32"},{"internalType":"address","name":"creatorAddress","type":"address"}],"internalType":"struct WowTQuiz.Quiz","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_quizName","type":"string"}],"name":"getstringQuizdetails","outputs":[{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"string[4]","name":"","type":"string[4]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint16","name":"_quizePoints","type":"uint16"},{"internalType":"uint16","name":"_createEligibility","type":"uint16"},{"internalType":"uint16","name":"_pointsToAnswer","type":"uint16"},{"internalType":"address","name":"_pointsContract","type":"address"},{"internalType":"address","name":"_communityContract","type":"address"}],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"pointsToAnswer","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"},{"internalType":"string","name":"_quizName","type":"string"},{"internalType":"bytes32","name":"choice","type":"bytes32"}],"name":"quizEval","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"quizePoints","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"","type":"string"}],"name":"quizmap","outputs":[{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"imageUrl","type":"string"},{"internalType":"string","name":"question","type":"string"},{"internalType":"bytes32","name":"answer","type":"bytes32"},{"internalType":"address","name":"creatorAddress","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint16","name":"_createEligibility","type":"uint16"}],"name":"setCreateEligibility","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint16","name":"_pointsToAnswer","type":"uint16"}],"name":"setPointsToAnswer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint16","name":"_quizePoints","type":"uint16"}],"name":"setQuizePoints","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}]',
+  '[{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bool","name":"","type":"bool"}],"name":"Answer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint8","name":"version","type":"uint8"}],"name":"Initialized","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[{"internalType":"string","name":"_quizName","type":"string"},{"internalType":"bytes32","name":"choice","type":"bytes32"}],"name":"checkAnswer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"createEligibility","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_communityName","type":"string"},{"internalType":"string","name":"_quizName","type":"string"},{"internalType":"string","name":"_description","type":"string"},{"internalType":"string","name":"_imageUrl","type":"string"},{"internalType":"string","name":"_question","type":"string"},{"internalType":"string[4]","name":"_options","type":"string[4]"},{"internalType":"bytes32","name":"_answer","type":"bytes32"},{"internalType":"address","name":"_creatorAddress","type":"address"}],"name":"createQuiz","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"","type":"string"},{"internalType":"address","name":"","type":"address"}],"name":"evalStatus","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_quizName","type":"string"},{"internalType":"address","name":"_userAddress","type":"address"}],"name":"getEvalStatus","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_quizName","type":"string"}],"name":"getQuizdetails","outputs":[{"components":[{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"imageUrl","type":"string"},{"internalType":"string","name":"question","type":"string"},{"internalType":"string[4]","name":"options","type":"string[4]"},{"internalType":"bytes32","name":"answer","type":"bytes32"},{"internalType":"address","name":"creatorAddress","type":"address"}],"internalType":"struct WowTQuiz.Quiz","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_quizName","type":"string"}],"name":"getstringQuizdetails","outputs":[{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"string[4]","name":"","type":"string[4]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint16","name":"_quizePoints","type":"uint16"},{"internalType":"uint16","name":"_createEligibility","type":"uint16"},{"internalType":"uint16","name":"_pointsToAnswer","type":"uint16"},{"internalType":"address","name":"_pointsContract","type":"address"},{"internalType":"address","name":"_communityContract","type":"address"}],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"pointsToAnswer","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"},{"internalType":"string","name":"_quizName","type":"string"},{"internalType":"bytes32","name":"choice","type":"bytes32"}],"name":"quizEval","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"quizePoints","outputs":[{"internalType":"uint16","name":"","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"","type":"string"}],"name":"quizmap","outputs":[{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"imageUrl","type":"string"},{"internalType":"string","name":"question","type":"string"},{"internalType":"bytes32","name":"answer","type":"bytes32"},{"internalType":"address","name":"creatorAddress","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint16","name":"_createEligibility","type":"uint16"}],"name":"setCreateEligibility","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint16","name":"_pointsToAnswer","type":"uint16"}],"name":"setPointsToAnswer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint16","name":"_quizePoints","type":"uint16"}],"name":"setQuizePoints","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}]',
   'WowTQuiz',
 );
 
@@ -98,11 +98,55 @@ class WowTQuiz extends _i1.GeneratedContract {
   /// The optional [atBlock] parameter can be used to view historical data. When
   /// set, the function will be evaluated in the specified block. By default, the
   /// latest on-chain block will be used.
+  Future<bool> evalStatus(
+    String $param10,
+    _i1.EthereumAddress $param11, {
+    _i1.BlockNum? atBlock,
+  }) async {
+    final function = self.abi.functions[3];
+    assert(checkSignature(function, '68618f90'));
+    final params = [
+      $param10,
+      $param11,
+    ];
+    final response = await read(
+      function,
+      params,
+      atBlock,
+    );
+    return (response[0] as bool);
+  }
+
+  /// The optional [atBlock] parameter can be used to view historical data. When
+  /// set, the function will be evaluated in the specified block. By default, the
+  /// latest on-chain block will be used.
+  Future<bool> getEvalStatus(
+    String _quizName,
+    _i1.EthereumAddress _userAddress, {
+    _i1.BlockNum? atBlock,
+  }) async {
+    final function = self.abi.functions[4];
+    assert(checkSignature(function, 'f5198bfb'));
+    final params = [
+      _quizName,
+      _userAddress,
+    ];
+    final response = await read(
+      function,
+      params,
+      atBlock,
+    );
+    return (response[0] as bool);
+  }
+
+  /// The optional [atBlock] parameter can be used to view historical data. When
+  /// set, the function will be evaluated in the specified block. By default, the
+  /// latest on-chain block will be used.
   Future<dynamic> getQuizdetails(
     String _quizName, {
     _i1.BlockNum? atBlock,
   }) async {
-    final function = self.abi.functions[3];
+    final function = self.abi.functions[5];
     assert(checkSignature(function, '16ecdad1'));
     final params = [_quizName];
     final response = await read(
@@ -120,7 +164,7 @@ class WowTQuiz extends _i1.GeneratedContract {
     String _quizName, {
     _i1.BlockNum? atBlock,
   }) async {
-    final function = self.abi.functions[4];
+    final function = self.abi.functions[6];
     assert(checkSignature(function, '5efe62e8'));
     final params = [_quizName];
     final response = await read(
@@ -143,7 +187,7 @@ class WowTQuiz extends _i1.GeneratedContract {
     required _i1.Credentials credentials,
     _i1.Transaction? transaction,
   }) async {
-    final function = self.abi.functions[5];
+    final function = self.abi.functions[7];
     assert(checkSignature(function, '8ccba74a'));
     final params = [
       _quizePoints,
@@ -164,7 +208,7 @@ class WowTQuiz extends _i1.GeneratedContract {
   /// set, the function will be evaluated in the specified block. By default, the
   /// latest on-chain block will be used.
   Future<_i1.EthereumAddress> owner({_i1.BlockNum? atBlock}) async {
-    final function = self.abi.functions[6];
+    final function = self.abi.functions[8];
     assert(checkSignature(function, '8da5cb5b'));
     final params = [];
     final response = await read(
@@ -179,7 +223,7 @@ class WowTQuiz extends _i1.GeneratedContract {
   /// set, the function will be evaluated in the specified block. By default, the
   /// latest on-chain block will be used.
   Future<BigInt> pointsToAnswer({_i1.BlockNum? atBlock}) async {
-    final function = self.abi.functions[7];
+    final function = self.abi.functions[9];
     assert(checkSignature(function, '8d5410f8'));
     final params = [];
     final response = await read(
@@ -200,7 +244,7 @@ class WowTQuiz extends _i1.GeneratedContract {
     required _i1.Credentials credentials,
     _i1.Transaction? transaction,
   }) async {
-    final function = self.abi.functions[8];
+    final function = self.abi.functions[10];
     assert(checkSignature(function, 'c96b9c5a'));
     final params = [
       _userAddress,
@@ -219,7 +263,7 @@ class WowTQuiz extends _i1.GeneratedContract {
   /// set, the function will be evaluated in the specified block. By default, the
   /// latest on-chain block will be used.
   Future<BigInt> quizePoints({_i1.BlockNum? atBlock}) async {
-    final function = self.abi.functions[9];
+    final function = self.abi.functions[11];
     assert(checkSignature(function, 'f9994e2d'));
     final params = [];
     final response = await read(
@@ -234,12 +278,12 @@ class WowTQuiz extends _i1.GeneratedContract {
   /// set, the function will be evaluated in the specified block. By default, the
   /// latest on-chain block will be used.
   Future<Quizmap> quizmap(
-    String $param20, {
+    String $param24, {
     _i1.BlockNum? atBlock,
   }) async {
-    final function = self.abi.functions[10];
+    final function = self.abi.functions[12];
     assert(checkSignature(function, 'fe4309d4'));
-    final params = [$param20];
+    final params = [$param24];
     final response = await read(
       function,
       params,
@@ -255,7 +299,7 @@ class WowTQuiz extends _i1.GeneratedContract {
     required _i1.Credentials credentials,
     _i1.Transaction? transaction,
   }) async {
-    final function = self.abi.functions[11];
+    final function = self.abi.functions[13];
     assert(checkSignature(function, '715018a6'));
     final params = [];
     return write(
@@ -274,7 +318,7 @@ class WowTQuiz extends _i1.GeneratedContract {
     required _i1.Credentials credentials,
     _i1.Transaction? transaction,
   }) async {
-    final function = self.abi.functions[12];
+    final function = self.abi.functions[14];
     assert(checkSignature(function, '8c6f2c80'));
     final params = [_createEligibility];
     return write(
@@ -293,7 +337,7 @@ class WowTQuiz extends _i1.GeneratedContract {
     required _i1.Credentials credentials,
     _i1.Transaction? transaction,
   }) async {
-    final function = self.abi.functions[13];
+    final function = self.abi.functions[15];
     assert(checkSignature(function, '5b0ebb1c'));
     final params = [_pointsToAnswer];
     return write(
@@ -312,7 +356,7 @@ class WowTQuiz extends _i1.GeneratedContract {
     required _i1.Credentials credentials,
     _i1.Transaction? transaction,
   }) async {
-    final function = self.abi.functions[14];
+    final function = self.abi.functions[16];
     assert(checkSignature(function, 'e4aa90c1'));
     final params = [_quizePoints];
     return write(
@@ -331,7 +375,7 @@ class WowTQuiz extends _i1.GeneratedContract {
     required _i1.Credentials credentials,
     _i1.Transaction? transaction,
   }) async {
-    final function = self.abi.functions[15];
+    final function = self.abi.functions[17];
     assert(checkSignature(function, 'f2fde38b'));
     final params = [newOwner];
     return write(

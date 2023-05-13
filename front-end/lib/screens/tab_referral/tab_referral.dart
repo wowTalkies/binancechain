@@ -51,6 +51,7 @@ class _LayOut extends StatelessWidget {
                       children: const [CustomCircularProgressIndicator()],
                     )
                   : TabReferralWidget(
+                      totalPoint: cubit.totalPoint,
                       referralPoint: cubit.referralPoint,
                       itemCount: cubit.referralNameList.length,
                       onPressed: () {

@@ -1,16 +1,15 @@
 import 'package:bnbapp/screens/community/cubit/cummunity_cubit.dart';
 import 'package:bnbapp/screens/community/cubit/cummunity_state.dart';
-import 'package:bnbapp/utils/colors.dart';
-import 'package:bnbapp/widgets/button.dart';
 import 'package:bnbapp/widgets/custom_circular_progress_indicator.dart';
 import 'package:bnbapp/widgets/feeds_widget.dart';
 import 'package:bnbapp/widgets/gridcard.dart';
-import 'package:bnbapp/widgets/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Community extends StatelessWidget {
-  const Community({Key? key}) : super(key: key);
+  final String? extraSize;
+
+  const Community({Key? key, this.extraSize}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,66 +21,99 @@ class Community extends StatelessWidget {
           if (state is CommunityNotJointedState ||
               state is CommunityJoinRequestedState) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               action: SnackBarAction(label: 'Hide', onPressed: () {}),
-              content: Text(
+              content: const Text(
                 'Loading...',
               ),
             ));
+            /*
+            if (int.parse(cubit.userPoint.toString()) < 10) {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                    actions: [
+                      Button(
+                          color1: AllColor.linear1,
+                          color2: AllColor.linear2,
+                          textColor: AllColor.white,
+                          text: 'Close',
+                          onPressed: () {
+                            Navigator.pop(context);
+                          })
+                    ],
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8))),
+                    backgroundColor: AllColor.bottomSheet,
+                    iconPadding: const EdgeInsets.only(left: 200),
+                    title: Column(children: const [
+                      CustomText(
+                        fontColor: AllColor.black,
+                        text:
+                            "You don't have enough points to join the community. Please attend quiz or refer your friend to earn points. You need 10 points to join the community.",
+                      )
+                    ])),
+              );
+            }
+
+             */
+/*
             showDialog(
                 context: context,
                 builder: (context) {
                   return ValueListenableBuilder(
                     valueListenable: cubit.points,
                     builder: (context, value, child) =>
-                        int.parse(value.toString()) > 10
-                            ? AlertDialog(
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8))),
-                                backgroundColor: AllColor.bottomSheet,
-                                iconPadding: const EdgeInsets.only(left: 200),
-                                title: const CustomText(
-                                  fontColor: AllColor.black,
-                                  text: "Join the community to see posts",
-                                ),
-                                content: cubit.state
-                                        is CommunityJoinRequestedState
-                                    ? const SizedBox(
-                                        height: 30,
-                                        width: 10,
-                                        child: Center(
-                                            child:
-                                                CustomCircularProgressIndicator()))
-                                    : Button(
-                                        text: 'Click to join community',
-                                        textColor: AllColor.white,
-                                        color1: AllColor.linear1,
-                                        color2: AllColor.linear2,
-                                        height: 40,
-                                        onPressed: () async {
-                                          Navigator.pop(context);
-                                          await cubit.addMembers();
-                                        }),
-                              )
-                            : AlertDialog(
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8))),
-                                backgroundColor: AllColor.bottomSheet,
-                                iconPadding: const EdgeInsets.only(left: 200),
-                                title: Column(
-                                  children: const [
-                                    CustomText(
-                                      fontColor: AllColor.black,
-                                      text:
-                                          "You don't have enough points to join the community. Please attend quiz or refer your friend to earn points. You need 10 points to join the community.",
-                                    ),
-                                  ],
-                                ),
-                              ),
+                    int.parse(value.toString()) > 10
+                        ? AlertDialog(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(8))),
+                      backgroundColor: AllColor.bottomSheet,
+                      iconPadding: const EdgeInsets.only(left: 200),
+                      title: const CustomText(
+                        fontColor: AllColor.black,
+                        text: "Join the community to see posts",
+                      ),
+                      content: cubit.state
+                      is CommunityJoinRequestedState
+                          ? const SizedBox(
+                          height: 30,
+                          width: 10,
+                          child: Center(
+                              child:
+                              CustomCircularProgressIndicator()))
+                          : Button(
+                          text: 'Click to join community',
+                          textColor: AllColor.white,
+                          color1: AllColor.linear1,
+                          color2: AllColor.linear2,
+                          height: 40,
+                          onPressed: () async {
+                            Navigator.pop(context);
+                            await cubit.addMembers();
+                          }),
+                    )
+                        : AlertDialog(
+                      shape: const RoundedRectangleBorder(
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(8))),
+                      backgroundColor: AllColor.bottomSheet,
+                      iconPadding: const EdgeInsets.only(left: 200),
+                      title: Column(
+                        children: const [
+                          CustomText(
+                            fontColor: AllColor.black,
+                            text:
+                            "You don't have enough points to join the community. Please attend quiz or refer your friend to earn points. You need 10 points to join the community.",
+                          ),
+                        ],
+                      ),
+                    ),
                   );
                 });
+
+ */
           }
           if (state is CommunityJointedState) {
             // Navigator.pop(context);
@@ -130,6 +162,7 @@ class Community extends StatelessWidget {
           if (state is CommunityErrorState) {
             if (!state.error.contains('404')) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                duration: const Duration(seconds: 15),
                 content: Text(
                   state.error,
                 ),
@@ -138,14 +171,18 @@ class Community extends StatelessWidget {
             }
           }
         },
-        child: const _LayOut(),
+        child: _LayOut(
+          extraSize: extraSize,
+        ),
       ),
     );
   }
 }
 
 class _LayOut extends StatelessWidget {
-  const _LayOut({Key? key}) : super(key: key);
+  final String? extraSize;
+
+  const _LayOut({Key? key, this.extraSize}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -166,7 +203,12 @@ class _LayOut extends StatelessWidget {
                       descriptionList: cubit.descriptionList,
                       imageUrl: cubit.imageUrl,
                       totalMembers: cubit.totalMembers,
-                    )
+                    ),
+                    extraSize.toString().isNotEmpty
+                        ? const SizedBox(
+                            height: 100,
+                          )
+                        : Container()
                   ],
                 ))
               ],

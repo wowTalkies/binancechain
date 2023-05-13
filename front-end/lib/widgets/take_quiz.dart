@@ -1,4 +1,5 @@
 import 'package:bnbapp/screens/badge/cubit/quiz_cubit.dart';
+import 'package:bnbapp/screens/badge/cubit/quiz_state.dart';
 import 'package:bnbapp/utils/colors.dart';
 import 'package:bnbapp/widgets/taking_quiz._widget.dart';
 import 'package:bnbapp/widgets/text.dart';
@@ -17,6 +18,7 @@ class TakeQuizWidget extends StatelessWidget {
   final List<String>? quizQuestion;
   final List<BigInt>? totalMembers;
   final List<String>? quizNameList;
+  final List<String>? quizTittleList;
 
   const TakeQuizWidget(
       {Key? key,
@@ -28,7 +30,8 @@ class TakeQuizWidget extends StatelessWidget {
       this.quizAnswer,
       this.quizQuestion,
       this.maps,
-      this.quizCubit})
+      this.quizCubit,
+      this.quizTittleList})
       : super(key: key);
 
   @override
@@ -146,34 +149,49 @@ class TakeQuizWidget extends StatelessWidget {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 0),
-                                  child: Button(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                TakingQuizWidget(
-                                                    quizCubit: quizCubit,
-                                                    maps: maps,
-                                                    answerList: maps!.values
-                                                        .toList()[index],
-                                                    questionList:
-                                                        quizQuestion![index]
-                                                            .toString(),
-                                                    communityName:
-                                                        descriptionList![index]
-                                                            .toString(),
-                                                    quizName:
-                                                        quizNameList![index]
-                                                            .toString()),
-                                          ));
-                                    },
-                                    text: "Take Quiz",
-                                    textSize: 14,
-                                    height:
-                                        MediaQuery.of(context).size.height / 29,
-                                    // width: MediaQuery.of(context).size.width / 3.8,
-                                  ),
+                                  child: quizCubit?.state
+                                          is TakeQuizRequestedState
+                                      ? const CircularProgressIndicator(
+                                          color: AllColor.linear2,
+                                        )
+                                      : Button(
+                                          onPressed: () async {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      TakingQuizWidget(
+                                                          quizCubit: quizCubit,
+                                                          maps: maps,
+                                                          answerList: maps!
+                                                              .values
+                                                              .toList()[index],
+                                                          questionList:
+                                                              quizQuestion![
+                                                                      index]
+                                                                  .toString(),
+                                                          communityName:
+                                                              descriptionList![
+                                                                      index]
+                                                                  .toString(),
+                                                          quizName:
+                                                              quizNameList![
+                                                                      index]
+                                                                  .toString()),
+                                                ));
+                                            quizCubit?.boolList?.clear();
+                                            await quizCubit?.back(
+                                                descriptionList![index]
+                                                    .toString());
+                                          },
+                                          text: "Take Quiz",
+                                          textSize: 14,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              29,
+                                          // width: MediaQuery.of(context).size.width / 3.8,
+                                        ),
                                 ),
                               ],
                             ),
